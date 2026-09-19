@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartikeya Dubey — AI Engineer</title>
+<meta name="description" content="Kartikeya Dubey — AI Engineer building production GenAI, RAG and agentic AI systems.">
+<meta name="theme-color" content="#0a0e14">
+<link rel="icon" type="image/jpeg" href="profilepic.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-alt: #10151f;
+    --card: #131924;
+    --border: #232a38;
+    --text: #e8ecf3;
+    --text-dim: #9aa5b8;
+    --accent: #5eead4;
+    --accent2: #a78bfa;
+    --glow: rgba(94, 234, 212, 0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, .brand { font-family: 'Space Grotesk', sans-serif; }
+
+  /* animated background */
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(94,234,212,0.08), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(167,139,250,0.10), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(94,234,212,0.05), transparent 40%);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-2%, 2%) scale(1.05); }
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 6%;
+    backdrop-filter: blur(12px);
+    background: rgba(10,14,20,0.7);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .brand span { color: var(--accent); }
+  nav a {
+    color: var(--text-dim); text-decoration: none; font-size: 0.9rem;
+    margin-left: 28px; transition: color .2s;
+  }
+  nav a:hover { color: var(--text); }
+
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 78vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 6%;
+  }
+  .avatar {
+    width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--border); box-shadow: 0 0 0 4px var(--glow);
+    margin-bottom: 20px; opacity: 0; animation: fadeUp .6s ease forwards;
+  }
+  .eyebrow {
+    color: var(--accent); font-size: 0.85rem; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 18px; opacity: 0;
+    animation: fadeUp .7s ease forwards .1s;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
+    max-width: 900px; opacity: 0;
+    animation: fadeUp .8s ease forwards .25s;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p {
+    margin-top: 22px; max-width: 620px; color: var(--text-dim);
+    font-size: 1.08rem; line-height: 1.6; opacity: 0;
+    animation: fadeUp .8s ease forwards .4s;
+  }
+  .hero-links { margin-top: 32px; display: flex; gap: 14px; opacity: 0; animation: fadeUp .8s ease forwards .55s; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 10px; font-size: 0.92rem; font-weight: 600;
+    text-decoration: none; transition: transform .2s, box-shadow .2s;
+  }
+  .btn-primary { background: var(--accent); color: #06120f; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--glow); }
+  .btn-outline { border: 1px solid var(--border); color: var(--text); }
+  .btn-outline:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  section { position: relative; z-index: 1; padding: 80px 6%; }
+  .section-head { margin-bottom: 40px; }
+  .section-head .tag { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 8px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    display: flex; flex-direction: column;
+    opacity: 0; transform: translateY(24px);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .card.reveal { animation: fadeUp .7s ease forwards; }
+  .card::before {
+    content: ""; position: absolute; inset: 0; border-radius: 16px; padding: 1px;
+    background: linear-gradient(135deg, var(--accent), transparent 40%);
+    opacity: 0; transition: opacity .35s;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+  .card:hover::before { opacity: 1; }
+  .card .flag {
+    display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--accent); background: rgba(94,234,212,0.1); border: 1px solid rgba(94,234,212,0.3);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 14px; width: fit-content; text-transform: uppercase;
+  }
+  .card.flagship .flag { color: var(--accent2); background: rgba(167,139,250,0.12); border-color: rgba(167,139,250,0.35); }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .card h3.with-icon { display: flex; align-items: center; gap: 10px; }
+  .card h3.with-icon img { width: 28px; height: 28px; border-radius: 8px; object-fit: cover; }
+  .card p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.55; flex-grow: 1; }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .stack span {
+    font-size: 0.75rem; color: var(--text-dim); border: 1px solid var(--border);
+    padding: 4px 10px; border-radius: 6px;
+  }
+  .card-footer {
+    margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.85rem; color: var(--accent); font-weight: 600;
+  }
+  .card-footer a { color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+  .card-footer a:hover { text-decoration: underline; }
+  .card-footer .arrow { transition: transform .25s; display: inline-block; }
+  .card:hover .card-footer .arrow { transform: translateX(4px); }
+
+  footer {
+    position: relative; z-index: 1;
+    padding: 40px 6%; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    color: var(--text-dim); font-size: 0.88rem;
+  }
+  footer a { color: var(--text-dim); text-decoration: none; margin-left: 18px; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    nav a { margin-left: 16px; font-size: 0.82rem; }
+  }
+
+  .exp-list { display: flex; flex-direction: column; gap: 18px; }
+  .exp-item {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 26px;
+    opacity: 0; transform: translateY(20px); transition: border-color .3s, transform .3s;
+  }
+  .exp-item.reveal { animation: fadeUp .65s ease forwards; }
+  .exp-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .exp-item .exp-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; align-items: baseline; }
+  .exp-item .role { font-weight: 600; font-size: 1.05rem; }
+  .exp-item .dates { color: var(--text-dim); font-size: 0.85rem; }
+  .exp-item .company { color: var(--accent); font-size: 0.9rem; margin-top: 2px; }
+  .exp-item p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.55; margin-top: 10px; }
+
+  .focus-table { width: 100%; border-collapse: collapse; }
+  .focus-table tr {
+    border-bottom: 1px solid var(--border);
+    opacity: 0; transform: translateY(14px);
+  }
+  .focus-table tr.reveal { animation: fadeUp .5s ease forwards; }
+  .focus-table td { padding: 16px 10px; vertical-align: top; }
+  .focus-table td:first-child { font-weight: 600; color: var(--accent2); white-space: nowrap; padding-right: 24px; font-size: 0.92rem; }
+  .focus-table td:last-child { color: var(--text-dim); font-size: 0.92rem; }
+
+  .subgroup { margin-bottom: 48px; }
+  .subgroup:last-child { margin-bottom: 0; }
+  .subgroup-label {
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<nav>
+  <div class="brand">Kartikeya<span>.</span>Dubey</div>
+  <div>
+    <a href="#experience">Experience</a>
+    <a href="#focus">Focus</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="avatar" src="profilepic.jpg" alt="Kartikeya Dubey">
+  <div class="eyebrow">AI Engineer · GenAI &amp; Agentic Systems · Bengaluru, IN</div>
+  <h1>Building <span class="grad">production GenAI systems</span> — from RAG pipelines to autonomous agents.</h1>
+  <p>I design and ship LLM applications using RAG, agentic workflows, LangGraph, tool calling, and memory — backed by production APIs, databases, and cloud infrastructure. Backend engineering in Java and Python is the foundation underneath.</p>
+  <div class="hero-links">
+    <a class="btn btn-primary" href="#projects">View Projects ↓</a>
+    <a class="btn btn-outline" href="https://github.com/kartikeya-dubey" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="btn btn-outline" href="https://www.linkedin.com/in/kartikeyadubey/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-head">
+    <div class="tag">4.5+ Years Engineering</div>
+    <h2>Experience</h2>
+  </div>
+  <div class="exp-list" id="expList">
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <div class="role">SDE-AI (GenAI / Agentic AI)</div>
+          <div class="company">M-Files, Bengaluru</div>
+        </div>
+        <div class="dates">Oct 2025 – Present</div>
+      </div>
+      <p>Core AI engineer on an enterprise document management platform — building hybrid RAG pipelines, multi-agent orchestration with autonomous tool calling, and MCP-native tool servers for enterprise search and automation.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <div class="role">Technology Analyst / Senior Systems Engineer</div>
+          <div class="company">Infosys Ltd., Noida</div>
+        </div>
+        <div class="dates">Jun 2022 – Sep 2025</div>
+      </div>
+      <p>Built agentic automation systems (LangGraph + FastAPI) and GenAI proof-of-concepts — RAG pipelines, contract analysis, and PDF chatbots — for Fortune 500 clients; led LangGraph upskilling across the AI community.</p>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="section-head">
+    <div class="tag">Skills</div>
+    <h2>Technical Focus</h2>
+  </div>
+  <table class="focus-table" id="focusTable">
+    <tr><td>GenAI</td><td>LLMs · RAG · Agentic AI · Tool Calling · Memory · Evals</td></tr>
+    <tr><td>AI Systems</td><td>LangGraph · LangChain · LangSmith · MCP · Prompt Engineering</td></tr>
+    <tr><td>Backend</td><td>Python · FastAPI · Java · Spring Boot</td></tr>
+    <tr><td>Data</td><td>PostgreSQL · Vector DBs · Embeddings</td></tr>
+    <tr><td>Cloud</td><td>Azure OpenAI · Azure AI Foundry · Azure AI Search · AWS</td></tr>
+  </table>
+</section>
+
+<section id="projects">
+  <div class="section-head">
+    <div class="tag">Selected Work</div>
+    <h2>Projects</h2>
+  </div>
+  <div class="subgroup">
+    <div class="subgroup-label">Featured</div>
+    <div class="grid" id="cardGridFeatured">
+      <a class="card flagship" href="dexai.html">
+        <div class="flag">Live · Actively Developed</div>
+        <h3 class="with-icon"><img src="dexai-icon.png" alt="DexAI logo">DexAI</h3>
+        <p>An agentic personal productivity platform — converts unstructured input into structured, remembered tasks and events. LangGraph agents handle extraction, conversation memory, and multi-channel interaction (web + Telegram). Academic scheduling is the initial use case.</p>
+        <div class="stack">
+          <span>FastAPI</span><span>React + TS</span><span>LangGraph</span><span>PostgreSQL</span>
+        </div>
+        <div class="card-footer">Explore implementation <span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="subgroup">
+    <div class="subgroup-label">GenAI / AI Systems</div>
+    <div class="grid" id="cardGridGenAI">
+      <a class="card" href="https://github.com/kartikeya-dubey/task_rag_chatbot" target="_blank" rel="noopener">
+        <div class="flag">RAG</div>
+        <h3>RAG Support Chatbot</h3>
+        <p>Retrieval-augmented chatbot answering questions from PDFs and website content using hybrid BM25 + semantic search, built on LangChain/LangGraph with Google Gemini.</p>
+        <div class="stack">
+          <span>LangChain</span><span>LangGraph</span><span>Gemini 2.0</span><span>Streamlit</span>
+        </div>
+        <div class="card-footer">View repo <span class="arrow">→</span></div>
+      </a>
+
+      <div class="card">
+        <div class="flag">RAG</div>
+        <h3>Chat with PDF</h3>
+        <p>Conversational multi-PDF assistant: chunks and embeds documents into a vectorstore, uses Cohere's reranker to cut token cost, and keeps chat memory across turns.</p>
+        <div class="stack">
+          <span>Cohere</span><span>Streamlit</span><span>LangSmith</span><span>Vector Search</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://go.screenpal.com/u/ALU6/PDF-chatbot" target="_blank" rel="noopener">View Demo Video <span class="arrow">→</span></a>
+          <a href="https://github.com/kartikeya-dubey/LLM_Chat_with_PDF" target="_blank" rel="noopener">View Repo <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flag">Voice AI</div>
+        <h3>AI Voice Assistant</h3>
+        <p>Speak your question, get a spoken answer. A GenAI voice pipeline that captures audio queries and returns synthesized audio responses via an LLM.</p>
+        <div class="stack">
+          <span>Groq</span><span>LangChain</span><span>Streamlit</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://go.screenpal.com/u/ALU6/AI-Voice-Assistant" target="_blank" rel="noopener">View Demo Video <span class="arrow">→</span></a>
+          <a href="https://github.com/kartikeya-dubey/AI_Voice_Assistant" target="_blank" rel="noopener">View Repo <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subgroup">
+    <div class="subgroup-label">Software Engineering</div>
+    <div class="grid" id="cardGridSWE">
+      <a class="card" href="https://github.com/kartikeya-dubey/smartcasemanager" target="_blank" rel="noopener">
+        <div class="flag">Full-Stack Java</div>
+        <h3>Smart Case Manager</h3>
+        <p>Spring Boot application for advocates to manage case records with role-based access, plus an integrated GenAI chatbot assistant running alongside the Java backend.</p>
+        <div class="stack">
+          <span>Spring Boot</span><span>MySQL</span><span>Spring Security</span><span>Hibernate</span>
+        </div>
+        <div class="card-footer">View repo <span class="arrow">→</span></div>
+      </a>
+
+      <a class="card" href="https://github.com/kartikeya-dubey/postItBloggingApp" target="_blank" rel="noopener">
+        <div class="flag">Full-Stack Java</div>
+        <h3>PostIt Blogging App</h3>
+        <p>Secure blogging platform with JWT auth, media uploads, comments and tagging, deployed on AWS (Elastic Beanstalk, RDS, S3) with full Swagger API docs.</p>
+        <div class="stack">
+          <span>Spring Boot</span><span>JWT</span><span>AWS</span><span>MySQL</span>
+        </div>
+        <div class="card-footer">View repo <span class="arrow">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-head">
+    <div class="tag">Background</div>
+    <h2>Education</h2>
+  </div>
+  <div class="grid" id="eduGrid">
+    <div class="card edu-card">
+      <div class="flag">Apr 2025 – Present</div>
+      <h3>M.Tech, AI &amp; Machine Learning</h3>
+      <p>BITS Pilani · Coursework: NLP Applications, Conversational AI, LLMs for GenAI, DNN</p>
+    </div>
+    <div class="card edu-card">
+      <div class="flag">Jul 2015 – Jun 2019</div>
+      <h3>B.Tech, Computer Science &amp; Engineering</h3>
+      <p>Dr. APJ Abdul Kalam Technical University · 8.74 CGPA (Division I)</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div>© 2026 Kartikeya Dubey</div>
+  <div>
+    <a href="https://github.com/kartikeya-dubey" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/kartikeyadubey/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:kartikeyadubey1997@outlook.com">kartikeyadubey1997@outlook.com</a>
+  </div>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 0.06) + 's';
+        entry.target.classList.add('reveal');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(c => io.observe(c));
+
+  const revealSimple = (selector) => {
+    const els = document.querySelectorAll(selector);
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = (i * 0.06) + 's';
+          entry.target.classList.add('reveal');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => obs.observe(el));
+  };
+  revealSimple('.exp-item');
+  revealSimple('.focus-table tr');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `translateY(-6px) rotateX(${-y*4}deg) rotateY(${x*4}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+</script>
+</body>
+</html>
