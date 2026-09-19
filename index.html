@@ -71,7 +71,7 @@
     padding: 0 6%;
   }
   .hero-intro {
-    display: grid; grid-template-columns: 168px minmax(0, 900px); align-items: start; gap: 34px;
+    display: grid; grid-template-columns: 168px minmax(0, 1fr); align-items: start; gap: 34px;
   }
   .avatar {
     width: 168px; height: 168px; border-radius: 50%; object-fit: cover;
@@ -87,7 +87,7 @@
   .hero h1 {
     font-size: clamp(2.4rem, 6vw, 4.2rem);
     font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
-    max-width: 900px; opacity: 0;
+    max-width: none; opacity: 0;
     animation: fadeUp .8s ease forwards .25s;
   }
   .hero h1 .grad {
@@ -95,7 +95,7 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .hero p {
-    margin-top: 22px; max-width: 620px; color: var(--text-dim);
+    margin-top: 22px; max-width: none; color: var(--text-dim);
     font-size: 1.08rem; line-height: 1.6; opacity: 0;
     animation: fadeUp .8s ease forwards .4s;
   }
@@ -242,7 +242,7 @@
   <div class="hero-intro">
     <img class="avatar" src="profilepic_no_watermark.jpg" alt="Kartikeya Dubey">
     <div class="hero-content">
-      <div class="eyebrow">AI ENGINEER · GENAI &amp; AGENTIC SYSTEMS · BENGALURU, IN</div>
+      <div class="eyebrow">AI ENGINEER · GENAI &amp; AGENTIC SYSTEMS · 5+ Years Engineering · BENGALURU, IN </div>
       <h1>Building <span class="grad">AI systems</span> that retrieve, reason, and act.</h1>
       <p>I engineer production <strong>GenAI and agentic applications</strong> across RAG, hybrid retrieval, tool calling, MCP, and workflow orchestration.<br><br>From <strong>LLM inference and retrieval to evaluation, observability, APIs, and cloud deployment</strong>, I build the systems around the model—not just the prompt.<br><br><strong>Python and Java backend engineering</strong> form the foundation underneath.</p>
       <div class="hero-links">
@@ -256,29 +256,28 @@
 
 <section id="experience">
   <div class="section-head">
-    <div class="tag">4.5+ Years Engineering</div>
     <h2>Experience</h2>
   </div>
   <div class="exp-list" id="expList">
     <div class="exp-item">
       <div class="exp-top">
         <div>
-          <div class="role">SDE-AI (GenAI / Agentic AI)</div>
+          <div class="role">AI Engineer</div>
           <div class="company">M-Files, Bengaluru</div>
         </div>
         <div class="dates">Oct 2025 – Present</div>
       </div>
-      <p>Core AI engineer on an enterprise document management platform — building hybrid RAG pipelines, multi-agent orchestration with autonomous tool calling, and MCP-native tool servers for enterprise search and automation.</p>
+      <p>Core AI engineer on enterprise document management platform — building hybrid RAG pipelines, multi-agent orchestration with autonomous tool calling, and MCP-native tool servers for enterprise search and automation.</p>
     </div>
     <div class="exp-item">
       <div class="exp-top">
         <div>
-          <div class="role">Technology Analyst / Senior Systems Engineer</div>
+          <div class="role">Technology Analyst (Senior Systems Engineer, Systems Engineer, Systems Engineer - Trainee)</div>
           <div class="company">Infosys Ltd., Noida</div>
         </div>
         <div class="dates">Jun 2022 – Sep 2025</div>
       </div>
-      <p>Built agentic automation systems (LangGraph + FastAPI) and GenAI proof-of-concepts — RAG pipelines, contract analysis, and PDF chatbots — for Fortune 500 clients; led LangGraph upskilling across the AI community.</p>
+      <p>Aligned with Infosys Topaz - Infosys' flagship AI Offering. Built agentic automation systems (LangGraph + FastAPI) and GenAI proof-of-concepts — RAG pipelines, contract analysis, and PDF chatbots — for Fortune 500 clients; led LangGraph upskilling across the org AI community.</p>
     </div>
   </div>
 </section>
