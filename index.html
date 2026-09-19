@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kartikeya Dubey — AI Engineer</title>
-<meta name="description" content="Kartikeya Dubey — AI Engineer building production GenAI, RAG and agentic AI systems.">
+<meta name="description" content="Building AI systems that retrieve, reason, and act.">
 <meta name="theme-color" content="#0a0e14">
-<link rel="icon" type="image/jpeg" href="profilepic.jpg">
+<link rel="icon" type="image/jpeg" href="profilepic_no_watermark.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -70,11 +70,15 @@
     display: flex; flex-direction: column; justify-content: center;
     padding: 0 6%;
   }
-  .avatar {
-    width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--border); box-shadow: 0 0 0 4px var(--glow);
-    margin-bottom: 20px; opacity: 0; animation: fadeUp .6s ease forwards;
+  .hero-intro {
+    display: grid; grid-template-columns: 168px minmax(0, 900px); align-items: start; gap: 34px;
   }
+  .avatar {
+    width: 168px; height: 168px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--border); box-shadow: 0 0 0 4px var(--glow);
+    opacity: 0; animation: fadeUp .6s ease forwards;
+  }
+  .hero-content { min-width: 0; }
   .eyebrow {
     color: var(--accent); font-size: 0.85rem; letter-spacing: 0.12em;
     text-transform: uppercase; margin-bottom: 18px; opacity: 0;
@@ -176,6 +180,8 @@
 
   @media (max-width: 640px) {
     nav a { margin-left: 16px; font-size: 0.82rem; }
+    .hero-intro { grid-template-columns: 1fr; gap: 24px; }
+    .avatar { width: 112px; height: 112px; }
   }
 
   .exp-list { display: flex; flex-direction: column; gap: 18px; }
@@ -233,14 +239,18 @@
 </nav>
 
 <section class="hero">
-  <img class="avatar" src="profilepic.jpg" alt="Kartikeya Dubey">
-  <div class="eyebrow">AI Engineer · GenAI &amp; Agentic Systems · Bengaluru, IN</div>
-  <h1>Building <span class="grad">production GenAI systems</span> — from RAG pipelines to autonomous agents.</h1>
-  <p>I design and ship LLM applications using RAG, agentic workflows, LangGraph, tool calling, and memory — backed by production APIs, databases, and cloud infrastructure. Backend engineering in Java and Python is the foundation underneath.</p>
-  <div class="hero-links">
-    <a class="btn btn-primary" href="#projects">View Projects ↓</a>
-    <a class="btn btn-outline" href="https://github.com/kartikeya-dubey" target="_blank" rel="noopener">GitHub ↗</a>
-    <a class="btn btn-outline" href="https://www.linkedin.com/in/kartikeyadubey/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  <div class="hero-intro">
+    <img class="avatar" src="profilepic_no_watermark.jpg" alt="Kartikeya Dubey">
+    <div class="hero-content">
+      <div class="eyebrow">AI ENGINEER · GENAI &amp; & AGENTIC SYSTEMS · BENGALURU, IN</div>
+      <h1>Building AI systems <span class="grad"> — that retrieve, reason, and act.</span> </h1>
+      <p>I engineer production GenAI and agentic applications across RAG, hybrid retrieval, tool calling, MCP, and workflow orchestration. From LLM inference and retrieval to evaluation, observability, APIs, and cloud deployment, I build the systems around the model—not just the prompt. Python and Java backend engineering form the foundation underneath.</p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="#projects">View Projects ↓</a>
+        <a class="btn btn-outline" href="https://github.com/kartikeya-dubey" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/kartikeyadubey/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
   </div>
 </section>
 
