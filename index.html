@@ -51,7 +51,7 @@
   nav {
     position: sticky; top: 0; z-index: 10;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 6%;
+    padding: 20px max(6%, calc((100% - 1400px) / 2));
     backdrop-filter: blur(12px);
     background: rgba(10,14,20,0.7);
     border-bottom: 1px solid var(--border);
@@ -66,24 +66,24 @@
 
   .hero {
     position: relative; z-index: 1;
-    min-height: 78vh;
     display: flex; flex-direction: column; justify-content: center;
-    padding: 0 6%;
+    padding: 80px max(6%, calc((100% - 1400px) / 2)) 50px;
   }
+  .hero-top { display: flex; align-items: center; gap: 20px; margin-bottom: 26px; }
   .avatar {
-    width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+    width: 72px; height: 72px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
     border: 2px solid var(--border); box-shadow: 0 0 0 4px var(--glow);
-    margin-bottom: 20px; opacity: 0; animation: fadeUp .6s ease forwards;
+    opacity: 0; animation: fadeUp .6s ease forwards;
   }
   .eyebrow {
     color: var(--accent); font-size: 0.85rem; letter-spacing: 0.12em;
-    text-transform: uppercase; margin-bottom: 18px; opacity: 0;
+    text-transform: uppercase; opacity: 0;
     animation: fadeUp .7s ease forwards .1s;
   }
   .hero h1 {
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 700; line-height: 1.08; letter-spacing: -0.02em;
-    max-width: 900px; opacity: 0;
+    font-size: clamp(1.15rem, 2.6vw, 2rem);
+    font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+    max-width: 1100px; opacity: 0;
     animation: fadeUp .8s ease forwards .25s;
   }
   .hero h1 .grad {
@@ -91,7 +91,7 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .hero p {
-    margin-top: 22px; max-width: 620px; color: var(--text-dim);
+    margin-top: 22px; max-width: 960px; color: var(--text-dim);
     font-size: 1.08rem; line-height: 1.6; opacity: 0;
     animation: fadeUp .8s ease forwards .4s;
   }
@@ -111,7 +111,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  section { position: relative; z-index: 1; padding: 80px 6%; }
+  section { position: relative; z-index: 1; padding: 70px max(6%, calc((100% - 1400px) / 2)); }
   .section-head { margin-bottom: 40px; }
   .section-head .tag { color: var(--accent); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: 8px; }
@@ -167,7 +167,7 @@
 
   footer {
     position: relative; z-index: 1;
-    padding: 40px 6%; border-top: 1px solid var(--border);
+    padding: 40px max(6%, calc((100% - 1400px) / 2)); border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     color: var(--text-dim); font-size: 0.88rem;
   }
@@ -190,6 +190,13 @@
   .exp-item .dates { color: var(--text-dim); font-size: 0.85rem; }
   .exp-item .company { color: var(--accent); font-size: 0.9rem; margin-top: 2px; }
   .exp-item p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.55; margin-top: 10px; }
+  .exp-item p a { color: var(--accent); text-decoration: none; }
+  .exp-item p a:hover { text-decoration: underline; }
+  .exp-item .sub { color: var(--text-dim); font-size: 0.82rem; margin-top: 4px; }
+  .exp-points { margin: 14px 0 0 18px; color: var(--text-dim); font-size: 0.92rem; line-height: 1.6; }
+  .exp-points li { margin-bottom: 10px; padding-left: 4px; }
+  .exp-points li::marker { color: var(--accent); }
+  .exp-points strong { color: var(--text); font-weight: 600; }
 
   .focus-table { width: 100%; border-collapse: collapse; }
   .focus-table tr {
@@ -228,13 +235,16 @@
     <a href="#focus">Focus</a>
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <section class="hero">
-  <img class="avatar" src="profilepic.jpg" alt="Kartikeya Dubey">
-  <div class="eyebrow">AI Engineer · GenAI &amp; Agentic Systems · Bengaluru, IN</div>
+  <div class="hero-top">
+    <img class="avatar" src="profilepic.jpg" alt="Kartikeya Dubey">
+    <div class="eyebrow">AI Engineer · GenAI &amp; Agentic Systems · Bengaluru, IN</div>
+  </div>
   <h1>Building <span class="grad">production GenAI systems</span> — from RAG pipelines to autonomous agents.</h1>
   <p>I design and ship LLM applications using RAG, agentic workflows, LangGraph, tool calling, and memory — backed by production APIs, databases, and cloud infrastructure. Backend engineering in Java and Python is the foundation underneath.</p>
   <div class="hero-links">
@@ -258,17 +268,30 @@
         </div>
         <div class="dates">Oct 2025 – Present</div>
       </div>
-      <p>Core AI engineer on an enterprise document management platform — building hybrid RAG pipelines, multi-agent orchestration with autonomous tool calling, and MCP-native tool servers for enterprise search and automation.</p>
+      <p>Core AI engineer for <a href="https://www.linkedin.com/posts/m-files-corporation_taxadvisory-documentmanagement-operationalefficiency-activity-7458141135958523904-Dnsv" target="_blank" rel="noopener">M-Files for Tax Advisory</a>, an intelligent <a href="https://www.youtube.com/watch?v=8Ka6ceq88Io" target="_blank" rel="noopener">enterprise document management solution</a>.</p>
+      <ul class="exp-points">
+        <li><strong>Knowledge Search:</strong> production <strong>hybrid RAG pipeline</strong> with an LLM-based query classifier (semantic vs. structured routing), a 3-step schema-grounded validation loop, few-shot confidence-scored metadata extraction, and concurrent KQL pre-filtering with cosine re-ranking over Azure AI Search. Parallelising independent LLM stages cut AI processing time <strong>~9.7s → ~5s</strong>; hallucinations mitigated with sentinel-pattern guards and schema-condensed prompts.</li>
+        <li><strong>Speed and cost:</strong> end-to-end response time <strong>25.3s → 11.6s (~54% faster)</strong> using a sliding-window context manager (per-call LLM latency ~1,500ms → ~550ms). Schema condensation cut LLM token spend <strong>80–90%</strong> per call, and TTL-aware schema caching cut metadata fetch latency <strong>~99%</strong>.</li>
+        <li><strong>Multi-agent orchestration:</strong> autonomous intent-based tool routing across an iterative refinement loop (tool calls, KQL aggregation, vault search), with an evals implementation, a session state machine enforcing <strong>human-in-the-loop</strong> confirmation gates, and a full trace-event audit trail per turn.</li>
+        <li><strong>MCP server (beta):</strong> built on Azure Functions with dual stdio/HTTP transport, a gRPC-backed attribute-driven tool registry and OAuth 2.0, exposing enterprise search, file access and metadata-mutation tools to AI agents with pre-approved whitelists, audit logs and W3C trace-context propagation.</li>
+        <li><strong>Enterprise AI resiliency:</strong> <strong>100% response reliability</strong> (zero blank responses), LLM API calls reduced 6 → 5 (~500ms saved per request), a typed degradation hierarchy returning HTTP 200 plus telemetry on any AI Search failure, defense-in-depth <strong>Row-Level Security</strong>, and XML-escaped prompt boundaries blocking prompt injection from untrusted content.</li>
+      </ul>
     </div>
     <div class="exp-item">
       <div class="exp-top">
         <div>
-          <div class="role">Technology Analyst / Senior Systems Engineer</div>
+          <div class="role">Technology Analyst (Infosys AI – TOPAZ)</div>
           <div class="company">Infosys Ltd., Noida</div>
+          <div class="sub">Apr 2025 – Sep 2025 · formerly Senior Systems Engineer &amp; Systems Engineer (Jun 2022 – Apr 2025)</div>
         </div>
-        <div class="dates">Jun 2022 – Sep 2025</div>
+        <div class="dates">Mar 2022 – Sep 2025</div>
       </div>
-      <p>Built agentic automation systems (LangGraph + FastAPI) and GenAI proof-of-concepts — RAG pipelines, contract analysis, and PDF chatbots — for Fortune 500 clients; led LangGraph upskilling across the AI community.</p>
+      <ul class="exp-points">
+        <li><strong>Agentic site-fault automation</strong> (LangGraph + FastAPI): stateful complaint registration, an LLM-driven tool selector, chatbot resolution and text-to-SQL analytics over PostgreSQL, forming an end-to-end autonomous issue-resolution loop for a Fortune 500 financial platform serving <strong>5M+ participants</strong>.</li>
+        <li><strong>GenAI proofs of concept</strong> for a Fortune 500 energy client: SAM contract analysis and a PDF chatbot on Azure OpenAI, LangChain and Chroma (hybrid BM25 + semantic search with re-ranking), plus secure PII-redacted data ingestion pipelines on Azure.</li>
+        <li><strong>Community leadership:</strong> led LangGraph upskilling (state, checkpoints, breakpoints, subgraphs, parallelisation, graph reduction) and GenAI enablement sessions across the Infosys-Noida AI Community.</li>
+        <li>Began as Systems Engineer Trainee (Mysuru, Mar 2022 – Jun 2022), designated <strong>High Performer (HPF)</strong> in Infosys Stream Training.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -279,11 +302,14 @@
     <h2>Technical Focus</h2>
   </div>
   <table class="focus-table" id="focusTable">
-    <tr><td>GenAI</td><td>LLMs · RAG · Agentic AI · Tool Calling · Memory · Evals</td></tr>
-    <tr><td>AI Systems</td><td>LangGraph · LangChain · LangSmith · MCP · Prompt Engineering</td></tr>
-    <tr><td>Backend</td><td>Python · FastAPI · Java · Spring Boot</td></tr>
-    <tr><td>Data</td><td>PostgreSQL · Vector DBs · Embeddings</td></tr>
-    <tr><td>Cloud</td><td>Azure OpenAI · Azure AI Foundry · Azure AI Search · AWS</td></tr>
+    <tr><td>GenAI &amp; Retrieval</td><td>LLMs · RAG · Hybrid Search · Re-ranking · Embeddings · Vector DBs · Evals</td></tr>
+    <tr><td>Agentic AI</td><td>Multi-Agent Orchestration · Tool Calling · Intent Routing · State Machines · Human-in-the-Loop · MCP</td></tr>
+    <tr><td>LLMOps &amp; Safety</td><td>LangSmith · W3C Trace Context · Hallucination Mitigation · Prompt-Injection Defense · Row-Level Security · Few-Shot Prompting · Token Optimization</td></tr>
+    <tr><td>Frameworks</td><td>LangChain · LangGraph · FastAPI · Spring Boot · Streamlit</td></tr>
+    <tr><td>Languages</td><td>Python · Java · C#</td></tr>
+    <tr><td>Data</td><td>PostgreSQL · Azure Data Explorer (KQL) · Vector DBs · Chroma</td></tr>
+    <tr><td>Cloud</td><td>Azure OpenAI · Azure AI Foundry · Azure AI Search · Azure Functions · Application Insights · AWS</td></tr>
+    <tr><td>Practices</td><td>Agile · OOP · SDLC · SDD</td></tr>
   </table>
 </section>
 
@@ -297,8 +323,8 @@
     <div class="grid" id="cardGridFeatured">
       <a class="card flagship" href="dexai.html">
         <div class="flag">Live · Actively Developed</div>
-        <h3 class="with-icon"><img src="dexai-icon.png" alt="DexAI logo">DexAI</h3>
-        <p>An agentic personal productivity platform — converts unstructured input into structured, remembered tasks and events. LangGraph agents handle extraction, conversation memory, and multi-channel interaction (web + Telegram). Academic scheduling is the initial use case.</p>
+        <h3 class="with-icon"><img src="dexai-icon-96.png" alt="DexAI logo">DexAI</h3>
+        <p>An agentic personal productivity platform — converts unstructured input into structured, remembered tasks and events. LangGraph agents handle extraction, conversation memory, and multi-channel interaction (web + Telegram), with optional Finance and Fitness modules. Academic scheduling is the initial use case.</p>
         <div class="stack">
           <span>FastAPI</span><span>React + TS</span><span>LangGraph</span><span>PostgreSQL</span>
         </div>
@@ -390,6 +416,45 @@
       <h3>B.Tech, Computer Science &amp; Engineering</h3>
       <p>Dr. APJ Abdul Kalam Technical University · 8.74 CGPA (Division I)</p>
     </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-head">
+    <div class="tag">Verified</div>
+    <h2>Certifications</h2>
+  </div>
+  <div class="grid" id="certGrid">
+    <a class="card" href="https://learn.microsoft.com/en-in/users/kartikeyadubey-0120/credentials/209300f63b75b82d" target="_blank" rel="noopener">
+      <div class="flag">Microsoft · 2025</div>
+      <h3>Azure AI Engineer Associate</h3>
+      <p>AI-102</p>
+      <div class="card-footer">View credential <span class="arrow">→</span></div>
+    </a>
+    <a class="card" href="https://learn.microsoft.com/en-in/users/kartikeyadubey-0120/credentials/dbb660657b43a413" target="_blank" rel="noopener">
+      <div class="flag">Microsoft · 2024</div>
+      <h3>GenAI Solutions with Azure OpenAI</h3>
+      <p>Applied Skill</p>
+      <div class="card-footer">View credential <span class="arrow">→</span></div>
+    </a>
+    <a class="card" href="https://learn.microsoft.com/en-in/users/kartikeyadubey-0120/credentials/13846fda35f53c6e" target="_blank" rel="noopener">
+      <div class="flag">Microsoft</div>
+      <h3>Azure AI Fundamentals</h3>
+      <p>AI-900</p>
+      <div class="card-footer">View credential <span class="arrow">→</span></div>
+    </a>
+    <a class="card" href="https://learn.microsoft.com/en-in/users/kartikeyadubey-0120/credentials/4701d1ae1d575be" target="_blank" rel="noopener">
+      <div class="flag">Microsoft</div>
+      <h3>Azure Fundamentals</h3>
+      <p>AZ-900</p>
+      <div class="card-footer">View credential <span class="arrow">→</span></div>
+    </a>
+    <a class="card" href="https://learn.microsoft.com/en-in/users/kartikeyadubey-0120/credentials/c48bd32bb80ee977" target="_blank" rel="noopener">
+      <div class="flag">Microsoft · 2023</div>
+      <h3>Power Platform Fundamentals</h3>
+      <p>PL-900</p>
+      <div class="card-footer">View credential <span class="arrow">→</span></div>
+    </a>
   </div>
 </section>
 
