@@ -210,7 +210,7 @@
     <div class="status-item"><div class="k">Primary Focus</div><div class="v">LLM Orchestration · Memory · Tool Use · Multi-Channel</div></div>
       </div>
       <div class="hc-label hc-gap">What it covers</div>
-      <div class="chips"><span>Document extraction</span><span>Telegram assistant</span><span>Google Calendar sync</span><span>MCP endpoint &amp; plugins</span><span>Finance module</span><span>Fitness module</span><span>Keep-awake monitoring</span><span>Async task queue &amp; scheduling</span><span>Connection pooling</span><span>OWASP-guided security</span><span>AI governance</span><span>Harness engineering</span><span>Context &amp; memory management</span><span>AI observability &amp; tracing</span></div>
+      <div class="chips"><span>Document extraction</span><span>Telegram assistant</span><span>Google Calendar sync</span><span>MCP endpoint &amp; plugins</span><span>Finance module</span><span>Fitness module</span><span>Keep-awake monitoring</span><span>Async task queue &amp; scheduling</span><span>Connection pooling</span><span>OWASP-guided security</span><span>AI governance</span><span>Harness engineering</span><span>Context &amp; memory management</span><span>AI observability &amp; tracing</span><span>Weather &amp; rain alerts</span></div>
     </aside>
   </div>
 </div>
@@ -285,6 +285,7 @@
     <div class="stack-item"><div class="layer">Hosting</div><div class="tech">Render (API) · Vercel (web)</div></div>
     <div class="stack-item"><div class="layer">CI/CD</div><div class="tech">GitHub Actions · automated deploys</div></div>
     <div class="stack-item"><div class="layer">Reliability</div><div class="tech">Keep-alive monitoring · alerts · auto-retry</div></div>
+    <div class="stack-item"><div class="layer">Weather &amp; Air</div><div class="tech">Open-Meteo · OpenAQ (CPCB monitors) · OpenStreetMap</div></div>
   </div>
 </section>
 
@@ -334,6 +335,11 @@
       <h3>Fitness Coach</h3>
       <p>Personal plans, live workout chat, progress tracking and reminders, with consent and data controls.</p>
     </div>
+    <div class="feature">
+      <div class="icon">◆</div>
+      <h3>Weather &amp; Rain Alerts</h3>
+      <p>Weather, air quality and one-time rain alerts for saved places, with quiet hours and shared forecasts.</p>
+    </div>
   </div>
 </section>
 
@@ -367,6 +373,14 @@
       <div class="ch-title">Friendly failures</div>
       <p>Users see a simple message. Admins get one alert that clears itself on recovery, and actions retry automatically.</p>
     </div>
+    <div class="challenge">
+      <div class="ch-title">Weather without per-user polling</div>
+      <p>Nearby users share one forecast fetch, cache entry and rain event, so weather costs do not grow with user count.</p>
+    </div>
+    <div class="challenge">
+      <div class="ch-title">Alerts without repeats</div>
+      <p>Per-user idempotency and one open rain event per area prevent repeats; quiet hours are respected.</p>
+    </div>
   </div>
 </section>
 
@@ -383,6 +397,7 @@
     <div class="phase"><div class="ph-title">Phase 5 — Telegram &amp; Memory</div><div class="ph-desc">Chat agent, conversation memory and tracing.</div></div>
     <div class="phase"><div class="ph-title">Phase 6 — Life Modules</div><div class="ph-desc">Finance and Fitness, behind feature flags.</div></div>
     <div class="phase"><div class="ph-title">Phase 7 — Reliability</div><div class="ph-desc">Monitoring, safe error messages and automatic retries.</div></div>
+    <div class="phase"><div class="ph-title">Phase 8 — Weather &amp; Alerts</div><div class="ph-desc">Hourly forecasts, air quality and rain alerts.</div></div>
     <div class="phase"><div class="ph-title">Next</div><div class="ph-desc">One LLM provider interface, plus screenshots and a demo video.</div></div>
   </div>
 </section>
