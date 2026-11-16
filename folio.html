@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fol.io — Kartikeya Dubey</title>
+<meta name="description" content="Fol.io — an Instagram-first content library. Send reels and posts to @getfol.io; Fol.io keeps them and organises them per user.">
+<meta name="theme-color" content="#141530">
+<meta property="og:title" content="Fol.io — Kartikeya Dubey">
+<meta property="og:description" content="An Instagram-first content library. Send a reel, Fol.io keeps it and files it for you.">
+<meta property="og:image" content="folio-og.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="folio-favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@700;800&family=Rethink+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout and motifs follow the 8B "saas-landing-page-template" (MIT): arches, pill buttons,
+     coloured columns, one-file CSS. Palette is Fol.io's brand (purple to coral on deep navy). */
+  :root {
+    --c1: #141530;   /* deep navy: page ground, buttons */
+    --c2: #fff1dc;   /* cream: hero, FAQ, chips */
+    --c3: #231a3d;   /* ink: body text on cream */
+    --c4: #f0644f;   /* coral */
+    --c5: #a78bfa;   /* lavender */
+    --c6: #0b0c1c;   /* near black */
+    --f1: "Gabarito", "Arial Black", Arial, sans-serif;
+    --f2: "Rethink Sans", Arial, sans-serif;
+    --pill: 999px; --r: 28px;
+    --gx: clamp(20px, 5vw, 72px);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--c1); color: var(--c3); font-family: var(--f2); font-size: 17px; line-height: 1.55; overflow-x: clip; }
+  a { color: inherit; }
+  ul { list-style: none; }
+  h1, h2, h3, .num { font-family: var(--f1); font-weight: 800; letter-spacing: -0.025em; line-height: 1; }
+  .h2 { font-size: clamp(36px, 4.4vw, 66px); }
+  section { padding: 14svh var(--gx); }
+  .eyebrow { font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 18px; }
+
+  /* buttons: half-round fill rises on hover */
+  .btn { position: relative; isolation: isolate; overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
+    min-height: 52px; padding: 0 28px; border-radius: var(--pill); background: var(--c1); color: var(--c2);
+    font: 600 16px var(--f2); text-decoration: none; border: 0; cursor: pointer; }
+  .btn::before { content: ""; position: absolute; inset: -2px 0 0; z-index: -1; border-radius: 50% 50% 0 0 / 70% 70%  0 0;
+    background: var(--c4); transform: translateY(102%); transition: transform .5s cubic-bezier(.2,.7,.2,1), border-radius .5s ease; }
+  .btn:hover::before, .btn:focus-visible::before { transform: translateY(0); border-radius: 0; }
+  .btn.alt { background: var(--c2); color: var(--c1); }
+  .btn.alt::before { background: var(--c5); }
+  .link { font-weight: 600; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; padding-bottom: 2px; transition: background-size .4s; }
+  .link:hover { background-size: 0 1.5px; background-position: 100% 100%; }
+  :focus-visible { outline: 3px solid var(--c5); outline-offset: 3px; }
+
+  /* nav pill */
+  .nav { position: fixed; z-index: 20; top: 14px; left: 50%; transform: translateX(-50%); width: min(1100px, calc(100% - 28px));
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 8px 8px 22px;
+    background: var(--c1); color: var(--c2); border-radius: var(--pill); transition: transform .4s ease; }
+  .nav.hide { transform: translate(-50%, -140%); }
+  .nav img { height: 30px; width: auto; display: block; }
+  .nav ul { display: flex; gap: 26px; font-size: 15px; font-weight: 500; }
+  .nav ul a { text-decoration: none; opacity: .85; } .nav ul a:hover { opacity: 1; color: var(--c5); }
+  .nav .btn { min-height: 42px; padding: 0 20px; background: var(--c2); color: var(--c1); font-size: 15px; }
+  .nav .btn::before { background: var(--c5); }
+  @media (max-width: 860px) { .nav ul { display: none; } }
+
+  /* hero */
+  .hero { min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); grid-template-rows: auto 1fr; gap: 28px 5vw;
+    padding: 17svh var(--gx) 9svh; background: var(--c2); }
+  .hero-head { grid-column: 1; display: grid; gap: 22px; max-width: 660px; align-content: start; }
+  .hero h1 { font-size: clamp(38px, 5vw, 76px); line-height: .98; }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--c5), var(--c4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: 19px; max-width: 54ch; }
+  .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
+  .chips { grid-column: 1; grid-row: 2; align-self: start; display: flex; flex-wrap: wrap; gap: 10px; max-width: 660px; }
+  .chip { display: inline-flex; align-items: center; min-height: 38px; padding: 7px 16px; border: 1.5px solid var(--c3); border-radius: var(--pill);
+    background: var(--c2); font-size: 15px; font-weight: 500; white-space: nowrap; }
+  .chip:nth-child(even) { background: var(--c1); color: var(--c2); border-color: var(--c1); }
+  .chip:nth-child(3n) { background: var(--c5); border-color: var(--c5); color: var(--c1); }
+  .hero-card { grid-column: 2; grid-row: 1 / span 2; align-self: center; justify-self: end; width: min(100%, 460px);
+    display: grid; gap: 18px; padding: 32px; border-radius: var(--r); background: var(--c1); color: var(--c2); }
+  .dm { display: grid; gap: 10px; font-size: 15px; }
+  .bubble { max-width: 88%; padding: 10px 16px; border-radius: 20px; }
+  .bubble.me { justify-self: end; background: linear-gradient(135deg, var(--c5), var(--c4)); color: var(--c1); font-weight: 600; border-bottom-right-radius: 6px; }
+  .bubble.bot { background: #262848; border-bottom-left-radius: 6px; }
+  .reel { justify-self: end; width: 62%; aspect-ratio: 9/12; border-radius: 18px; border-bottom-right-radius: 6px; background:
+      linear-gradient(160deg, rgba(167,139,250,.9), rgba(240,100,79,.9)); display: grid; place-items: center; color: var(--c1); font: 800 14px var(--f1); letter-spacing: .08em; }
+  .reel span { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,.85); display: grid; place-items: center; }
+  .reel span::after { content: ""; border-left: 14px solid var(--c1); border-top: 9px solid transparent; border-bottom: 9px solid transparent; margin-left: 4px; }
+  .card-rule { border-top: 1.5px solid currentColor; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { display: inline-flex; align-items: center; min-height: 32px; padding: 0 14px; border: 1.5px solid currentColor; border-radius: var(--pill); font-size: 14px; }
+  .pill:first-child { background: var(--c2); color: var(--c1); border-color: var(--c2); }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .hero-card, .chips, .hero-head { grid-column: 1; grid-row: auto; justify-self: stretch; }
+  }
+
+  /* five columns */
+  .cols { padding: 0; }
+  .cols-head { padding: 14svh var(--gx) 7svh; background: var(--c6); color: var(--c2); }
+  .cols-head .h2 { max-width: 16ch; }
+  .col-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: 62svh; }
+  .col { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 26px 24px 24px; }
+  .col:nth-child(1) { background: var(--c5); color: var(--c1); }
+  .col:nth-child(2) { background: var(--c3); color: var(--c2); }
+  .col:nth-child(3) { background: var(--c4); color: var(--c1); }
+  .col:nth-child(4) { background: var(--c1); color: var(--c2); }
+  .col:nth-child(5) { background: var(--c2); color: var(--c3); }
+  .col .num { font-size: 56px; opacity: .9; }
+  .col h3 { font-size: 26px; margin-bottom: 10px; }
+  .col p { font-size: 16px; }
+  .col .note { margin-top: auto; padding-top: 12px; border-top: 1.5px solid currentColor; font-size: 14px; font-weight: 500; }
+  @media (max-width: 980px) { .col-grid { grid-template-columns: 1fr 1fr; } .col:nth-child(5) { grid-column: 1 / -1; } }
+  @media (max-width: 620px) { .col-grid { grid-template-columns: 1fr; } .col .note { display: none; } }
+
+  /* library panel */
+  .library { background: var(--c1); color: var(--c2); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6vw; align-items: start; }
+  .phone-wrap { position: sticky; top: 12svh; display: grid; place-items: center; padding: 6svh 0; }
+  .phone { width: min(320px, 100%); aspect-ratio: 9/18.5; border-radius: 42px; padding: 12px; background: #000; box-shadow: 0 0 0 2px #2d2f55, 0 30px 80px rgba(167,139,250,.25); }
+  .screen { height: 100%; border-radius: 32px; background: var(--c2); color: var(--c3); padding: 22px 16px 16px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+  .screen h4 { font: 800 22px var(--f1); }
+  .screen .search { padding: 9px 14px; border-radius: var(--pill); background: #fff; border: 1.5px solid var(--c3); font-size: 13px; opacity: .8; }
+  .clusters { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cluster { border-radius: 18px; padding: 12px; min-height: 88px; display: flex; flex-direction: column; justify-content: space-between; font-weight: 600; font-size: 14px; }
+  .cluster b { font: 800 22px var(--f1); }
+  .cluster:nth-child(1) { background: var(--c5); } .cluster:nth-child(2) { background: var(--c4); }
+  .cluster:nth-child(3) { background: var(--c1); color: var(--c2); } .cluster:nth-child(4) { background: #fff; border: 1.5px solid var(--c3); }
+  .saved { margin-top: auto; display: grid; gap: 6px; font-size: 12.5px; }
+  .saved div { background: #fff; border-radius: 12px; padding: 9px 12px; border: 1.5px solid rgba(35,26,61,.2); }
+  .parts { display: grid; gap: 14svh; padding: 8svh 0; }
+  .part .num { font-size: 20px; color: var(--c5); margin-bottom: 14px; }
+  .part h3 { font-size: clamp(30px, 3.4vw, 50px); margin-bottom: 16px; }
+  .part p { max-width: 46ch; opacity: .92; }
+  @media (max-width: 900px) { .library { grid-template-columns: 1fr; } .phone-wrap { position: static; } .parts { gap: 8svh; } }
+
+  /* architecture arches */
+  .built { background: var(--c2); }
+  .built .h2 { max-width: 18ch; margin-bottom: 7svh; }
+  .arches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .arch { border-radius: 999px 999px 0 0; padding: clamp(60px, 9vw, 120px) 28px 34px; min-height: 420px; display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center; }
+  .arch:nth-child(1) { background: var(--c5); } .arch:nth-child(2) { background: var(--c4); }
+  .arch:nth-child(3) { background: var(--c1); color: var(--c2); } .arch:nth-child(4) { background: var(--c3); color: var(--c2); }
+  .arch h3 { font-size: 26px; }
+  .arch p { font-size: 15.5px; }
+  .arch .tag { margin-top: auto; font-size: 13px; font-weight: 600; padding: 4px 14px; border: 1.5px solid currentColor; border-radius: var(--pill); }
+  @media (max-width: 980px) { .arches { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .arches { grid-template-columns: 1fr; } .arch { min-height: 0; } }
+
+  /* manifesto */
+  .manifesto { background: var(--c4); color: var(--c1); }
+  .lines { display: grid; gap: 10px; margin-bottom: 7svh; }
+  .lines p { font: 800 clamp(34px, 6.4vw, 96px)/1 var(--f1); letter-spacing: -0.03em; }
+  .lines p.struck { text-decoration: line-through; text-decoration-thickness: .07em; opacity: .5; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; max-width: 1000px; font-size: 18px; }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
+
+  /* stack tiles */
+  .stack { background: var(--c6); color: var(--c2); }
+  .stack .h2 { max-width: 16ch; margin-bottom: 7svh; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tile { border-radius: var(--r); padding: clamp(24px, 3vw, 40px); display: grid; gap: 14px; align-content: start; }
+  .tile:nth-child(1) { background: var(--c5); color: var(--c1); } .tile:nth-child(2) { background: var(--c2); color: var(--c3); }
+  .tile:nth-child(3) { background: var(--c4); color: var(--c1); } .tile:nth-child(4) { background: var(--c1); color: var(--c2); border: 1.5px solid #34376a; }
+  .tile h3 { font-size: 28px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span { font-size: 14px; font-weight: 500; padding: 4px 14px; border: 1.5px solid currentColor; border-radius: var(--pill); }
+  @media (max-width: 760px) { .tiles { grid-template-columns: 1fr; } }
+
+  /* status (replaces pricing: no prices exist, so this shows real progress) */
+  .status { background: var(--c1); color: var(--c2); }
+  .status .h2 { max-width: 16ch; margin-bottom: 7svh; }
+  .plans { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .plan { display: flex; flex-direction: column; gap: 22px; padding: clamp(28px, 4vw, 56px); }
+  .plan.live { background: var(--c2); color: var(--c3); }
+  .plan.next { background: var(--c3); color: var(--c2); }
+  .plan .num { font-size: clamp(48px, 6vw, 88px); line-height: .9; }
+  .plan ul { border-top: 1.5px solid currentColor; }
+  .plan li { padding: 12px 0; border-bottom: 1.5px solid currentColor; display: flex; gap: 12px; }
+  .plan li::before { content: "✓"; font-weight: 700; color: var(--c4); }
+  .plan.next li::before { content: "→"; color: var(--c5); }
+  .plan .btn { align-self: flex-start; margin-top: auto; }
+  .plan.next .btn { background: var(--c2); color: var(--c1); }
+  @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+  /* faq */
+  .faq { background: var(--c2); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); gap: 6vw; align-items: start; }
+  .faq .h2 { margin-bottom: 5svh; }
+  details { border-top: 1.5px solid var(--c3); padding: 20px 0; }
+  details:last-of-type { border-bottom: 1.5px solid var(--c3); }
+  summary { cursor: pointer; font: 700 22px var(--f1); letter-spacing: -0.01em; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; transition: transform .3s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin-top: 12px; max-width: 60ch; }
+  .faq-arch { border-radius: 999px 999px 0 0; aspect-ratio: 5/6.4; background: linear-gradient(160deg, var(--c5), var(--c4)); display: grid; place-items: center; }
+  .faq-arch img { width: 46%; }
+  @media (max-width: 900px) { .faq { grid-template-columns: 1fr; } .faq-arch { max-width: 280px; } }
+
+  /* contact + footer */
+  .contact { background: var(--c5); color: var(--c1); }
+  .contact .big { display: block; font: 800 clamp(40px, 8vw, 128px)/.95 var(--f1); letter-spacing: -0.035em; text-decoration: none; margin-bottom: 6svh; word-break: break-word; }
+  .contact .big:hover { color: var(--c4); }
+  .info { display: flex; flex-wrap: wrap; gap: 14px 48px; font-weight: 500; }
+  .info b { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+  footer { background: var(--c3); color: var(--c2); padding: 72px var(--gx) 0; overflow: clip; }
+  .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; }
+  .f-lead { font: 700 clamp(26px, 2.6vw, 38px)/1.1 var(--f1); max-width: 18ch; }
+  .f-cols { display: flex; flex-wrap: wrap; gap: 28px 64px; }
+  .f-cols ul { display: grid; gap: 8px; }
+  .f-cols a { text-decoration: none; opacity: .85; } .f-cols a:hover { opacity: 1; color: var(--c5); }
+  .f-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; margin-top: 56px; padding-top: 18px; border-top: 1.5px solid currentColor; font-size: 15px; }
+  .f-mark { margin: 40px 0 0; font: 800 clamp(90px, 24vw, 340px)/.8 var(--f1); letter-spacing: -0.05em; white-space: nowrap;
+    background: linear-gradient(90deg, var(--c5), var(--c4)); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" aria-label="Fol.io home"><img src="folio-lockup-dark.png" alt="Fol.io"></a>
+  <ul>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#library">Library</a></li>
+    <li><a href="#built">Architecture</a></li>
+    <li><a href="#status">Status</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-head">
+      <div class="eyebrow">Case study · Live, in early access</div>
+      <h1>Send a reel. <em>Fol.io keeps it</em> and files it.</h1>
+      <p class="lead">An Instagram-first content library. DM reels and posts to <strong>@getfol.io</strong> (or paste a link) and Fol.io saves each one, understands what it is about and organises it for you. No folders to make, no screenshots to lose.</p>
+      <div class="cta">
+        <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open the app</a>
+        <a class="link" href="#how">See how it works</a>
+      </div>
+    </div>
+    <ul class="chips" aria-label="Examples of what gets saved">
+      <li class="chip">Travel · Lisbon in 3 days</li><li class="chip">Recipe · Miso aubergine</li><li class="chip">Product · Standing desk</li>
+      <li class="chip">Learning · RAG explained</li><li class="chip">Fitness · 20 min pull day</li><li class="chip">Place · Rooftop café</li>
+      <li class="chip">Carousel · Study tips</li><li class="chip">Needs info</li>
+    </ul>
+    <article class="hero-card" aria-label="Example Instagram conversation">
+      <div class="dm">
+        <div class="reel"><span aria-hidden="true"></span></div>
+        <div class="bubble me">shared a reel</div>
+        <div class="bubble bot">Saved. Filed under <strong>Travel</strong>.</div>
+      </div>
+      <div class="card-rule" aria-label="Where it lands"><span class="pill">Travel</span><span class="pill">Lisbon</span><span class="pill">3 days</span></div>
+    </article>
+  </section>
+
+  <section class="cols" id="how">
+    <div class="cols-head">
+      <div class="eyebrow">How it works</div>
+      <h2 class="h2">Five steps from reel to library.</h2>
+    </div>
+    <div class="col-grid">
+      <article class="col"><div><div class="num">01</div><h3>Send</h3><p>DM a reel or post to @getfol.io, or paste a link. Shares from any chat work.</p></div><div class="note">Sender is recognised from the handle you set.</div></article>
+      <article class="col"><div><div class="num">02</div><h3>Store</h3><p>The message is stored first and acknowledged at once, so nothing is lost if a step fails.</p></div><div class="note">Duplicates are dropped at the door.</div></article>
+      <article class="col"><div><div class="num">03</div><h3>Understand</h3><p>The caption and your note become a title, summary, tags, places and products.</p></div><div class="note">Behind a swappable AI provider.</div></article>
+      <article class="col"><div><div class="num">04</div><h3>Organise</h3><p>Each item is filed into a cluster, like Travel or Recipes. New clusters appear when needed.</p></div><div class="note">Per-user, never shared.</div></article>
+      <article class="col"><div><div class="num">05</div><h3>Reply</h3><p>You get a short text back: saved, filed, or what extra info is needed.</p></div><div class="note">Each reply is sent once.</div></article>
+    </div>
+  </section>
+
+  <section class="library" id="library">
+    <div class="phone-wrap" aria-hidden="true">
+      <div class="phone"><div class="screen">
+        <h4>Your library</h4>
+        <div class="search">Search saves…</div>
+        <div class="clusters">
+          <div class="cluster"><span>Travel</span><b>12</b></div>
+          <div class="cluster"><span>Recipes</span><b>9</b></div>
+          <div class="cluster"><span>Fitness</span><b>7</b></div>
+          <div class="cluster"><span>Learning</span><b>5</b></div>
+        </div>
+        <div class="saved"><div>Lisbon in 3 days · Travel</div><div>Miso aubergine · Recipes</div><div>Pull day, 20 min · Fitness</div></div>
+      </div></div>
+    </div>
+    <div class="parts">
+      <div class="part"><div class="num">What you keep</div><h3>Links and meaning, not media.</h3><p>Fol.io stores the link to the original, the caption and a small preview. It does not keep downloaded video or audio, which keeps it light and respects the original creator.</p></div>
+      <div class="part"><div class="num">What it adds</div><h3>Structure from a caption.</h3><p>A travel reel yields places and duration; a recipe yields dishes and ingredients; a product yields names and attributes. Items filed together make a library you can actually search.</p></div>
+      <div class="part"><div class="num">What stays yours</div><h3>Private by default.</h3><p>Content is understood once and shared across users, but each person's saves, clusters and notes are theirs alone, enforced in the database with row-level security.</p></div>
+    </div>
+  </section>
+
+  <section class="built" id="built">
+    <div class="eyebrow">Architecture</div>
+    <h2 class="h2">Small, bursty, event-shaped work.</h2>
+    <div class="arches">
+      <article class="arch"><h3>Edge receiver</h3><p>A Cloudflare Worker at a fixed address verifies the Instagram signature, stores the event and replies in milliseconds.</p><span class="tag">Cloudflare Worker</span></article>
+      <article class="arch"><h3>Stored inbox</h3><p>Events wait in Postgres and are claimed in batches with row locks. A restart loses nothing.</p><span class="tag">Supabase Postgres</span></article>
+      <article class="arch"><h3>Stateless API</h3><p>FastAPI runs as Vercel functions in Singapore, close to the database. No idle server to keep alive.</p><span class="tag">FastAPI · Vercel</span></article>
+      <article class="arch"><h3>Caption AI</h3><p>Batched, cost-capped understanding with a circuit breaker, stored per item and behind a provider interface.</p><span class="tag">Gemini · swappable</span></article>
+    </div>
+  </section>
+
+  <section class="manifesto">
+    <div class="eyebrow">Point of view</div>
+    <div class="lines">
+      <p class="struck">Another bookmark folder.</p>
+      <p class="struck">Another pile of screenshots.</p>
+      <p class="struck">Another “save for later”.</p>
+      <p>A library that knows what is in it.</p>
+    </div>
+    <div class="two">
+      <p>Saving is easy and finding is not. Most people have hundreds of saved reels they never open again, because nothing tells them what each one holds.</p>
+      <p>Fol.io treats the content as the point. It reads what a post is about, files it for you and lets you come back by topic, place or product instead of by memory.</p>
+    </div>
+  </section>
+
+  <section class="stack">
+    <div class="eyebrow">Under the hood</div>
+    <h2 class="h2">Boring where it should be.</h2>
+    <div class="tiles">
+      <article class="tile"><h3>Backend</h3><p>Typed settings, one error shape, JSON logs with request ids, and startup that refuses weak secrets.</p><div class="tags"><span>FastAPI</span><span>Pydantic</span><span>SQLAlchemy async</span><span>Alembic</span></div></article>
+      <article class="tile"><h3>Frontend</h3><p>Sign-up, email links, setup frame, Overview, Settings with light and dark themes, and an admin page.</p><div class="tags"><span>React</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Vitest</span></div></article>
+      <article class="tile"><h3>Security</h3><p>15-minute access tokens with rotating httpOnly refresh cookies, reuse detection, CSRF header and a least-privilege database role.</p><div class="tags"><span>Row-level security</span><span>Signed webhooks</span><span>Encrypted tokens</span></div></article>
+      <article class="tile"><h3>Delivery</h3><p>Changes land by pull request. CI runs tests, then migrations, then the deploy, as a gated workflow.</p><div class="tags"><span>GitHub Actions</span><span>Brevo email</span><span>pytest</span><span>ruff</span></div></article>
+    </div>
+  </section>
+
+  <section class="status" id="status">
+    <div class="eyebrow">Status</div>
+    <h2 class="h2">Early access. Built in the open, milestone by milestone.</h2>
+    <div class="plans">
+      <article class="plan live">
+        <div class="num">Live</div>
+        <ul>
+          <li>Accounts with email verification and password reset</li>
+          <li>Instagram DMs and pasted links saved once per post</li>
+          <li>Sender recognition, setup frame and short text replies</li>
+          <li>Settings, themes and an admin page for testers</li>
+        </ul>
+        <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a>
+      </article>
+      <article class="plan next">
+        <div class="num">Next</div>
+        <ul>
+          <li>Caption understanding and filing into clusters</li>
+          <li>Dashboard with search, filters and editing</li>
+          <li>Export and account deletion</li>
+          <li>Hardening, rate limits and a wider invite</li>
+        </ul>
+        <a class="btn" href="https://github.com/kartikeya-dubey/folio" target="_blank" rel="noopener">Follow the repo</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div>
+      <h2 class="h2">Questions.</h2>
+      <details><summary>Who is Fol.io for?</summary><p>Anyone who saves a lot of Instagram content and wants it findable later: travel ideas, recipes, products, workouts, study material.</p></details>
+      <details><summary>Does it store my videos?</summary><p>No. It keeps the link, the caption and a small preview. The original stays on Instagram.</p></details>
+      <details><summary>Can other users see my saves?</summary><p>No. A post is understood once and shared internally, but your saves, notes and clusters are private to you and protected in the database itself.</p></details>
+      <details><summary>How do I get access?</summary><p>Fol.io is in early access. Create an account, set your Instagram handle and an admin confirms you for testing.</p></details>
+      <details><summary>Is this connected to DexAI?</summary><p>Fol.io started from DexAI's patterns (FastAPI, Postgres, React) and then moved to a lighter, event-driven design that suits bursty message work. <a class="link" href="dexai.html">See DexAI</a>.</p></details>
+    </div>
+    <div class="faq-arch" aria-hidden="true"><img src="folio-mark.png" alt=""></div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="eyebrow">Get in touch</div>
+    <a class="big" href="mailto:kartikeyadubey1997@gmail.com">Say hello<br>to Kartikeya</a>
+    <div class="info">
+      <div><b>Email</b><a class="link" href="mailto:kartikeyadubey1997@gmail.com">kartikeyadubey1997@gmail.com</a></div>
+      <div><b>Code</b><a class="link" href="https://github.com/kartikeya-dubey/folio" target="_blank" rel="noopener">github.com/kartikeya-dubey/folio</a></div>
+      <div><b>Portfolio</b><a class="link" href="index.html">kartikeya-dubey.github.io</a></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="f-top">
+    <p class="f-lead">Send it once. Find it forever.</p>
+    <div class="f-cols">
+      <ul><li><a href="#how">How it works</a></li><li><a href="#built">Architecture</a></li><li><a href="#status">Status</a></li></ul>
+      <ul><li><a href="index.html">Portfolio</a></li><li><a href="dexai.html">DexAI</a></li><li><a href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a></li></ul>
+    </div>
+  </div>
+  <div class="f-base">
+    <p>© 2026 Kartikeya Dubey · Layout inspired by the 8B SaaS landing page template (MIT)</p>
+    <a class="link" href="#top">Back to top ↑</a>
+  </div>
+  <div class="f-mark" aria-hidden="true">fol.io</div>
+</footer>
+
+<script>
+  (function () {
+    var nav = document.getElementById('nav'), last = 0;
+    addEventListener('scroll', function () {
+      var y = scrollY;
+      nav.classList.toggle('hide', y > last && y > 200);
+      last = y;
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
