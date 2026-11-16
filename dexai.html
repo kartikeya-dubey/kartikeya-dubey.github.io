@@ -119,6 +119,88 @@
     background: linear-gradient(135deg, rgba(167,139,250,0.04), rgba(94,234,212,0.04));
   }
 
+  /* ---------- Product tour: feature blocks + carousels ---------- */
+  .tour { max-width: 1280px; }
+  .fx-block {
+    display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 44px; align-items: center;
+    padding: 44px 0; border-top: 1px solid var(--border);
+  }
+  .fx-block:first-of-type { border-top: 0; padding-top: 8px; }
+  .fx-block.flip .fx-media { order: 2; }
+  .fx-text .fx-tag { color: var(--accent2); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+  .fx-text h3 { font-size: clamp(1.35rem, 2.4vw, 1.8rem); margin: 8px 0 14px; letter-spacing: -0.01em; }
+  .fx-text p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
+  .fx-text ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .fx-text li { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; padding-left: 22px; position: relative; }
+  .fx-text li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 2px; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+  .fx-text li b { color: var(--text); font-weight: 600; }
+  .badge { font-size: 0.68rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); letter-spacing: 0.06em; }
+
+  .carousel { position: relative; min-width: 0; }
+  .car-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 12px; }
+  .car-count { font-size: 0.8rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .car-count b { color: var(--text); }
+  .seg { display: inline-flex; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
+  .seg button {
+    font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text-dim); background: transparent; border: 0;
+    padding: 6px 14px; border-radius: 7px; cursor: pointer; transition: background .2s, color .2s;
+  }
+  .seg button[aria-pressed="true"] { background: linear-gradient(135deg, rgba(167,139,250,0.25), rgba(94,234,212,0.18)); color: var(--text); }
+  .seg button:focus-visible, .car-btn:focus-visible, .dots button:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+
+  .stage { position: relative; }
+  .track {
+    position: relative; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; padding: 2px;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .track[hidden] { display: none; }
+  .slide {
+    position: relative; flex: 0 0 100%; scroll-snap-align: start; margin: 0; cursor: zoom-in;
+    border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--card);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35); transition: border-color .3s;
+  }
+  .slide:hover { border-color: var(--accent); }
+  .slide img { display: block; width: 100%; height: 100%; object-fit: cover; background: #0b1020; }
+  .track.desktop .slide { aspect-ratio: 16 / 9; }
+  .track.mobile .slide { flex: 0 0 min(250px, 62vw); aspect-ratio: 390 / 844; border-radius: 26px; border-width: 4px; border-color: #1c2433; }
+  .track.mobile .slide:hover { border-color: var(--accent); }
+  .slide figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 38px 16px 12px;
+    background: linear-gradient(to top, rgba(6,9,15,0.92), rgba(6,9,15,0));
+    font-size: 0.82rem; font-weight: 500; color: #fff; pointer-events: none;
+  }
+  .track.mobile .slide figcaption { font-size: 0.74rem; padding: 30px 12px 10px; }
+
+  .car-btn {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border); background: rgba(10,14,20,0.82); color: var(--text); cursor: pointer; font-size: 1.1rem;
+    backdrop-filter: blur(6px); transition: border-color .2s, opacity .2s, transform .2s;
+  }
+  .car-btn:hover { border-color: var(--accent); }
+  .car-btn.prev { left: -14px; } .car-btn.next { right: -14px; }
+  .car-btn:disabled { opacity: 0; pointer-events: none; }
+  .dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--border); cursor: pointer; transition: background .2s, transform .2s; }
+  .dots button[aria-current="true"] { background: var(--accent2); transform: scale(1.35); }
+
+  .soon-card {
+    border: 1px dashed var(--accent); border-radius: 16px; padding: 44px 28px; text-align: center; color: var(--text-dim);
+    background: linear-gradient(135deg, rgba(167,139,250,0.07), rgba(94,234,212,0.05)); font-size: 0.92rem; line-height: 1.6;
+  }
+  .soon-card .big { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; color: var(--text); margin-bottom: 6px; }
+
+  .lightbox { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; margin: auto; }
+  .lightbox::backdrop { background: rgba(4,6,10,0.88); backdrop-filter: blur(4px); }
+  .lightbox img { display: block; max-width: 96vw; max-height: 90vh; border-radius: 12px; border: 1px solid var(--border); }
+  .lightbox .lb-cap { text-align: center; color: var(--text-dim); font-size: 0.85rem; margin-top: 10px; }
+
+  @media (max-width: 900px) {
+    .fx-block { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 34px 0; }
+    .fx-block.flip .fx-media { order: 0; }
+    .car-btn.prev { left: 6px; } .car-btn.next { right: 6px; }
+  }
+
   footer {
     position: relative; z-index: 1; padding: 40px max(6%, calc((100% - 1400px) / 2)); border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--text-dim); font-size: 0.88rem;
@@ -402,13 +484,18 @@
   </div>
 </section>
 
-<section>
+<section class="tour" id="tour">
   <div class="section-head">
-    <div class="tag">Preview</div>
-    <h2>Screenshots</h2>
+    <div class="tag">Product Tour</div>
+    <h2>DexAI, screen by screen</h2>
   </div>
-  <div class="shot-placeholder">Screenshots and a walkthrough will be added here shortly.</div>
+  <div id="tourBlocks"></div>
 </section>
+
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot preview">
+  <img id="lbImg" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+</dialog>
 
 <footer>
   <div>© 2026 Kartikeya Dubey</div>
@@ -436,6 +523,208 @@
   observeReveal('.feature');
   observeReveal('.challenge');
   observeReveal('.phase');
+
+  /* ---------- Product tour ---------- */
+  const IMG = 'images/dexai/';
+  const FEATURES = [
+    {
+      tag: 'Overview', title: 'Your day at a glance',
+      text: 'The landing page pulls everything that matters today into one screen: how many events are on, what is coming this week, drafts waiting for review, the weather for your location and a word of the day. Sign-in and onboarding are covered here too.',
+      points: [
+        ['Upcoming events', 'with type badges, so deadlines, meetings and birthdays are easy to tell apart.'],
+        ['Quick actions', 'jump straight to the calendar or to uploading a file.'],
+        ['Sign in and sign up', 'email or mobile login, with live password-strength rules on registration.']
+      ],
+      slides: [
+        ['overview-1-dashboard', 'Overview dashboard'],
+        ['auth-1-login', 'Sign in'],
+        ['auth-2-signup', 'Create account']
+      ]
+    },
+    {
+      tag: 'Calendar', title: 'A schedule that fills itself in',
+      text: 'Events extracted from uploaded documents and added through chat land here, colour-coded by type. Switch between a dense month grid and a focused week view, tick events off as they are done, and keep recurring routines tucked away until you need them.',
+      points: [
+        ['Month and week views', 'with a Day list / Overview toggle on the week view.'],
+        ['Search and filters', 'by event type and by Space (Personal, Job, Business and more).'],
+        ['Routines', 'collapse into a single "+N routines" chip per day to keep the grid readable.']
+      ],
+      slides: [
+        ['calendar-1-month', 'Month view'],
+        ['calendar-2-week', 'Week view']
+      ]
+    },
+    {
+      tag: 'Fitness', title: 'A coach that remembers your training',
+      text: 'A full fitness module: today’s workout, a 908-exercise library, a weekly plan, history, progress tracking and a personal profile. The AI Coach sits on top of it all and can read your plan, answer form and recovery questions, and log sets you type in plain language.',
+      points: [
+        ['AI Coach', 'chat about form, recovery or food, or log a set by typing “23kg x 10”.'],
+        ['Adaptive plan', 'the app explains each change it makes (for example swapping a skipped machine) and lets you undo it.'],
+        ['Exercise library', 'searchable A to Z, with filters by equipment and body area.'],
+        ['Profile', 'goal, coach tone, injuries and limitations that the coach respects.']
+      ],
+      slides: [
+        ['fitness-1-today', 'Today’s workout'],
+        ['fitness-6-ai-coach', 'AI Coach'],
+        ['fitness-2-library', 'Exercise library'],
+        ['fitness-3-plan', 'Weekly plan'],
+        ['fitness-4-progress', 'Progress tracking'],
+        ['fitness-5-profile', 'Fitness profile']
+      ]
+    },
+    {
+      tag: 'Chat', title: 'Ask questions, get answers from your own data',
+      text: 'General chat is scoped to a feature (Fitness, Calendar or Finance), so each conversation stays grounded in the right data. The assistant shows its steps, retrieves records from your account and cites where the answer came from.',
+      points: [
+        ['Feature-scoped chats', 'pick the topic once; a chat stays on that feature.'],
+        ['Visible reasoning steps', 'understanding the request, retrieving your DexAI data, preparing the answer.'],
+        ['Saved sessions', 'search, archive and revisit past conversations.']
+      ],
+      slides: [
+        ['chat-1-conversation', 'Calendar chat with sourced answer'],
+        ['chat-2-new-chat', 'Start a new chat']
+      ]
+    },
+    {
+      tag: 'Core', title: 'Upload, memory and administration',
+      text: 'The foundations behind every feature. Upload turns files into reviewable drafts, Memory shows exactly what DexAI has learned about you, and the Admin panel gives operators control over users, access and feature switches.',
+      points: [
+        ['Upload', 'drag in PNG, JPG, WebP, PDF, TXT or DOCX; review extracted events before they reach your calendar.'],
+        ['Memory', 'editable facts grouped by Fitness, Finance and General; add, edit or delete anything that is wrong.'],
+        ['Admin', 'stats, users, access, announcements, global switches, upload quality, requests and alerts.']
+      ],
+      slides: [
+        ['core-1-upload', 'Upload and review'],
+        ['core-2-memory', 'My Memory'],
+        ['core-3-admin-stats', 'Admin: stats'],
+        ['core-4-admin-users', 'Admin: users and access'],
+        ['core-5-admin-switches', 'Admin: global switches']
+      ]
+    },
+    {
+      tag: 'Settings', title: 'Your keys, your model, your rules',
+      text: 'Everything is configurable from one page. Bring your own LLM provider and key, choose when the morning summary goes out, and decide which channels (app, Telegram, email) are allowed to notify you.',
+      points: [
+        ['AI setup', 'five providers, model selection and a one-click connection test, using your own key.'],
+        ['Morning summary', 'a daily digest of events and deadlines at a time you choose.'],
+        ['Notifications and appearance', 'per-channel controls, weather location and light, dark or system theme.']
+      ],
+      slides: [
+        ['settings-1-overview', 'Settings overview'],
+        ['settings-2-account', 'Account profile'],
+        ['settings-3-ai-setup', 'AI setup'],
+        ['settings-4-morning-summary', 'Morning summary']
+      ]
+    },
+    {
+      tag: 'Finance', title: 'Portfolio tracking', badge: 'To be released',
+      text: 'Finance is the next module. Upload a broker statement or a mutual fund CAS and DexAI will turn it into a portfolio view: total value, holdings and asset split, with finance chat to ask questions about it. Memory for this area keeps habits and categories only, never amounts or balances.',
+      points: [
+        ['Statement upload', 'broker statements and mutual fund CAS files.'],
+        ['Portfolio view', 'total value, holdings and asset allocation.'],
+        ['Finance chat', 'for example, “How is my portfolio split by asset type?”']
+      ],
+      soon: true
+    }
+  ];
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  lb.addEventListener('click', () => lb.close());
+  const openLightbox = (src, cap) => { lbImg.src = src; lbImg.alt = cap; lbCap.textContent = cap; lb.showModal(); };
+
+  const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+  function buildCarousel(f) {
+    const root = el('div', 'carousel');
+    const top = el('div', 'car-top');
+    const count = el('div', 'car-count');
+    const seg = el('div', 'seg');
+    seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', f.tag + ' screenshot size');
+    const bDesk = el('button', '', 'Desktop'), bMob = el('button', '', 'Mobile');
+    [bDesk, bMob].forEach(b => b.type = 'button');
+    seg.append(bDesk, bMob);
+    top.append(count, seg);
+
+    const stage = el('div', 'stage');
+    const tracks = {};
+    ['desktop', 'mobile'].forEach(mode => {
+      const t = el('div', 'track ' + mode);
+      t.setAttribute('tabindex', '0'); t.setAttribute('role', 'region');
+      t.setAttribute('aria-label', f.tag + ' screenshots (' + mode + ')');
+      f.slides.forEach(([file, cap]) => {
+        const fig = el('figure', 'slide');
+        const img = document.createElement('img');
+        img.src = IMG + mode + '/' + file + '.webp'; img.alt = f.tag + ': ' + cap + ' (' + mode + ')'; img.loading = 'lazy'; img.decoding = 'async';
+        fig.append(img, el('figcaption', '', cap));
+        fig.addEventListener('click', () => openLightbox(img.src, f.tag + ' — ' + cap + ' (' + mode + ')'));
+        t.append(fig);
+      });
+      tracks[mode] = t; stage.append(t);
+    });
+    const prev = el('button', 'car-btn prev', '‹'), next = el('button', 'car-btn next', '›');
+    prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Previous screenshot'); next.setAttribute('aria-label', 'Next screenshot');
+    stage.append(prev, next);
+    const dots = el('div', 'dots');
+    root.append(top, stage, dots);
+
+    let mode = 'desktop';
+    const cur = () => tracks[mode];
+    const slides = () => [...cur().children];
+    const indexNow = () => {
+      const t = cur(), s = slides();
+      if (t.scrollLeft >= t.scrollWidth - t.clientWidth - 4) return s.length - 1;
+      let best = 0, bd = Infinity;
+      s.forEach((sl, i) => { const d = Math.abs(sl.offsetLeft - t.offsetLeft - t.scrollLeft); if (d < bd) { bd = d; best = i; } });
+      return best;
+    };
+    const goTo = i => { const s = slides(); const sl = s[Math.max(0, Math.min(s.length - 1, i))]; cur().scrollTo({ left: sl.offsetLeft - cur().offsetLeft, behavior: 'smooth' }); };
+    const update = () => {
+      const i = indexNow(), n = slides().length, t = cur();
+      count.innerHTML = '<b>' + (i + 1) + '</b> / ' + n + ' · click an image to enlarge';
+      prev.disabled = t.scrollLeft <= 2;
+      next.disabled = t.scrollLeft >= t.scrollWidth - t.clientWidth - 2;
+      [...dots.children].forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    };
+    f.slides.forEach(([, cap], k) => {
+      const d = el('button'); d.type = 'button'; d.setAttribute('aria-label', 'Go to ' + cap); d.addEventListener('click', () => goTo(k)); dots.append(d);
+    });
+    const setMode = m => {
+      mode = m;
+      Object.entries(tracks).forEach(([k, t]) => t.hidden = k !== m);
+      bDesk.setAttribute('aria-pressed', String(m === 'desktop')); bMob.setAttribute('aria-pressed', String(m === 'mobile'));
+      cur().scrollLeft = 0; update();
+    };
+    bDesk.onclick = () => setMode('desktop'); bMob.onclick = () => setMode('mobile');
+    prev.onclick = () => goTo(indexNow() - 1); next.onclick = () => goTo(indexNow() + 1);
+    Object.values(tracks).forEach(t => {
+      let raf; t.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+      t.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); goTo(indexNow() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(indexNow() - 1); } });
+    });
+    window.addEventListener('resize', update);
+    setMode('desktop');
+    return root;
+  }
+
+  const blocksHost = document.getElementById('tourBlocks');
+  FEATURES.forEach((f, idx) => {
+    const block = el('div', 'fx-block' + (idx % 2 ? ' flip' : ''));
+    const media = el('div', 'fx-media');
+    if (f.soon) {
+      media.append(el('div', 'soon-card', '<div class="big">Coming soon</div>Finance is still in development. Screenshots will be added when it is released.'));
+    } else {
+      media.append(buildCarousel(f));
+    }
+    const text = el('div', 'fx-text');
+    text.append(el('div', 'fx-tag', f.tag + (f.badge ? ' <span class="badge">' + f.badge + '</span>' : '')));
+    text.append(el('h3', '', f.title), el('p', '', f.text));
+    const ul = el('ul');
+    f.points.forEach(([b, t]) => ul.append(el('li', '', '<b>' + b + '</b>, ' + t)));
+    text.append(ul);
+    block.append(media, text);
+    blocksHost.append(block);
+  });
 </script>
 </body>
 </html>
