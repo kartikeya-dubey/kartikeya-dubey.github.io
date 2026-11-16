@@ -1,730 +1,534 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  DRAFT: DexAI project page reworked in the visual language of the 8B "Kilnfield" football club template
+  (https://github.com/8bsite/football-club-website-template, MIT). Fonts: Pliant + Reddit Sans (Google Fonts, OFL).
+-->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DexAI — Kartikeya Dubey</title>
-<meta name="description" content="DexAI — turning unstructured information into actions through agentic workflows, tool calling, persistent memory and scheduled automation.">
-<meta name="theme-color" content="#0a0e14">
+<meta name="description" content="DexAI turns unstructured information into actions through agentic workflows, tool calling, persistent memory and scheduled automation.">
+<meta name="theme-color" content="#141414">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="dexai-favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0e14; --card: #131924; --border: #232a38;
-    --text: #e8ecf3; --text-dim: #9aa5b8;
-    --accent: #a78bfa; --accent2: #5eead4;
-    --glow: rgba(167,139,250,0.18);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-  h1, h2, h3, .brand { font-family: 'Space Grotesk', sans-serif; }
-  code, .mono { font-family: 'JetBrains Mono', monospace; }
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Pliant';
+  font-style: normal;
+  font-weight: 700 800;
+  font-stretch: 125%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pliant/v1/R70GjyYdl_WLNKb6P3NQcLsvUCb5T2_7jW-792RZ.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Pliant';
+  font-style: normal;
+  font-weight: 700 800;
+  font-stretch: 125%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pliant/v1/R70GjyYdl_WLNKb6P3NQcLsvUCb5T2_7jWa792RZ.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Pliant';
+  font-style: normal;
+  font-weight: 700 800;
+  font-stretch: 125%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pliant/v1/R70GjyYdl_WLNKb6P3NQcLsvUCb5T2_7jW6792RZ.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Pliant';
+  font-style: normal;
+  font-weight: 700 800;
+  font-stretch: 125%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pliant/v1/R70GjyYdl_WLNKb6P3NQcLsvUCb5T2_7jWG792RZ.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Pliant';
+  font-style: normal;
+  font-weight: 700 800;
+  font-stretch: 125%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pliant/v1/R70GjyYdl_WLNKb6P3NQcLsvUCb5T2_7jWy792RZ.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Pliant';
+  font-style: normal;
+  font-weight: 700 800;
+  font-stretch: 125%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/pliant/v1/R70GjyYdl_WLNKb6P3NQcLsvUCb5T2_7jWK79w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Reddit Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redditsans/v6/EYq3maFOxq1T_-ETdN7EKQNke5av2g.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Reddit Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redditsans/v6/EYq3maFOxq1T_-ETdN7EKQNle5av2g.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Reddit Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/redditsans/v6/EYq3maFOxq1T_-ETdN7EKQNre5Y.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
-  .bg-glow {
-    position: fixed; inset: 0; z-index: 0;
-    background:
-      radial-gradient(circle at 15% 10%, rgba(167,139,250,0.12), transparent 40%),
-      radial-gradient(circle at 85% 40%, rgba(94,234,212,0.08), transparent 45%);
-    animation: drift 20s ease-in-out infinite alternate;
-  }
-  @keyframes drift { 0% { transform: translate(0,0) scale(1);} 100% { transform: translate(-2%,3%) scale(1.06);} }
+</style>
+<style>
+:root{
+  --ink:#141414; --orange:#ff4d1f; --cream:#ece6d8; --paper:#f6f3ec; --mute:#5c5a55; --mute2:#a7a194;
+  --f1:"Pliant","Arial Black",Arial,sans-serif; --f2:"Reddit Sans",Arial,sans-serif;
+  --pad:clamp(18px,4.4vw,64px); --gap:clamp(88px,11vw,160px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.5 var(--f2);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.disp,.fcard h3,.step h3,.ph h3,.stack b,.marquee span,.brand,.rows div,.pl,.mark{word-spacing:.14em}
+.disp{font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
 
-  nav {
-    position: sticky; top: 0; z-index: 10;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px max(6%, calc((100% - 1400px) / 2)); backdrop-filter: blur(12px);
-    background: rgba(10,14,20,0.7); border-bottom: 1px solid var(--border);
-  }
-  .brand { font-weight: 700; font-size: 1.15rem; }
-  .brand span { color: var(--accent2); }
-  nav a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
-  nav a:hover { color: var(--text); }
+/* ---------- sections & colour fields */
+section{position:relative;overflow-x:clip;padding:var(--gap) var(--pad);background:var(--bg);color:var(--fg)}
+.on-ink{--bg:var(--ink);--fg:var(--cream);--soft:var(--mute2);--line:rgba(236,230,216,.18);--card:#1f1f1e}
+.on-cream{--bg:var(--cream);--fg:var(--ink);--soft:var(--mute);--line:rgba(20,20,20,.16);--card:var(--paper)}
+.on-paper{--bg:var(--paper);--fg:var(--ink);--soft:var(--mute);--line:rgba(20,20,20,.14);--card:var(--cream)}
+.on-orange{--bg:var(--orange);--fg:var(--ink);--soft:rgba(20,20,20,.72);--line:rgba(20,20,20,.28);--card:#ff6a40}
+.eyebrow{font-weight:700;font-size:14px;color:var(--soft);margin:0 0 18px}
+.h2{font-size:clamp(46px,8.2vw,128px);margin:0 0 clamp(28px,4vw,56px);display:block}
+.h2 span{display:block}
+.lead{font-size:clamp(18px,1.5vw,22px);color:var(--soft);max-width:60ch;margin:0}
 
-  .hero { position: relative; z-index: 1; padding: 70px max(6%, calc((100% - 1400px) / 2)) 50px; }
-  .eyebrow {
-    color: var(--accent); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 16px; opacity: 0; animation: fadeUp .7s ease forwards .1s;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); box-shadow: 0 0 12px var(--accent2); animation: pulse 1.8s ease-in-out infinite; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-  .title-row { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 24px; }
-  .title-row h1 { flex: 1; min-width: 0; }
-  .title-row img {
-    width: 220px; height: auto; border-radius: 16px; flex-shrink: 0; display: block;
-    opacity: 0; animation: fadeUp .7s ease forwards .15s;
-  }
-  .hero h1 {
-    font-size: clamp(1.15rem, 2.6vw, 2rem); font-weight: 700; letter-spacing: -0.02em;
-    opacity: 0; animation: fadeUp .8s ease forwards .25s;
-  }
-  .hero h1 .grad {
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .hero p { margin-top: 20px; max-width: none; color: var(--text-dim); font-size: 1.05rem; line-height: 1.65; opacity: 0; animation: fadeUp .8s ease forwards .4s; }
-  .hero p { margin-top: 20px; max-width: none; color: var(--text-dim); font-size: 1.05rem; line-height: 1.65; opacity: 0; animation: fadeUp .8s ease forwards .4s; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: translateY(0);} }
+/* ---------- buttons (pill + round arrow) */
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:6px 6px 6px 24px;border-radius:999px;font-weight:700;font-size:16px;line-height:1;text-decoration:none;background:var(--orange);color:var(--ink);transition:transform .3s,box-shadow .3s}
+.btn i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--cream);font-style:normal;font-size:16px;transition:transform .3s}
+.btn:hover{transform:translateY(-2px)} .btn:hover i{transform:rotate(45deg)}
+.btn.dark{background:var(--ink);color:var(--cream)} .btn.dark i{background:var(--orange);color:var(--ink)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.btn.ghost i{background:currentColor;color:var(--bg)}
+.link{font-weight:700;text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:3px}
+.tag{display:inline-flex;align-items:center;min-height:30px;padding:4px 13px;border:1.5px solid currentColor;border-radius:999px;font-size:14px;font-weight:500}
 
-  section { position: relative; z-index: 1; padding: 50px max(6%, calc((100% - 1400px) / 2)); }
-  .section-head { margin-bottom: 32px; }
-  .section-head .tag { color: var(--accent2); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .section-head h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-top: 6px; }
+/* ---------- nav */
+nav{position:fixed;z-index:50;top:10px;left:50%;transform:translate(-50%,0);width:min(1180px,calc(100% - 20px));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 12px 10px 20px;border-radius:999px;background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px rgba(20,20,20,.12);transition:transform .45s cubic-bezier(.6,0,.2,1)}
+nav.hide{transform:translate(-50%,-140%)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f1);font-weight:800;font-stretch:125%;font-size:19px;letter-spacing:-.02em;text-transform:uppercase}
+.brand img{width:36px;height:36px;border-radius:10px}
+.nav-links{display:flex;gap:22px;font-weight:600;font-size:15px}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--orange)}
+nav .btn{min-height:44px;padding-left:20px;font-size:15px} nav .btn i{width:34px;height:34px}
+@media(max-width:900px){.nav-links{display:none}}
 
-  .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
-  .stack-item {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px;
-    opacity: 0; transform: translateY(16px); transition: border-color .3s, transform .3s;
-  }
-  .stack-item.reveal { animation: fadeUp .6s ease forwards; }
-  .stack-item:hover { border-color: var(--accent); transform: translateY(-3px); }
-  .stack-item .layer { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 6px; }
-  .stack-item .tech { font-size: 0.95rem; font-weight: 600; }
+/* ---------- opening */
+#opening{padding-top:130px;padding-bottom:clamp(56px,7vw,100px)}
+.op-grid{display:grid;grid-template-columns:minmax(0,.32fr) minmax(0,1fr);gap:clamp(20px,4vw,56px)}
+.op-meta{color:var(--soft);font-weight:700;font-size:14px;line-height:1.4}
+.op-meta b{display:block;color:var(--cream);margin-bottom:6px}
+.op-h1{font-family:var(--f1);font-weight:800;font-stretch:125%;font-size:clamp(28px,4.1vw,64px);line-height:1.04;letter-spacing:-.025em;margin:0 0 32px}
+.op-h1 em{font-style:normal;color:var(--orange)}
+.op-p{color:var(--soft);max-width:62ch;margin:0 0 14px}
+.op-cta{display:flex;flex-wrap:wrap;gap:22px;align-items:center;margin-top:30px}
+.hero-shot{margin-top:clamp(48px,6vw,88px);margin-bottom:calc(var(--gap) * -.45);position:relative;z-index:2;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);border:1px solid rgba(236,230,216,.14);background:#000}
+.hero-shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.chrome{display:flex;gap:7px;align-items:center;padding:11px 16px;background:#1d1d1c;border-bottom:1px solid rgba(236,230,216,.1)}
+.chrome i{width:11px;height:11px;border-radius:50%;background:#3b3b39}
+.chrome span{margin-left:12px;font-size:12px;color:var(--mute2)}
+@media(max-width:900px){.op-grid{grid-template-columns:1fr}}
 
-  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
-  .feature {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px;
-    opacity: 0; transform: translateY(20px); transition: transform .3s, box-shadow .3s, border-color .3s;
-  }
-  .feature.reveal { animation: fadeUp .65s ease forwards; }
-  .feature:hover { transform: translateY(-5px); border-color: var(--accent2); box-shadow: 0 14px 32px rgba(0,0,0,0.3); }
-  .feature .icon {
-    width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
-    background: rgba(167,139,250,0.12); color: var(--accent); font-size: 1.1rem; margin-bottom: 14px;
-  }
-  .feature h3 { font-size: 1.05rem; margin-bottom: 8px; }
-  .feature p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.55; }
+/* ---------- marquee */
+.band{background:var(--orange);color:var(--ink);padding:24px 0 26px;overflow:hidden}
+.marquee{display:flex;gap:14px;width:max-content;animation:slide 60s linear infinite}
+.band:hover .marquee{animation-play-state:paused}
+.marquee span{flex:none;font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(18px,2vw,28px);padding:12px 26px;border:2px solid var(--ink);border-radius:999px}
+@keyframes slide{to{transform:translateX(-50%)}}
 
-  .phases { display: flex; flex-direction: column; gap: 0; border-left: 2px solid var(--border); margin-left: 6px; }
-  .phase {
-    position: relative; padding: 0 0 28px 26px;
-    opacity: 0; transform: translateX(-10px);
-  }
-  .phase.reveal { animation: slideIn .5s ease forwards; }
-  @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
-  .phase::before {
-    content: ""; position: absolute; left: -7px; top: 2px; width: 12px; height: 12px; border-radius: 50%;
-    background: var(--accent2); box-shadow: 0 0 0 4px rgba(94,234,212,0.15);
-  }
-  .phase .ph-title { font-weight: 600; font-size: 0.98rem; margin-bottom: 4px; }
-  .phase .ph-desc { color: var(--text-dim); font-size: 0.88rem; }
+/* ---------- feature cards */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fcard{position:relative;border-radius:var(--r,18px);padding:28px 26px 30px;min-height:260px;display:flex;flex-direction:column;justify-content:space-between;background:var(--ink);color:var(--cream);overflow:hidden;transition:transform .35s}
+.fcard:hover{transform:translateY(-6px) rotate(-.6deg)}
+.fcard:nth-child(3n+2){background:var(--orange);color:var(--ink)}
+.fcard:nth-child(3n+3){background:var(--cream);color:var(--ink)}
+.fcard .n{font-family:var(--f1);font-weight:800;font-stretch:125%;font-size:15px;opacity:.7}
+.fcard h3{font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.025em;line-height:1;font-size:clamp(22px,2vw,28px);margin:34px 0 12px}
+.fcard p{margin:0;font-size:15.5px;opacity:.82}
+@media(max-width:1000px){.fgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.fgrid{grid-template-columns:1fr}}
 
-  .shot-placeholder {
-    border: 1px dashed var(--border); border-radius: 16px; padding: 60px 20px;
-    text-align: center; color: var(--text-dim); font-size: 0.92rem;
-    background: linear-gradient(135deg, rgba(167,139,250,0.04), rgba(94,234,212,0.04));
-  }
+/* ---------- tour */
+.tour-head{background:var(--ink);color:var(--cream);padding-bottom:calc(var(--gap) * .5)}
+.tour-h{font-size:clamp(60px,13.5vw,230px)}
+.fx{padding-top:calc(var(--gap) * .7);padding-bottom:calc(var(--gap) * .7)}
+.fx-word{font-size:clamp(34px,11.2vw,190px);margin:0 0 clamp(24px,3vw,44px);display:flex;justify-content:flex-start;gap:0;white-space:nowrap;overflow:hidden;padding-bottom:.06em}
+.fx-word .out{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.fx-media,.fx-text{min-width:0}
+.fx-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(28px,4.4vw,72px);align-items:center}
+.fx.flip .fx-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+.fx.flip .fx-media{order:2}
+.fx-text h3{font-family:var(--f1);font-weight:700;font-stretch:125%;font-size:clamp(25px,2.7vw,40px);line-height:1.08;letter-spacing:-.02em;margin:0 0 18px}
+.fx-text p{margin:0 0 20px;color:var(--soft)}
+.fx-text ul{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.fx-text li{padding:14px 0;border-top:1px solid var(--line);font-size:15.5px;color:var(--soft)}
+.fx-text li b{color:var(--fg);font-weight:700}
+.badge{display:inline-block;margin-left:10px;padding:3px 12px;border-radius:999px;background:var(--ink);color:var(--orange);font-size:13px;font-weight:700}
+@media(max-width:900px){.fx-grid,.fx.flip .fx-grid{grid-template-columns:minmax(0,1fr)}.fx.flip .fx-media{order:0}}
 
-  /* ---------- Product tour: feature blocks + carousels ---------- */
-  .tour { max-width: 1280px; }
-  .fx-block {
-    display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 44px; align-items: center;
-    padding: 44px 0; border-top: 1px solid var(--border);
-  }
-  .fx-block:first-of-type { border-top: 0; padding-top: 8px; }
-  .fx-block.flip .fx-media { order: 2; }
-  .fx-text .fx-tag { color: var(--accent2); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
-  .fx-text h3 { font-size: clamp(1.35rem, 2.4vw, 1.8rem); margin: 8px 0 14px; letter-spacing: -0.01em; }
-  .fx-text p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.65; }
-  .fx-text ul { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .fx-text li { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; padding-left: 22px; position: relative; }
-  .fx-text li::before { content: ""; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 2px; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
-  .fx-text li b { color: var(--text); font-weight: 600; }
-  .badge { font-size: 0.68rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); letter-spacing: 0.06em; }
+/* carousel */
+.car-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;font-size:13.5px;color:var(--soft)}
+.car-top b{color:var(--fg)}
+.seg{display:inline-flex;padding:4px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.seg button{font:700 13.5px var(--f2);border:0;background:none;color:inherit;padding:8px 18px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+.stage{position:relative}
+.track{display:flex;align-items:flex-start;gap:16px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:14px}
+.track::-webkit-scrollbar{display:none}
+.track[hidden]{display:none}
+.slide{margin:0;flex:none;scroll-snap-align:start;cursor:zoom-in}
+.slide img{display:block;width:100%;height:auto;object-fit:contain;border-radius:14px;background:#000;box-shadow:0 0 0 1px var(--line),0 18px 40px rgba(0,0,0,.25)}
+.slide figcaption{margin-top:10px;font-size:13.5px;font-weight:600;color:var(--soft)}
+.track.desktop .slide{width:100%}
+.track.desktop .slide img{aspect-ratio:16/9}
+.track.mobile{justify-content:flex-start;gap:20px;padding:4px 2px 8px}
+.track.mobile .slide{width:clamp(200px,17vw,250px)}
+.track.mobile .slide img{aspect-ratio:390/844;border-radius:26px;border:6px solid #000}
+.car-btn{position:absolute;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;border:0;background:var(--fg);color:var(--bg);font-size:22px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:2}
+.car-btn.prev{left:-14px}.car-btn.next{right:-14px}
+.car-btn:disabled{opacity:0;pointer-events:none}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
+.dots button[aria-current=true]{width:26px;border-radius:99px;background:var(--fg)}
+.soon{border-radius:18px;padding:clamp(28px,4vw,56px);background:var(--ink);color:var(--cream)}
+.soon .disp{font-size:clamp(40px,6vw,96px);color:var(--orange);display:block;margin-bottom:12px}
 
-  .carousel { position: relative; min-width: 0; }
-  .car-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 12px; }
-  .car-count { font-size: 0.8rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
-  .car-count b { color: var(--text); }
-  .seg { display: inline-flex; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
-  .seg button {
-    font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--text-dim); background: transparent; border: 0;
-    padding: 6px 14px; border-radius: 7px; cursor: pointer; transition: background .2s, color .2s;
-  }
-  .seg button[aria-pressed="true"] { background: linear-gradient(135deg, rgba(167,139,250,0.25), rgba(94,234,212,0.18)); color: var(--text); }
-  .seg button:focus-visible, .car-btn:focus-visible, .dots button:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+/* ---------- principles (promises) */
+#principles .pl{font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.04em;line-height:.95;font-size:clamp(40px,9vw,150px);padding:clamp(14px,2vw,30px) 0;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+#principles .pl:last-of-type{border-bottom:2px solid var(--ink)}
+#principles .pl span{background:linear-gradient(var(--ink),var(--ink)) no-repeat left/0% 100%;color:var(--ink);padding-right:.15em}
+#principles .pl small{font-family:var(--f2);font-stretch:100%;text-transform:none;letter-spacing:0;font-weight:500;font-size:16px;line-height:1.35;max-width:26ch;text-align:right}
+@media(max-width:700px){.h2{font-size:clamp(38px,10.6vw,80px)}#contact .rows{margin-left:0;margin-right:0}#contact .rows div{white-space:normal;font-size:clamp(34px,11vw,80px);animation:none!important;transform:none!important}#principles .pl{flex-direction:column;align-items:flex-start;font-size:clamp(28px,8vw,56px)}#principles .pl span{max-width:100%}.tour-h{font-size:clamp(44px,12vw,100px)}#principles .pl small{text-align:left}}
 
-  .stage { position: relative; }
-  .track {
-    position: relative; display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-    scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; padding: 2px;
-  }
-  .track::-webkit-scrollbar { display: none; }
-  .track[hidden] { display: none; }
-  .slide {
-    position: relative; flex: 0 0 100%; scroll-snap-align: start; margin: 0; cursor: zoom-in;
-    border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--card);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.35); transition: border-color .3s;
-  }
-  .slide:hover { border-color: var(--accent); }
-  .slide img { display: block; width: 100%; height: 100%; object-fit: cover; background: #0b1020; }
-  .track.desktop .slide { aspect-ratio: 16 / 9; }
-  .track.mobile .slide { flex: 0 0 min(250px, 62vw); aspect-ratio: 390 / 844; border-radius: 26px; border-width: 4px; border-color: #1c2433; }
-  .track.mobile .slide:hover { border-color: var(--accent); }
-  .slide figcaption {
-    position: absolute; left: 0; right: 0; bottom: 0; padding: 38px 16px 12px;
-    background: linear-gradient(to top, rgba(6,9,15,0.92), rgba(6,9,15,0));
-    font-size: 0.82rem; font-weight: 500; color: #fff; pointer-events: none;
-  }
-  .track.mobile .slide figcaption { font-size: 0.74rem; padding: 30px 12px 10px; }
+/* ---------- how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2vw,32px)}
+.step{border-top:2px solid var(--line);padding-top:22px}
+.step .num{font-family:var(--f1);font-weight:800;font-stretch:125%;font-size:clamp(96px,11vw,176px);line-height:.8;letter-spacing:-.05em;color:var(--orange);margin-bottom:18px}
+.step h3{font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:clamp(20px,1.7vw,24px);letter-spacing:-.01em;line-height:1.1;margin:0 0 10px}
+.step p{margin:0;color:var(--soft);font-size:15.5px}
+.step small{display:block;margin-top:12px;color:var(--fg);font-weight:600;font-size:13.5px}
+@media(max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
 
-  .car-btn {
-    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 40px; height: 40px; border-radius: 50%;
-    border: 1px solid var(--border); background: rgba(10,14,20,0.82); color: var(--text); cursor: pointer; font-size: 1.1rem;
-    backdrop-filter: blur(6px); transition: border-color .2s, opacity .2s, transform .2s;
+/* ---------- stack */
+.stack{display:grid;grid-template-columns:repeat(2,1fr);column-gap:clamp(24px,5vw,80px)}
+.stack div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid var(--line)}
+.stack b{font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:15px;letter-spacing:-.01em}
+.stack span{text-align:right;color:var(--soft);font-size:15.5px}
+@media(max-width:800px){.stack{grid-template-columns:1fr}}
+
+/* ---------- challenges (faq) */
+.faq{max-width:980px}
+details{border-top:1.5px solid var(--ink)}
+details:last-child{border-bottom:1.5px solid var(--ink)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:var(--f1);font-weight:700;font-stretch:125%;font-size:clamp(19px,2vw,28px);letter-spacing:-.015em;line-height:1.1}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--cream);font:400 24px var(--f2);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg);background:var(--orange);color:var(--ink)}
+details p{margin:0 0 26px;max-width:62ch;color:var(--mute)}
+
+/* ---------- timeline */
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--pad) 18px;margin:0 calc(var(--pad) * -1);scrollbar-width:thin}
+.ph{flex:none;width:clamp(260px,26vw,340px);scroll-snap-align:start;position:relative;border-radius:18px;padding:26px 24px 28px;min-height:300px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.ph .big{position:absolute;top:-6px;left:10px;font-family:var(--f1);font-weight:800;font-stretch:125%;font-size:150px;line-height:.9;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--mute2);opacity:.55}
+.ph h3{position:relative;font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:20px;letter-spacing:-.01em;line-height:1.1;margin:0 0 8px}
+.ph p{position:relative;margin:0;color:var(--soft);font-size:15.5px}
+.ph.now{background:var(--orange);color:var(--ink)} .ph.now p{color:var(--ink)} .ph.now .big{-webkit-text-stroke-color:var(--ink)}
+
+/* ---------- contact + footer */
+#contact{overflow:hidden;padding-bottom:calc(var(--gap) * .6)}
+.rows{display:grid;gap:.04em;margin:0 calc(var(--pad) * -1) clamp(36px,5vw,70px)}
+.rows div{white-space:nowrap;font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.045em;line-height:.9;font-size:clamp(46px,9.5vw,150px)}
+.rows div:nth-child(1){color:var(--cream)}.rows div:nth-child(2){color:var(--orange)}.rows div:nth-child(3){color:transparent;-webkit-text-stroke:2px var(--cream)}
+footer{background:var(--ink);color:var(--cream);padding:0 var(--pad) 28px;overflow:hidden}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;padding:28px 0;border-top:1px solid rgba(236,230,216,.18);font-size:14px;color:var(--mute2)}
+.foot a{text-decoration:none;margin-right:18px}.foot a:hover{color:var(--orange)}
+.mark{display:block;font-family:var(--f1);font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.05em;line-height:.8;font-size:clamp(70px,24vw,380px);color:var(--cream);white-space:nowrap;margin:20px 0 0}
+
+/* ---------- lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh;overflow:visible}
+dialog.lb::backdrop{background:rgba(10,10,10,.86)}
+dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
+.lb-cap{margin-top:10px;text-align:center;color:var(--cream);font-weight:600;font-size:14px}
+
+/* ---------- scroll-driven motion (Chrome/Edge/Safari; static elsewhere) */
+@supports (animation-timeline:view()){
+  @media(prefers-reduced-motion:no-preference){
+    .hero-shot{animation:open linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+    @keyframes open{from{clip-path:inset(38% 4% 0 4% round 18px);transform:translateY(40px)}to{clip-path:inset(0 0 0 0 round 18px);transform:none}}
+    .fx-word span:first-child{animation:fromL linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    .fx-word span:last-child{animation:fromR linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+    @keyframes fromL{from{transform:translateX(-22%);opacity:0}to{transform:none;opacity:1}}
+    @keyframes fromR{from{transform:translateX(22%);opacity:0}to{transform:none;opacity:1}}
+    .h2 span:nth-child(odd){animation:fromL linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+    .h2 span:nth-child(even){animation:fromR linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+    #principles .pl span{animation:sweep linear both;animation-timeline:view();animation-range:cover 18% cover 52%}
+    @keyframes sweep{0%{background-size:0% 100%;color:var(--ink)}55%{background-size:100% 100%;color:var(--cream)}100%{background-size:100% 100%;color:var(--cream)}}
+    .rows div:nth-child(odd){animation:driftL linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    .rows div:nth-child(even){animation:driftR linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    @keyframes driftL{from{transform:translateX(12%)}to{transform:translateX(-20%)}}
+    @keyframes driftR{from{transform:translateX(-26%)}to{transform:translateX(8%)}}
+    .fcard,.step,.ph{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
+    @keyframes rise{from{opacity:0;transform:translateY(46px)}to{opacity:1;transform:none}}
   }
-  .car-btn:hover { border-color: var(--accent); }
-  .car-btn.prev { left: -14px; } .car-btn.next { right: -14px; }
-  .car-btn:disabled { opacity: 0; pointer-events: none; }
-  .dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-  .dots button { width: 8px; height: 8px; border-radius: 50%; border: 0; padding: 0; background: var(--border); cursor: pointer; transition: background .2s, transform .2s; }
-  .dots button[aria-current="true"] { background: var(--accent2); transform: scale(1.35); }
-
-  .soon-card {
-    border: 1px dashed var(--accent); border-radius: 16px; padding: 44px 28px; text-align: center; color: var(--text-dim);
-    background: linear-gradient(135deg, rgba(167,139,250,0.07), rgba(94,234,212,0.05)); font-size: 0.92rem; line-height: 1.6;
-  }
-  .soon-card .big { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; color: var(--text); margin-bottom: 6px; }
-
-  .lightbox { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; margin: auto; }
-  .lightbox::backdrop { background: rgba(4,6,10,0.88); backdrop-filter: blur(4px); }
-  .lightbox img { display: block; max-width: 96vw; max-height: 90vh; border-radius: 12px; border: 1px solid var(--border); }
-  .lightbox .lb-cap { text-align: center; color: var(--text-dim); font-size: 0.85rem; margin-top: 10px; }
-
-  @media (max-width: 900px) {
-    .fx-block { grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 34px 0; }
-    .fx-block.flip .fx-media { order: 0; }
-    .car-btn.prev { left: 6px; } .car-btn.next { right: 6px; }
-  }
-
-  footer {
-    position: relative; z-index: 1; padding: 40px max(6%, calc((100% - 1400px) / 2)); border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--text-dim); font-size: 0.88rem;
-  }
-  footer a { color: var(--text-dim); text-decoration: none; margin-left: 18px; }
-  footer a:hover { color: var(--accent2); }
-
-  .status-row { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 28px; }
-  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(300px, 1fr); gap: 56px; align-items: start; }
-  .hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; margin-top: 8px;
-    opacity: 0; animation: fadeUp .8s ease forwards .45s; }
-  .hc-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 16px; }
-  .hc-label.hc-gap { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--border); }
-  .status-col { display: flex; flex-direction: column; gap: 18px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .chips span { font-size: 0.8rem; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 11px; border-radius: 999px; }
-  @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 28px; } }
-  .status-item .k { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 4px; }
-  .status-item .v { font-size: 0.95rem; font-weight: 600; }
-  .hero-links { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .hbtn {
-    display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 10px;
-    font-size: 0.88rem; font-weight: 600; text-decoration: none; border: 1px solid var(--border); color: var(--text);
-    transition: border-color .2s, transform .2s;
-  }
-  .hbtn:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .hbtn.primary { background: var(--accent); color: #0a0e14; border-color: var(--accent); }
-  .hbtn.primary:hover { box-shadow: 0 8px 24px var(--glow); }
-  .hbtn.disabled { color: var(--text-dim); cursor: default; }
-  .hbtn.disabled:hover { border-color: var(--border); transform: none; }
-
-  .diagram { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; overflow-x: auto; }
-  .diagram svg { display: block; margin: 0 auto; min-width: 560px; width: 100%; max-width: 900px; }
-
-  .challenge-list { display: flex; flex-direction: column; gap: 14px; }
-  .challenge {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px;
-    opacity: 0; transform: translateY(16px); transition: border-color .3s;
-  }
-  .challenge.reveal { animation: fadeUp .6s ease forwards; }
-  .challenge:hover { border-color: var(--accent2); }
-  .challenge .ch-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; color: var(--accent2); }
-  .challenge p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.5; }
-
-  @media (max-width: 520px) {
-    .title-row { flex-direction: column; align-items: flex-start; gap: 14px; }
-    .title-row img { width: 160px; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
+}
+@media(prefers-reduced-motion:reduce){.marquee{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="bg-glow"></div>
 
-<nav>
-  <div class="brand">Kartikeya<span>.</span>Dubey</div>
-  <a href="index.html">← Back to Projects</a>
+<nav id="nav">
+  <a class="brand" href="#top"><img src="dexai-icon-96.png" alt="">DexAI</a>
+  <div class="nav-links"><a href="#features">Features</a><a href="#tour">Tour</a><a href="#how">How it works</a><a href="#challenges">Under the hood</a><a href="#timeline">Timeline</a><a href="index.html">← Projects</a></div>
+  <a class="btn dark" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try it live <i>↗</i></a>
 </nav>
 
-<div class="hero">
-  <div class="hero-grid">
-    <div class="hero-main">
-  <div class="eyebrow"><span class="dot"></span>Live · Actively Developed</div>
-  <div class="title-row">
-    <img src="data:image/jpeg;base64,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" alt="Dex.ai logo" width="220" height="110">
-    <h1>— Turning <span class="grad">unstructured information</span> into actions</h1>
-  </div>
-  <p>DexAI is a full-stack agentic productivity platform that transforms documents, conversations, and messages into structured tasks, calendar events, reminders, contexts and persistent knowledge.</p>
-  <p>It combines LLM-based information extraction, RAG, agentic workflows, tool calling, persistent memory, and scheduled automation across web and messaging interfaces.</p>
-  <p>The system is designed around a simple principle: AI should not stop at generating an answer — it should be able to understand context, invoke tools, persist state, and execute the resulting workflow.</p>
-  <div class="hero-links">
-    <a class="hbtn primary" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try DexAI now →</a>
-    <span class="hbtn disabled">Repository available on request</span>
-  </div>
-    </div>
-    <aside class="hero-card">
-      <div class="hc-label">At a glance</div>
-      <div class="status-col">
-    <div class="status-item"><div class="k">Status</div><div class="v">Live / Actively Developed</div></div>
-    <div class="status-item"><div class="k">Architecture</div><div class="v">Full-stack · Agentic · Multi-channel</div></div>
-    <div class="status-item"><div class="k">Primary Focus</div><div class="v">LLM Orchestration · Memory · Tool Use · Multi-Channel</div></div>
+<main id="top">
+<!-- ================= OPENING -->
+<section id="opening" class="on-ink">
+  <div class="op-grid">
+    <div class="op-meta"><b>Live · Actively developed</b>Full-stack · Agentic · Multi-channel<br>Built by Kartikeya Dubey</div>
+    <div>
+      <h1 class="op-h1">DexAI turns <em>unstructured information</em> into actions. Documents, conversations and messages become tasks, calendar events, reminders and memory that sticks.</h1>
+      <p class="op-p">LLM-based extraction, RAG, agentic workflows, tool calling, persistent memory and scheduled automation, across the web app and Telegram.</p>
+      <p class="op-p">The principle: AI should not stop at generating an answer. It should understand context, invoke tools, persist state and execute the workflow.</p>
+      <div class="op-cta">
+        <a class="btn" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try DexAI now <i>↗</i></a>
+        <a class="link" href="#tour">Take product tour</a>
       </div>
-      <div class="hc-label hc-gap">What it covers</div>
-      <div class="chips"><span>Document extraction</span><span>Telegram assistant</span><span>Google Calendar sync</span><span>MCP endpoint &amp; plugins</span><span>Finance module</span><span>Fitness module</span><span>Keep-awake monitoring</span><span>Async task queue &amp; scheduling</span><span>Connection pooling</span><span>OWASP-guided security</span><span>AI governance</span><span>Harness engineering</span><span>Context &amp; memory management</span><span>AI observability &amp; tracing</span><span>Weather &amp; rain alerts</span></div>
-    </aside>
-  </div>
-</div>
-
-<section>
-  <div class="section-head">
-    <div class="tag">System Design</div>
-    <h2>Architecture</h2>
-  </div>
-  <div class="diagram">
-    <svg viewBox="0 0 720 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DexAI architecture: a React PWA and Telegram client talk to a FastAPI backend on Render, which routes through a LangGraph agent layer backed by five user-supplied LLM providers, fanning out to extraction, memory and rules, and Google Calendar / MCP / plugin integrations, all persisted in Supabase PostgreSQL and Cloudflare R2">
-      <rect x="180" y="16" width="360" height="56" rx="10" fill="var(--card)" stroke="var(--accent2)" stroke-width="1.5"/>
-      <text x="360" y="38" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600">Client Tier</text>
-      <text x="360" y="58" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="12">React PWA (Vercel) · Telegram Bot</text>
-
-      <line x1="360" y1="72" x2="360" y2="108" stroke="var(--border)" stroke-width="2"/>
-
-      <rect x="180" y="108" width="360" height="56" rx="10" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
-      <text x="360" y="130" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600">API Tier</text>
-      <text x="360" y="150" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="12">FastAPI on Render · scheduler + task queue</text>
-
-      <line x1="360" y1="164" x2="360" y2="188" stroke="var(--border)" stroke-width="2"/>
-
-      <rect x="180" y="188" width="360" height="56" rx="10" fill="var(--card)" stroke="var(--accent)" stroke-width="1.5"/>
-      <text x="360" y="210" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600">AI Layer</text>
-      <text x="360" y="230" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="12">LangGraph agents · 5 LLM providers, user's own key</text>
-
-      <line x1="360" y1="244" x2="360" y2="268" stroke="var(--border)" stroke-width="2"/>
-      <line x1="130" y1="268" x2="590" y2="268" stroke="var(--border)" stroke-width="2"/>
-      <line x1="130" y1="268" x2="130" y2="292" stroke="var(--border)" stroke-width="2"/>
-      <line x1="360" y1="268" x2="360" y2="292" stroke="var(--border)" stroke-width="2"/>
-      <line x1="590" y1="268" x2="590" y2="292" stroke="var(--border)" stroke-width="2"/>
-
-      <rect x="30" y="292" width="200" height="60" rx="10" fill="var(--card)" stroke="var(--border)" stroke-width="1.5"/>
-      <text x="130" y="318" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">Extraction Agent</text>
-      <text x="130" y="337" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="11">Documents → Draft Events</text>
-
-      <rect x="260" y="292" width="200" height="60" rx="10" fill="var(--card)" stroke="var(--border)" stroke-width="1.5"/>
-      <text x="360" y="318" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">Memory &amp; Rules</text>
-      <text x="360" y="337" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="11">Fact store · Conversation sessions</text>
-
-      <rect x="490" y="292" width="200" height="60" rx="10" fill="var(--card)" stroke="var(--border)" stroke-width="1.5"/>
-      <text x="590" y="318" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="14" font-weight="600">Integrations</text>
-      <text x="590" y="337" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="11">Google Calendar · MCP · Plugins</text>
-
-      <line x1="130" y1="352" x2="130" y2="380" stroke="var(--border)" stroke-width="2"/>
-      <line x1="360" y1="352" x2="360" y2="380" stroke="var(--border)" stroke-width="2"/>
-      <line x1="590" y1="352" x2="590" y2="380" stroke="var(--border)" stroke-width="2"/>
-      <line x1="130" y1="380" x2="590" y2="380" stroke="var(--border)" stroke-width="2"/>
-      <line x1="360" y1="380" x2="360" y2="404" stroke="var(--border)" stroke-width="2"/>
-
-      <rect x="150" y="404" width="420" height="56" rx="10" fill="var(--card)" stroke="var(--accent2)" stroke-width="1.5"/>
-      <text x="360" y="426" text-anchor="middle" fill="var(--text)" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="600">Persistence</text>
-      <text x="360" y="446" text-anchor="middle" fill="var(--text-dim)" font-family="Inter, sans-serif" font-size="12">PostgreSQL on Supabase · Cloudflare R2 (uploaded files)</text>
-    </svg>
-  </div>
-</section>
-
-<section>
-  <div class="section-head">
-    <div class="tag">Architecture</div>
-    <h2>Tech Stack</h2>
-  </div>
-  <div class="stack-grid" id="stackGrid">
-    <div class="stack-item"><div class="layer">Backend</div><div class="tech">Python · FastAPI · PostgreSQL</div></div>
-    <div class="stack-item"><div class="layer">AI / Agents</div><div class="tech">LangGraph agents · 5 LLM providers · tracing</div></div>
-    <div class="stack-item"><div class="layer">Frontend</div><div class="tech">React + TypeScript · installable PWA</div></div>
-    <div class="stack-item"><div class="layer">Database</div><div class="tech">PostgreSQL on Supabase</div></div>
-    <div class="stack-item"><div class="layer">Storage</div><div class="tech">Cloudflare R2 file storage</div></div>
-    <div class="stack-item"><div class="layer">Channels</div><div class="tech">Web app · Telegram · Google Calendar</div></div>
-    <div class="stack-item"><div class="layer">Notifications</div><div class="tech">Telegram · Web Push · Email</div></div>
-    <div class="stack-item"><div class="layer">Hosting</div><div class="tech">Render (API) · Vercel (web)</div></div>
-    <div class="stack-item"><div class="layer">CI/CD</div><div class="tech">GitHub Actions · automated deploys</div></div>
-    <div class="stack-item"><div class="layer">Reliability</div><div class="tech">Keep-alive monitoring · alerts · auto-retry</div></div>
-    <div class="stack-item"><div class="layer">Weather &amp; Air</div><div class="tech">Open-Meteo · OpenAQ (CPCB monitors) · OpenStreetMap</div></div>
-  </div>
-</section>
-
-<section>
-  <div class="section-head">
-    <div class="tag">What it does</div>
-    <h2>Core Features</h2>
-  </div>
-  <div class="feature-grid" id="featureGrid">
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Documents to Events</h3>
-      <p>Upload a PDF, image or text. An AI agent reads it and drafts calendar events for you to review.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Telegram Assistant</h3>
-      <p>Ask about your day or add events by chat. The same agent powers the web app and Telegram.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Conversation Memory</h3>
-      <p>Remembers context across chats and summarises long conversations to stay fast.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Bring Your Own LLM</h3>
-      <p>Each user connects their own AI provider, so cost and model choice stay with them.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Rules &amp; Personal Memory</h3>
-      <p>Learns your preferences and custom rules to improve extraction over time.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Calendar &amp; Integrations</h3>
-      <p>Two-way Google Calendar sync, an MCP endpoint for external AI tools, and a plugin framework.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Finance Module</h3>
-      <p>Import broker statements, track holdings with live prices, and get an optional AI committee review.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Fitness Coach</h3>
-      <p>Personal plans, live workout chat, progress tracking and reminders, with consent and data controls.</p>
-    </div>
-    <div class="feature">
-      <div class="icon">◆</div>
-      <h3>Weather &amp; Rain Alerts</h3>
-      <p>Weather, air quality and one-time rain alerts for saved places, with quiet hours and shared forecasts.</p>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="section-head">
-    <div class="tag">Under the Hood</div>
-    <h2>Engineering Challenges</h2>
-  </div>
-  <div class="challenge-list" id="challengeList">
-    <div class="challenge">
-      <div class="ch-title">Long conversations</div>
-      <p>Older messages are summarised so chats stay coherent without growing forever.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">Seeing what agents do</div>
-      <p>Every agent run is traced, so behaviour and quality can be inspected and debugged.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">One brain, many channels</div>
-      <p>The same agent logic serves the web app and Telegram.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">Any LLM provider</div>
-      <p>Five providers work with users' own keys. Next: one clean interface with retries and fallback.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">Running on free tiers</div>
-      <p>Servers sleep and databases pause. A keep-alive monitor with alerts keeps reminders reliable.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">Friendly failures</div>
-      <p>Users see a simple message. Admins get one alert that clears itself on recovery, and actions retry automatically.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">Weather without per-user polling</div>
-      <p>Nearby users share one forecast fetch, cache entry and rain event, so weather costs do not grow with user count.</p>
-    </div>
-    <div class="challenge">
-      <div class="ch-title">Alerts without repeats</div>
-      <p>Per-user idempotency and one open rain event per area prevent repeats; quiet hours are respected.</p>
-    </div>
+<div class="band" aria-hidden="true"><div class="marquee" id="marquee"></div></div>
+
+<!-- ================= FEATURES -->
+<section id="features" class="on-paper">
+  <p class="eyebrow">What it does</p>
+  <h2 class="h2 disp"><span>Core</span><span>features</span></h2>
+  <div class="fgrid" id="fgrid"></div>
+</section>
+
+<!-- ================= TOUR -->
+<section id="tour" class="tour-head on-ink">
+  <h2 class="h2 disp tour-h"><span>Product</span><span>tour</span></h2>
+  <p class="lead">Seven areas of the product, each with desktop and mobile (PWA) screenshots from the live app. Use the toggle on any carousel to switch between them; click an image to enlarge it.</p>
+</section>
+<div id="tourBlocks"></div>
+
+<!-- ================= PRINCIPLES -->
+<section id="principles" class="on-paper">
+  <p class="eyebrow">The idea</p>
+  <h2 class="h2 disp"><span>Four</span><span>principles</span></h2>
+  <div>
+    <div class="pl"><span>Understand context.</span><small>Documents, chats and your own memory, in one view.</small></div>
+    <div class="pl"><span>Invoke tools.</span><small>Calendar, extraction, MCP endpoint, plugins.</small></div>
+    <div class="pl"><span>Persist state.</span><small>Facts, rules and sessions that last.</small></div>
+    <div class="pl"><span>Run the workflow.</span><small>Reminders, alerts and summaries on a schedule.</small></div>
   </div>
 </section>
 
-<section>
-  <div class="section-head">
-    <div class="tag">Progress</div>
-    <h2>Build Timeline</h2>
-  </div>
-  <div class="phases" id="phaseList">
-    <div class="phase"><div class="ph-title">Phase 1 — Foundation</div><div class="ph-desc">Admin tools and the calendar.</div></div>
-    <div class="phase"><div class="ph-title">Phase 2 — Extraction Agent</div><div class="ph-desc">Documents to draft events, with live progress.</div></div>
-    <div class="phase"><div class="ph-title">Phase 3 — Intelligence</div><div class="ph-desc">Rules, memory, model routing and metrics.</div></div>
-    <div class="phase"><div class="ph-title">Phase 4 — Plugins &amp; PWA</div><div class="ph-desc">Plugin framework and an installable app.</div></div>
-    <div class="phase"><div class="ph-title">Phase 5 — Telegram &amp; Memory</div><div class="ph-desc">Chat agent, conversation memory and tracing.</div></div>
-    <div class="phase"><div class="ph-title">Phase 6 — Life Modules</div><div class="ph-desc">Finance and Fitness, behind feature flags.</div></div>
-    <div class="phase"><div class="ph-title">Phase 7 — Reliability</div><div class="ph-desc">Monitoring, safe error messages and automatic retries.</div></div>
-    <div class="phase"><div class="ph-title">Phase 8 — Weather &amp; Alerts</div><div class="ph-desc">Hourly forecasts, air quality and rain alerts.</div></div>
-    <div class="phase"><div class="ph-title">Next</div><div class="ph-desc">One LLM provider interface, plus screenshots and a demo video.</div></div>
+<!-- ================= HOW IT WORKS -->
+<section id="how" class="on-ink">
+  <p class="eyebrow">System design</p>
+  <h2 class="h2 disp"><span>How it</span><span>works</span></h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><h3>Client tier</h3><p>An installable web app and a Telegram bot. One agent serves both.</p></div>
+    <div class="step"><div class="num">2</div><h3>API tier</h3><p>A backend service with a scheduler and an async task queue.</p></div>
+    <div class="step"><div class="num">3</div><h3>AI layer</h3><p>Agents for extraction, memory and integrations, running on the user's own LLM key.</p></div>
+    <div class="step"><div class="num">4</div><h3>Persistence</h3><p>A managed database for state and object storage for uploaded files.</p></div>
   </div>
 </section>
 
-<section class="tour" id="tour">
-  <div class="section-head">
-    <div class="tag">Product Tour</div>
-    <h2>DexAI, screen by screen</h2>
-  </div>
-  <div id="tourBlocks"></div>
+
+<!-- ================= CHALLENGES -->
+<section id="challenges" class="on-paper">
+  <p class="eyebrow">Under the hood</p>
+  <h2 class="h2 disp"><span>Engineering</span><span>challenges</span></h2>
+  <div class="faq" id="faq"></div>
 </section>
 
-<dialog class="lightbox" id="lightbox" aria-label="Screenshot preview">
-  <img id="lbImg" alt="">
-  <div class="lb-cap" id="lbCap"></div>
-</dialog>
+<!-- ================= TIMELINE -->
+<section id="timeline" class="on-ink">
+  <p class="eyebrow">Progress</p>
+  <h2 class="h2 disp"><span>Build</span><span>timeline</span></h2>
+  <div class="rail" id="rail" tabindex="0" aria-label="Build phases, scroll sideways"></div>
+</section>
+
+<!-- ================= CONTACT -->
+<section id="contact" class="on-orange" style="background:var(--ink);color:var(--cream)">
+  <div class="rows" aria-hidden="true"><div>Try it live.</div><div>Bring your own key.</div><div>Built in public.</div></div>
+  <div class="op-cta" style="margin:0">
+    <a class="btn" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try DexAI now <i>↗</i></a>
+    <a class="btn ghost" href="index.html" style="color:var(--cream);--bg:var(--ink)">Back to portfolio <i>←</i></a>
+    <span class="tag">Repository available on request</span>
+  </div>
+</section>
+</main>
 
 <footer>
-  <div>© 2026 Kartikeya Dubey</div>
-  <div>
-    <a href="https://github.com/kartikeya-dubey" target="_blank" rel="noopener">GitHub</a>
-    <a href="mailto:kartikeyadubey1997@outlook.com">Email</a>
-  </div>
+  <p class="mark" aria-hidden="true">DexAI</p>
+  <div class="foot"><span>© Kartikeya Dubey</span><span><a href="index.html">Portfolio</a><a href="https://dex-ai-roan.vercel.app/login" target="_blank" rel="noopener">Open the app</a></span></div>
 </footer>
 
-<script>
-  const observeReveal = (selector) => {
-    const els = document.querySelectorAll(selector);
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationDelay = (i * 0.05) + 's';
-          entry.target.classList.add('reveal');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    els.forEach(el => io.observe(el));
-  };
-  observeReveal('.stack-item');
-  observeReveal('.feature');
-  observeReveal('.challenge');
-  observeReveal('.phase');
+<dialog class="lb" id="lb" aria-label="Screenshot preview"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></dialog>
 
-  /* ---------- Product tour ---------- */
+<script>
+(() => {
+  const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
   const IMG = 'images/dexai/';
+
+  /* nav hides on scroll down, returns on scroll up */
+  const nav = document.getElementById('nav'); let ly = 0;
+  addEventListener('scroll', () => { const y = scrollY; nav.classList.toggle('hide', y > ly && y > 160); ly = y; }, { passive: true });
+
+  /* marquee */
+  const caps = ['Document extraction','Telegram assistant','Google Calendar sync','MCP endpoint & plugins','Fitness coach','Finance module','Weather & rain alerts','Async task queue','Context & memory','AI observability','OWASP-guided security','Keep-awake monitoring'];
+  const mq = document.getElementById('marquee');
+  [...caps, ...caps].forEach(c => mq.append(el('span', '', c)));
+
+  /* feature cards */
+  const cards = [
+    ['Documents to events','Upload a PDF, image or text. An AI agent reads it and drafts calendar events for you to review.'],
+    ['Telegram assistant','Ask about your day or add events by chat. The same agent powers the web app and Telegram.'],
+    ['Conversation memory','Remembers context across chats and summarises long conversations to stay fast.'],
+    ['Bring your own LLM','Each user connects their own AI provider, so cost and model choice stay with them.'],
+    ['Rules & personal memory','Learns your preferences and custom rules to improve extraction over time.'],
+    ['Calendar & integrations','Two-way Google Calendar sync, an MCP endpoint for external AI tools and a plugin framework.'],
+    ['Finance module','Import broker statements, track holdings with live prices and get an optional AI committee review.'],
+    ['Fitness coach','Personal plans, live workout chat, progress tracking and reminders, with consent and data controls.'],
+    ['Weather & rain alerts','Weather, air quality and one-time rain alerts for saved places, with quiet hours and shared forecasts.']
+  ];
+  const fg = document.getElementById('fgrid');
+  cards.forEach(([t, p], i) => fg.append(el('article', 'fcard', '<div class="n">0' + (i + 1) + '</div><div><h3>' + t + '</h3><p>' + p + '</p></div>')));
+
+  /* challenges */
+  const ch = [['Long conversations','Older messages are summarised so chats stay coherent without growing forever.'],['Seeing what agents do','Every agent run is traced, so behaviour and quality can be inspected and debugged.'],['One brain, many channels','The same agent logic serves the web app and Telegram.'],['Any LLM provider','Five providers work with users’ own keys. Next: one clean interface with retries and fallback.'],['Running on free tiers','Servers sleep and databases pause. A keep-alive monitor with alerts keeps reminders reliable.'],['Friendly failures','Users see a simple message. Admins get one alert that clears itself on recovery, and actions retry automatically.'],['Weather without per-user polling','Nearby users share one forecast fetch, cache entry and rain event, so weather costs do not grow with user count.'],['Alerts without repeats','Per-user idempotency and one open rain event per area prevent repeats; quiet hours are respected.']];
+  const faq = document.getElementById('faq');
+  ch.forEach(([q, a], i) => { const d = el('details', '', '<summary>' + q + '</summary><p>' + a + '</p>'); if (i === 0) d.open = true; faq.append(d); });
+
+  /* timeline */
+  const ph = [['Foundation','Admin tools and the calendar.'],['Extraction agent','Documents to draft events, with live progress.'],['Intelligence','Rules, memory, model routing and metrics.'],['Plugins & PWA','Plugin framework and an installable app.'],['Telegram & memory','Chat agent, conversation memory and tracing.'],['Life modules','Finance and Fitness, behind feature flags.'],['Reliability','Monitoring, safe error messages and automatic retries.'],['Weather & alerts','Hourly forecasts, air quality and rain alerts.'],['Next','One LLM provider interface, plus a demo video.']];
+  const rail = document.getElementById('rail');
+  ph.forEach(([t, d], i) => { const last = i === ph.length - 1; rail.append(el('article', 'ph' + (last ? ' now' : ''), '<div class="big">' + (last ? '→' : i + 1) + '</div><h3>' + t + '</h3><p>' + d + '</p>')); });
+
+  /* lightbox */
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCap = document.getElementById('lbCap');
+  lb.addEventListener('click', () => lb.close());
+  const openLb = (s, c) => { lbImg.src = s; lbImg.alt = c; lbCap.textContent = c; lb.showModal(); };
+
+  /* tour */
   const FEATURES = [
-    {
-      tag: 'Overview', title: 'Your day at a glance',
-      text: 'The landing page pulls everything that matters today into one screen: how many events are on, what is coming this week, drafts waiting for review, the weather for your location and a word of the day. Sign-in and onboarding are covered here too.',
-      points: [
-        ['Upcoming events', 'with type badges, so deadlines, meetings and birthdays are easy to tell apart.'],
-        ['Quick actions', 'jump straight to the calendar or to uploading a file.'],
-        ['Sign in and sign up', 'email or mobile login, with live password-strength rules on registration.']
-      ],
-      slides: [
-        ['overview-1-dashboard', 'Overview dashboard'],
-        ['auth-1-login', 'Sign in'],
-        ['auth-2-signup', 'Create account']
-      ]
-    },
-    {
-      tag: 'Calendar', title: 'A schedule that fills itself in',
+    { bg: 'on-ink', w: ['Over', 'view'], tag: 'Overview', title: 'Your day at a glance',
+      text: 'The landing page pulls everything that matters today into one screen: events on today, what is coming this week, drafts waiting for review, the weather for your location and a word of the day. Sign-in and onboarding are covered here too.',
+      points: [['Upcoming events','with type badges, so deadlines, meetings and birthdays are easy to tell apart.'],['Quick actions','jump straight to the calendar or to uploading a file.'],['Sign in and sign up','email or mobile login, with live password-strength rules on registration.']],
+      slides: [['overview-1-dashboard','Overview dashboard'],['auth-1-login','Sign in'],['auth-2-signup','Create account']] },
+    { bg: 'on-cream', w: ['Calen', 'dar'], tag: 'Calendar', title: 'A schedule that fills itself in',
       text: 'Events extracted from uploaded documents and added through chat land here, colour-coded by type. Switch between a dense month grid and a focused week view, tick events off as they are done, and keep recurring routines tucked away until you need them.',
-      points: [
-        ['Month and week views', 'with a Day list / Overview toggle on the week view.'],
-        ['Search and filters', 'by event type and by Space (Personal, Job, Business and more).'],
-        ['Routines', 'collapse into a single "+N routines" chip per day to keep the grid readable.']
-      ],
-      slides: [
-        ['calendar-1-month', 'Month view'],
-        ['calendar-2-week', 'Week view']
-      ]
-    },
-    {
-      tag: 'Fitness', title: 'A coach that remembers your training',
+      points: [['Month and week views','with a Day list / Overview toggle on the week view.'],['Search and filters','by event type and by Space (Personal, Job, Business and more).'],['Routines','collapse into a single “+N routines” chip per day to keep the grid readable.']],
+      slides: [['calendar-1-month','Month view'],['calendar-2-week','Week view']] },
+    { bg: 'on-orange', w: ['Fit', 'ness'], tag: 'Fitness', title: 'A coach that remembers your training',
       text: 'A full fitness module: today’s workout, a 908-exercise library, a weekly plan, history, progress tracking and a personal profile. The AI Coach sits on top of it all and can read your plan, answer form and recovery questions, and log sets you type in plain language.',
-      points: [
-        ['AI Coach', 'chat about form, recovery or food, or log a set by typing “23kg x 10”.'],
-        ['Adaptive plan', 'the app explains each change it makes (for example swapping a skipped machine) and lets you undo it.'],
-        ['Exercise library', 'searchable A to Z, with filters by equipment and body area.'],
-        ['Profile', 'goal, coach tone, injuries and limitations that the coach respects.']
-      ],
-      slides: [
-        ['fitness-1-today', 'Today’s workout'],
-        ['fitness-6-ai-coach', 'AI Coach'],
-        ['fitness-2-library', 'Exercise library'],
-        ['fitness-3-plan', 'Weekly plan'],
-        ['fitness-4-progress', 'Progress tracking'],
-        ['fitness-5-profile', 'Fitness profile']
-      ]
-    },
-    {
-      tag: 'Chat', title: 'Ask questions, get answers from your own data',
+      points: [['AI Coach','chat about form, recovery or food, or log a set by typing “23kg x 10”.'],['Adaptive plan','the app explains each change it makes (for example swapping a skipped machine) and lets you undo it.'],['Exercise library','searchable A to Z, with filters by equipment and body area.'],['Profile','goal, coach tone, injuries and limitations that the coach respects.']],
+      slides: [['fitness-1-today','Today’s workout'],['fitness-6-ai-coach','AI Coach'],['fitness-2-library','Exercise library'],['fitness-3-plan','Weekly plan'],['fitness-4-progress','Progress tracking'],['fitness-5-profile','Fitness profile']] },
+    { bg: 'on-ink', w: ['Ch', 'at'], tag: 'Chat', title: 'Ask questions, get answers from your own data',
       text: 'General chat is scoped to a feature (Fitness, Calendar or Finance), so each conversation stays grounded in the right data. The assistant shows its steps, retrieves records from your account and cites where the answer came from.',
-      points: [
-        ['Feature-scoped chats', 'pick the topic once; a chat stays on that feature.'],
-        ['Visible reasoning steps', 'understanding the request, retrieving your DexAI data, preparing the answer.'],
-        ['Saved sessions', 'search, archive and revisit past conversations.']
-      ],
-      slides: [
-        ['chat-1-conversation', 'Calendar chat with sourced answer'],
-        ['chat-2-new-chat', 'Start a new chat']
-      ]
-    },
-    {
-      tag: 'Core', title: 'Upload, memory and administration',
+      points: [['Feature-scoped chats','pick the topic once; a chat stays on that feature.'],['Visible reasoning steps','understanding the request, retrieving your DexAI data, preparing the answer.'],['Saved sessions','search, archive and revisit past conversations.']],
+      slides: [['chat-1-conversation','Calendar chat with sourced answer'],['chat-2-new-chat','Start a new chat']] },
+    { bg: 'on-cream', w: ['Co', 're'], tag: 'Core', title: 'Upload, memory and administration',
       text: 'The foundations behind every feature. Upload turns files into reviewable drafts, Memory shows exactly what DexAI has learned about you, and the Admin panel gives operators control over users, access and feature switches.',
-      points: [
-        ['Upload', 'drag in PNG, JPG, WebP, PDF, TXT or DOCX; review extracted events before they reach your calendar.'],
-        ['Memory', 'editable facts grouped by Fitness, Finance and General; add, edit or delete anything that is wrong.'],
-        ['Admin', 'stats, users, access, announcements, global switches, upload quality, requests and alerts.']
-      ],
-      slides: [
-        ['core-1-upload', 'Upload and review'],
-        ['core-2-memory', 'My Memory'],
-        ['core-3-admin-stats', 'Admin: stats'],
-        ['core-4-admin-users', 'Admin: users and access'],
-        ['core-5-admin-switches', 'Admin: global switches']
-      ]
-    },
-    {
-      tag: 'Settings', title: 'Your keys, your model, your rules',
+      points: [['Upload','drag in PNG, JPG, WebP, PDF, TXT or DOCX; review extracted events before they reach your calendar.'],['Memory','editable facts grouped by Fitness, Finance and General; add, edit or delete anything that is wrong.'],['Admin','stats, users, access, announcements, global switches, upload quality, requests and alerts.']],
+      slides: [['core-1-upload','Upload and review'],['core-2-memory','My Memory'],['core-3-admin-stats','Admin: stats'],['core-4-admin-users','Admin: users and access'],['core-5-admin-switches','Admin: global switches']] },
+    { bg: 'on-ink', w: ['Set', 'tings'], tag: 'Settings', title: 'Your keys, your model, your rules',
       text: 'Everything is configurable from one page. Bring your own LLM provider and key, choose when the morning summary goes out, and decide which channels (app, Telegram, email) are allowed to notify you.',
-      points: [
-        ['AI setup', 'five providers, model selection and a one-click connection test, using your own key.'],
-        ['Morning summary', 'a daily digest of events and deadlines at a time you choose.'],
-        ['Notifications and appearance', 'per-channel controls, weather location and light, dark or system theme.']
-      ],
-      slides: [
-        ['settings-1-overview', 'Settings overview'],
-        ['settings-2-account', 'Account profile'],
-        ['settings-3-ai-setup', 'AI setup'],
-        ['settings-4-morning-summary', 'Morning summary']
-      ]
-    },
-    {
-      tag: 'Finance', title: 'Portfolio tracking', badge: 'To be released',
+      points: [['AI setup','five providers, model selection and a one-click connection test, using your own key.'],['Morning summary','a daily digest of events and deadlines at a time you choose.'],['Notifications and appearance','per-channel controls, weather location and light, dark or system theme.']],
+      slides: [['settings-1-overview','Settings overview'],['settings-2-account','Account profile'],['settings-3-ai-setup','AI setup'],['settings-4-morning-summary','Morning summary']] },
+    { bg: 'on-orange', w: ['Fin', 'ance'], tag: 'Finance', title: 'Portfolio tracking', badge: 'To be released', soon: true,
       text: 'Finance is the next module. Upload a broker statement or a mutual fund CAS and DexAI will turn it into a portfolio view: total value, holdings and asset split, with finance chat to ask questions about it. Memory for this area keeps habits and categories only, never amounts or balances.',
-      points: [
-        ['Statement upload', 'broker statements and mutual fund CAS files.'],
-        ['Portfolio view', 'total value, holdings and asset allocation.'],
-        ['Finance chat', 'for example, “How is my portfolio split by asset type?”']
-      ],
-      soon: true
-    }
+      points: [['Statement upload','broker statements and mutual fund CAS files.'],['Portfolio view','total value, holdings and asset allocation.'],['Finance chat','for example, “How is my portfolio split by asset type?”']] }
   ];
 
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbCap = document.getElementById('lbCap');
-  lb.addEventListener('click', () => lb.close());
-  const openLightbox = (src, cap) => { lbImg.src = src; lbImg.alt = cap; lbCap.textContent = cap; lb.showModal(); };
-
-  const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
-
-  function buildCarousel(f) {
-    const root = el('div', 'carousel');
-    const top = el('div', 'car-top');
-    const count = el('div', 'car-count');
-    const seg = el('div', 'seg');
-    seg.setAttribute('role', 'group'); seg.setAttribute('aria-label', f.tag + ' screenshot size');
-    const bDesk = el('button', '', 'Desktop'), bMob = el('button', '', 'Mobile');
-    [bDesk, bMob].forEach(b => b.type = 'button');
-    seg.append(bDesk, bMob);
-    top.append(count, seg);
-
-    const stage = el('div', 'stage');
-    const tracks = {};
+  function carousel(f) {
+    const root = el('div', 'carousel'), top = el('div', 'car-top'), count = el('div', 'car-count'), seg = el('div', 'seg');
+    const bD = el('button', '', 'Desktop'), bM = el('button', '', 'Mobile'); bD.type = bM.type = 'button';
+    seg.append(bD, bM); top.append(count, seg);
+    const stage = el('div', 'stage'), tracks = {};
     ['desktop', 'mobile'].forEach(mode => {
-      const t = el('div', 'track ' + mode);
-      t.setAttribute('tabindex', '0'); t.setAttribute('role', 'region');
-      t.setAttribute('aria-label', f.tag + ' screenshots (' + mode + ')');
+      const t = el('div', 'track ' + mode); t.tabIndex = 0; t.setAttribute('role', 'region'); t.setAttribute('aria-label', f.tag + ' screenshots (' + mode + ')');
       f.slides.forEach(([file, cap]) => {
-        const fig = el('figure', 'slide');
-        const img = document.createElement('img');
+        const fig = el('figure', 'slide'), img = new Image();
         img.src = IMG + mode + '/' + file + '.webp'; img.alt = f.tag + ': ' + cap + ' (' + mode + ')'; img.loading = 'lazy'; img.decoding = 'async';
         fig.append(img, el('figcaption', '', cap));
-        fig.addEventListener('click', () => openLightbox(img.src, f.tag + ' — ' + cap + ' (' + mode + ')'));
+        fig.onclick = () => openLb(img.src, f.tag + ' — ' + cap + ' (' + mode + ')');
         t.append(fig);
       });
       tracks[mode] = t; stage.append(t);
     });
     const prev = el('button', 'car-btn prev', '‹'), next = el('button', 'car-btn next', '›');
-    prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Previous screenshot'); next.setAttribute('aria-label', 'Next screenshot');
+    prev.type = next.type = 'button'; prev.setAttribute('aria-label', 'Previous'); next.setAttribute('aria-label', 'Next');
     stage.append(prev, next);
-    const dots = el('div', 'dots');
-    root.append(top, stage, dots);
-
-    let mode = 'desktop';
-    const cur = () => tracks[mode];
-    const slides = () => [...cur().children];
-    const indexNow = () => {
-      const t = cur(), s = slides();
-      if (t.scrollLeft >= t.scrollWidth - t.clientWidth - 4) return s.length - 1;
-      let best = 0, bd = Infinity;
-      s.forEach((sl, i) => { const d = Math.abs(sl.offsetLeft - t.offsetLeft - t.scrollLeft); if (d < bd) { bd = d; best = i; } });
-      return best;
-    };
-    const goTo = i => { const s = slides(); const sl = s[Math.max(0, Math.min(s.length - 1, i))]; cur().scrollTo({ left: sl.offsetLeft - cur().offsetLeft, behavior: 'smooth' }); };
-    const update = () => {
-      const i = indexNow(), n = slides().length, t = cur();
-      count.innerHTML = '<b>' + (i + 1) + '</b> / ' + n + ' · click an image to enlarge';
-      prev.disabled = t.scrollLeft <= 2;
-      next.disabled = t.scrollLeft >= t.scrollWidth - t.clientWidth - 2;
-      [...dots.children].forEach((d, k) => d.setAttribute('aria-current', k === i ? 'true' : 'false'));
-    };
-    f.slides.forEach(([, cap], k) => {
-      const d = el('button'); d.type = 'button'; d.setAttribute('aria-label', 'Go to ' + cap); d.addEventListener('click', () => goTo(k)); dots.append(d);
-    });
-    const setMode = m => {
-      mode = m;
-      Object.entries(tracks).forEach(([k, t]) => t.hidden = k !== m);
-      bDesk.setAttribute('aria-pressed', String(m === 'desktop')); bMob.setAttribute('aria-pressed', String(m === 'mobile'));
-      cur().scrollLeft = 0; update();
-    };
-    bDesk.onclick = () => setMode('desktop'); bMob.onclick = () => setMode('mobile');
-    prev.onclick = () => goTo(indexNow() - 1); next.onclick = () => goTo(indexNow() + 1);
-    Object.values(tracks).forEach(t => {
-      let raf; t.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
-      t.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); goTo(indexNow() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(indexNow() - 1); } });
-    });
-    window.addEventListener('resize', update);
-    setMode('desktop');
+    const dots = el('div', 'dots'); root.append(top, stage, dots);
+    let mode = 'mobile'; const cur = () => tracks[mode], slides = () => [...cur().children];
+    const idx = () => { const t = cur(), s = slides(); if (t.scrollLeft >= t.scrollWidth - t.clientWidth - 4) return s.length - 1; let b = 0, bd = 1e9; s.forEach((sl, i) => { const d = Math.abs(sl.offsetLeft - t.offsetLeft - t.scrollLeft); if (d < bd) { bd = d; b = i; } }); return b; };
+    const go = i => { const s = slides(), sl = s[Math.max(0, Math.min(s.length - 1, i))]; cur().scrollTo({ left: sl.offsetLeft - cur().offsetLeft, behavior: 'smooth' }); };
+    const upd = () => { const i = idx(), t = cur(); count.innerHTML = '<b>' + (i + 1) + '</b> / ' + slides().length; prev.disabled = t.scrollLeft <= 2; next.disabled = t.scrollLeft >= t.scrollWidth - t.clientWidth - 2; [...dots.children].forEach((d, k) => d.setAttribute('aria-current', String(k === i))); };
+    f.slides.forEach(([, c], k) => { const d = el('button'); d.type = 'button'; d.setAttribute('aria-label', 'Go to ' + c); d.onclick = () => go(k); dots.append(d); });
+    const setMode = m => { mode = m; Object.entries(tracks).forEach(([k, t]) => t.hidden = k !== m); bD.setAttribute('aria-pressed', String(m === 'desktop')); bM.setAttribute('aria-pressed', String(m === 'mobile')); cur().scrollLeft = 0; upd(); };
+    bD.onclick = () => setMode('desktop'); bM.onclick = () => setMode('mobile');
+    prev.onclick = () => go(idx() - 1); next.onclick = () => go(idx() + 1);
+    Object.values(tracks).forEach(t => { let r; t.addEventListener('scroll', () => { cancelAnimationFrame(r); r = requestAnimationFrame(upd); }, { passive: true }); t.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); go(idx() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx() - 1); } }); });
+    addEventListener('resize', upd); setMode('mobile');
+    new ResizeObserver(upd).observe(stage);
     return root;
   }
 
-  const blocksHost = document.getElementById('tourBlocks');
-  FEATURES.forEach((f, idx) => {
-    const block = el('div', 'fx-block' + (idx % 2 ? ' flip' : ''));
-    const media = el('div', 'fx-media');
-    if (f.soon) {
-      media.append(el('div', 'soon-card', '<div class="big">Coming soon</div>Finance is still in development. Screenshots will be added when it is released.'));
-    } else {
-      media.append(buildCarousel(f));
-    }
-    const text = el('div', 'fx-text');
-    text.append(el('div', 'fx-tag', f.tag + (f.badge ? ' <span class="badge">' + f.badge + '</span>' : '')));
-    text.append(el('h3', '', f.title), el('p', '', f.text));
-    const ul = el('ul');
-    f.points.forEach(([b, t]) => ul.append(el('li', '', '<b>' + b + '</b>, ' + t)));
-    text.append(ul);
-    block.append(media, text);
-    blocksHost.append(block);
+  const host = document.getElementById('tourBlocks');
+  FEATURES.forEach((f, i) => {
+    const s = el('section', 'fx ' + f.bg + (i % 2 ? ' flip' : '')); s.id = 'fx-' + f.tag.toLowerCase();
+    s.append(el('div', 'fx-word disp', '<span>' + f.w[0] + '</span><span class="out">' + f.w[1] + '</span>'));
+    const g = el('div', 'fx-grid'), media = el('div', 'fx-media'), text = el('div', 'fx-text');
+    media.append(f.soon ? el('div', 'soon', '<span class="disp">Coming soon</span>Finance is still in development. Screenshots will be added when it is released.') : carousel(f));
+    text.append(el('p', 'eyebrow', '0' + (i + 1) + ' · ' + f.tag + (f.badge ? '<span class="badge">' + f.badge + '</span>' : '')), el('h3', '', f.title), el('p', '', f.text));
+    const ul = el('ul'); f.points.forEach(([b, t]) => ul.append(el('li', '', '<b>' + b + '</b>, ' + t))); text.append(ul);
+    g.append(media, text); s.append(g); host.append(s);
   });
+})();
 </script>
 </body>
 </html>
