@@ -70,7 +70,7 @@
   .hero-head { grid-column: 1; display: grid; gap: 22px; max-width: 660px; align-content: start; }
   .hero h1 { font-size: clamp(38px, 5vw, 76px); line-height: .98; }
   .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--c5), var(--c4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .lead { font-size: 19px; max-width: 54ch; }
+  .lead { font-size: 19px; }
   .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
   .chips { grid-column: 1; grid-row: 2; align-self: start; display: flex; flex-wrap: wrap; gap: 10px; max-width: 660px; }
   .chip { display: inline-flex; align-items: center; min-height: 38px; padding: 7px 16px; border: 1.5px solid var(--c3); border-radius: var(--pill);
@@ -98,7 +98,7 @@
   /* five columns */
   .cols { padding: 0; }
   .cols-head { padding: 14svh var(--gx) 7svh; background: var(--c6); color: var(--c2); }
-  .cols-head .h2 { max-width: 16ch; }
+  .cols-head .h2 { }
   .col-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: 62svh; }
   .col { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 26px 24px 24px; }
   .col:nth-child(1) { background: var(--c5); color: var(--c1); }
@@ -130,12 +130,12 @@
   .parts { display: grid; gap: 14svh; padding: 8svh 0; }
   .part .num { font-size: 20px; color: var(--c5); margin-bottom: 14px; }
   .part h3 { font-size: clamp(30px, 3.4vw, 50px); margin-bottom: 16px; }
-  .part p { max-width: 46ch; opacity: .92; }
+  .part p { opacity: .92; }
   @media (max-width: 900px) { .library { grid-template-columns: 1fr; } .phone-wrap { position: static; } .parts { gap: 8svh; } }
 
   /* architecture arches */
   .built { background: var(--c2); }
-  .built .h2 { max-width: 18ch; margin-bottom: 7svh; }
+  .built .h2 { margin-bottom: 7svh; }
   .arches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
   .arch { border-radius: 999px 999px 0 0; padding: clamp(60px, 9vw, 120px) 28px 34px; min-height: 420px; display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center; }
   .arch:nth-child(1) { background: var(--c5); } .arch:nth-child(2) { background: var(--c4); }
@@ -156,7 +156,7 @@
 
   /* stack tiles */
   .stack { background: var(--c6); color: var(--c2); }
-  .stack .h2 { max-width: 16ch; margin-bottom: 7svh; }
+  .stack .h2 { margin-bottom: 7svh; }
   .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .tile { border-radius: var(--r); padding: clamp(24px, 3vw, 40px); display: grid; gap: 14px; align-content: start; }
   .tile:nth-child(1) { background: var(--c5); color: var(--c1); } .tile:nth-child(2) { background: var(--c2); color: var(--c3); }
@@ -168,7 +168,7 @@
 
   /* status (replaces pricing: no prices exist, so this shows real progress) */
   .status { background: var(--c1); color: var(--c2); }
-  .status .h2 { max-width: 16ch; margin-bottom: 7svh; }
+  .status .h2 { margin-bottom: 7svh; }
   .plans { display: grid; grid-template-columns: 1fr; align-items: stretch; }
   .plan { display: flex; flex-direction: column; gap: 22px; padding: clamp(28px, 4vw, 56px); }
   .plan.live { background: var(--c2); color: var(--c3); }
@@ -188,7 +188,7 @@
   summary::-webkit-details-marker { display: none; }
   summary::after { content: "+"; transition: transform .3s; }
   details[open] summary::after { transform: rotate(45deg); }
-  details p { margin-top: 12px; max-width: 60ch; }
+  details p { margin-top: 12px; }
   .faq-arch { border-radius: 999px 999px 0 0; aspect-ratio: 5/6.4; background: linear-gradient(160deg, var(--c5), var(--c4)); display: grid; place-items: center; }
   .faq-arch img { width: 46%; }
   @media (max-width: 900px) { .faq { grid-template-columns: 1fr; } .faq-arch { max-width: 280px; } }
@@ -201,7 +201,7 @@
   .info b { display: block; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
   footer { background: var(--c3); color: var(--c2); padding: 72px var(--gx) 0; overflow: clip; }
   .f-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; }
-  .f-lead { font: 700 clamp(26px, 2.6vw, 38px)/1.1 var(--f1); max-width: 18ch; }
+  .f-lead { font: 700 clamp(26px, 2.6vw, 38px)/1.1 var(--f1); }
   .f-cols { display: flex; flex-wrap: wrap; gap: 28px 64px; }
   .f-cols ul { display: grid; gap: 8px; }
   .f-cols a { text-decoration: none; opacity: .85; } .f-cols a:hover { opacity: 1; color: var(--c5); }
@@ -211,8 +211,8 @@
 
   /* product tour: real screenshots from the live app, desktop and mobile */
   .tour-head { background: var(--c6); color: var(--c2); }
-  .tour-head .h2 { max-width: 14ch; margin-bottom: 4svh; }
-  .tour-head .lead { max-width: 60ch; opacity: .9; }
+  .tour-head .h2 { margin-bottom: 4svh; }
+  .tour-head .lead { opacity: .9; }
   .fx { padding: 11svh var(--gx); }
   .fx.on-dark { --fg: var(--c2); --bg: var(--c1); --soft: rgba(255,241,220,.78); --line: rgba(255,241,220,.2); background: var(--bg); color: var(--fg); }
   .fx.on-ink { --fg: var(--c2); --bg: var(--c3); --soft: rgba(255,241,220,.78); --line: rgba(255,241,220,.2); background: var(--bg); color: var(--fg); }
@@ -405,7 +405,7 @@
 
   <section class="contact" id="contact">
     <div class="eyebrow">Get in touch</div>
-    <a class="big" href="mailto:kartikeyadubey1997@gmail.com">Say hello<br>to Kartikeya</a>
+    <a class="big" href="mailto:kartikeyadubey1997@gmail.com">Say hello to Kartikeya</a>
     <div class="info">
       <div><b>Email</b><a class="link" href="mailto:kartikeyadubey1997@gmail.com">kartikeyadubey1997@gmail.com</a></div>
       <div><b>Portfolio</b><a class="link" href="index.html">kartikeya-dubey.github.io</a></div>
@@ -422,7 +422,7 @@
     </div>
   </div>
   <div class="f-base">
-    <p>© 2026 Kartikeya Dubey · Layout inspired by the 8B SaaS landing page template (MIT)</p>
+    <p>© 2026 Kartikeya Dubey</p>
     <a class="link" href="#top">Back to top ↑</a>
   </div>
   <div class="f-mark" aria-hidden="true">fol.io</div>
