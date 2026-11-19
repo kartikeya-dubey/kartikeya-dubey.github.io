@@ -19,7 +19,7 @@
      coloured columns, one-file CSS. Palette is Fol.io's brand (purple to coral on deep navy). */
   :root {
     --c1: #141530;   /* deep navy: page ground, buttons */
-    --c2: #fff1dc;   /* cream: hero, FAQ, chips */
+    --c2: #fff1dc;   /* cream: hero, FAQ */
     --c3: #231a3d;   /* ink: body text on cream */
     --c4: #f0644f;   /* coral */
     --c5: #a78bfa;   /* lavender */
@@ -72,11 +72,15 @@
   .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--c5), var(--c4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .lead { font-size: 19px; }
   .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 26px; }
-  .chips { grid-column: 1; grid-row: 2; align-self: start; display: flex; flex-wrap: wrap; gap: 10px; max-width: 660px; }
-  .chip { display: inline-flex; align-items: center; min-height: 38px; padding: 7px 16px; border: 1.5px solid var(--c3); border-radius: var(--pill);
-    background: var(--c2); font-size: 15px; font-weight: 500; white-space: nowrap; }
-  .chip:nth-child(even) { background: var(--c1); color: var(--c2); border-color: var(--c1); }
-  .chip:nth-child(3n) { background: var(--c5); border-color: var(--c5); color: var(--c1); }
+  .easy { grid-column: 1; grid-row: 2; align-self: start; max-width: 660px; display: grid; gap: 16px; }
+  .easy-label { font: 800 clamp(26px, 3vw, 40px)/1 var(--f1); letter-spacing: -0.025em; }
+  .easy-label em { font-style: normal; background: linear-gradient(90deg, var(--c5), var(--c4)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .steps figure { display: grid; gap: 8px; }
+  .steps img { width: 100%; height: auto; display: block; border-radius: 16px; border: 1.5px solid var(--c3); background: var(--c1); }
+  .steps figcaption { font-size: 14px; font-weight: 600; }
+  .steps figcaption b { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 6px; border-radius: 50%; background: var(--c1); color: var(--c2); font-size: 12px; }
+  @media (max-width: 560px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .hero-card { grid-column: 2; grid-row: 1 / span 2; align-self: center; justify-self: end; width: min(100%, 460px);
     display: grid; gap: 18px; padding: 32px; border-radius: var(--r); background: var(--c1); color: var(--c2); }
   .dm { display: grid; gap: 10px; font-size: 15px; }
@@ -92,7 +96,7 @@
   .pill:first-child { background: var(--c2); color: var(--c1); border-color: var(--c2); }
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; grid-template-rows: auto; }
-    .hero-card, .chips, .hero-head { grid-column: 1; grid-row: auto; justify-self: stretch; }
+    .hero-card, .easy, .hero-head { grid-column: 1; grid-row: auto; justify-self: stretch; }
   }
 
   /* five columns */
@@ -291,11 +295,15 @@
         <a class="link" href="#how">See how it works</a>
       </div>
     </div>
-    <ul class="chips" aria-label="Examples of what gets saved">
-      <li class="chip">Travel · Lisbon in 3 days</li><li class="chip">Recipe · Miso aubergine</li><li class="chip">Product · Standing desk</li>
-      <li class="chip">Learning · RAG explained</li><li class="chip">Fitness · 20 min pull day</li><li class="chip">Place · Rooftop café</li>
-      <li class="chip">Carousel · Study tips</li><li class="chip">Needs info</li>
-    </ul>
+    <div class="easy">
+      <p class="easy-label"><em>It's that easy!</em></p>
+      <ol class="steps">
+        <li><figure><img src="images/folio/steps/step-1-share.webp" alt="An Instagram reel with the share button circled" width="420" height="909" loading="eager"><figcaption><b>1</b>Tap share</figcaption></figure></li>
+        <li><figure><img src="images/folio/steps/step-2-select.webp" alt="The Instagram share sheet with getfol.io selected" width="420" height="909"><figcaption><b>2</b>Choose Fol.io</figcaption></figure></li>
+        <li><figure><img src="images/folio/steps/step-3-reply.webp" alt="The getfol.io chat replying Saved to your Fol.io library" width="420" height="909"><figcaption><b>3</b>Fol.io replies</figcaption></figure></li>
+        <li><figure><img src="images/folio/steps/step-4-page.webp" alt="The getfol.io Instagram profile page" width="420" height="909"><figcaption><b>4</b>The Fol.io page</figcaption></figure></li>
+      </ol>
+    </div>
     <article class="hero-card" aria-label="Example Instagram conversation">
       <div class="dm">
         <div class="reel"><span aria-hidden="true"></span></div>
