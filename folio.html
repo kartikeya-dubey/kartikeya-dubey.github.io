@@ -169,17 +169,14 @@
   /* status (replaces pricing: no prices exist, so this shows real progress) */
   .status { background: var(--c1); color: var(--c2); }
   .status .h2 { max-width: 16ch; margin-bottom: 7svh; }
-  .plans { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .plans { display: grid; grid-template-columns: 1fr; align-items: stretch; }
   .plan { display: flex; flex-direction: column; gap: 22px; padding: clamp(28px, 4vw, 56px); }
   .plan.live { background: var(--c2); color: var(--c3); }
-  .plan.next { background: var(--c3); color: var(--c2); }
   .plan .num { font-size: clamp(48px, 6vw, 88px); line-height: .9; }
   .plan ul { border-top: 1.5px solid currentColor; }
   .plan li { padding: 12px 0; border-bottom: 1.5px solid currentColor; display: flex; gap: 12px; }
   .plan li::before { content: "✓"; font-weight: 700; color: var(--c4); }
-  .plan.next li::before { content: "→"; color: var(--c5); }
   .plan .btn { align-self: flex-start; margin-top: auto; }
-  .plan.next .btn { background: var(--c2); color: var(--c1); }
   @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
 
   /* faq */
@@ -379,7 +376,7 @@
 
   <section class="status" id="status">
     <div class="eyebrow">Status</div>
-    <h2 class="h2">Early access. Built in the open, milestone by milestone.</h2>
+    <h2 class="h2">Early access. Built milestone by milestone.</h2>
     <div class="plans">
       <article class="plan live">
         <div class="num">Live</div>
@@ -390,16 +387,6 @@
           <li>Overview, themes, an admin console with AI cost, alerts and health checks</li>
         </ul>
         <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a>
-      </article>
-      <article class="plan next">
-        <div class="num">Next</div>
-        <ul>
-          <li>Cover cards, pull to refresh and a redesign of Clusters, Settings and Admin</li>
-          <li>Local AI processing as a free alternative to a paid model</li>
-          <li>Video and audio understanding, if a permitted way to get media is found</li>
-          <li>Backups, privacy review and a wider invite</li>
-        </ul>
-        <a class="btn" href="https://github.com/kartikeya-dubey/folio" target="_blank" rel="noopener">Follow the repo</a>
       </article>
     </div>
   </section>
@@ -421,7 +408,6 @@
     <a class="big" href="mailto:kartikeyadubey1997@gmail.com">Say hello<br>to Kartikeya</a>
     <div class="info">
       <div><b>Email</b><a class="link" href="mailto:kartikeyadubey1997@gmail.com">kartikeyadubey1997@gmail.com</a></div>
-      <div><b>Code</b><a class="link" href="https://github.com/kartikeya-dubey/folio" target="_blank" rel="noopener">github.com/kartikeya-dubey/folio</a></div>
       <div><b>Portfolio</b><a class="link" href="index.html">kartikeya-dubey.github.io</a></div>
     </div>
   </section>
