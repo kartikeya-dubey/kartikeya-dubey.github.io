@@ -248,6 +248,13 @@
   .slide { margin: 0; flex: none; scroll-snap-align: start; cursor: zoom-in; }
   .slide img { display: block; width: 100%; height: auto; object-fit: contain; border-radius: 14px; background: #000; box-shadow: 0 0 0 1px var(--line), 0 18px 40px rgba(0,0,0,.25); }
   .slide figcaption { margin-top: 10px; font-size: 14px; font-weight: 600; color: var(--soft); }
+  .shot { position: relative; }
+  .shot-note { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 16px;
+    background: #fff; color: #1f3d2b; border: 2px solid #34c76b; box-shadow: 0 10px 24px rgba(31,61,43,.25); font-weight: 600; line-height: 1.3; text-align: left; }
+  .shot-note .emo { flex: none; font-size: 26px; line-height: 1; filter: drop-shadow(0 3px 2px rgba(0,0,0,.28)); }
+  .track.desktop .shot-note { bottom: 2%; width: 66%; font-size: 15px; }
+  .track.mobile .shot-note { top: 60%; width: 86%; font-size: 11.5px; padding: 8px 10px; gap: 7px; border-radius: 12px; }
+  .track.mobile .shot-note .emo { font-size: 20px; }
   .track.desktop .slide { width: 100%; }
   .track.desktop .slide img { aspect-ratio: 16/9; }
   .track.mobile { gap: 20px; padding: 4px 2px 8px; }
@@ -460,9 +467,9 @@
 
   var FEATURES = [
     { bg: 'on-dark', w: ['Set', 'up'], tag: 'Account', title: 'An account and a three-step setup',
-      text: 'Email sign-up with a verification link, then a setup frame over the page, blurred behind, walks through the three things Fol.io needs: a confirmed email, your Instagram username and a follow of @getfol.io. While Fol.io is only waiting for your first message you can skip ahead.',
-      points: [['Email verification', 'a link in your inbox, with resend and live password rules at sign-up.'], ['Instagram username', 'so messages sent to the account can be matched to you.'], ['Follow check', 'if you do not follow @getfol.io, Instagram may not deliver your messages, so this becomes a task on the Actions tab instead of blocking setup.']],
-      slides: [['auth-1-login', 'Sign in'], ['auth-2-signup', 'Create account'], ['setup-1-handle', 'Setup: Instagram username'], ['setup-2-follow', 'Setup: follow @getfol.io']] },
+      text: 'Email sign-up with a verification link, then a setup frame over the page, blurred behind, walks through the three things Fol.io needs: a confirmed email, your Instagram username and a follow of @getfol.io. Fol.io only asks you for your Instagram username, nothing more. It does not access your Instagram data or account. While Fol.io is only waiting for your first message you can skip ahead.',
+      points: [['Email verification', 'a link in your inbox, with resend and live password rules at sign-up.'], ['Instagram username', 'the only thing asked about you on Instagram, so messages sent to the account can be matched to you. Nothing more, and no access to your data or account.'], ['Follow check', 'if you do not follow @getfol.io, Instagram may not deliver your messages, so this becomes a task on the Actions tab instead of blocking setup.']],
+      slides: [['auth-1-login', 'Sign in'], ['auth-2-signup', 'Create account'], ['setup-1-handle', 'Setup: Instagram username', 'Only your Instagram username. Nothing more. We never access your data or account.'], ['setup-2-follow', 'Setup: follow @getfol.io']] },
     { bg: 'on-cream', w: ['Over', 'view'], tag: 'Overview', title: 'Your library at a glance',
       text: 'The first screen after sign-in. A search box with a Search button, one colourful tile per cluster that has saves, and the posts saved most recently. Tap a tile and a pop-up lists that cluster\'s latest saves, with the page blurred behind it. When something needs you, an amber tile comes first.',
       points: [['Cluster tiles', 'a colour and emoji per cluster, the count and a small raised "+N" for saves new this week. They scroll inside their own panel so the page stays still on a phone.'], ['User Action tile', 'an amber tile with the number of open tasks, matching the dot on the Actions tab. It opens the Actions page.'], ['Pop-up', 'a bottom sheet on phones and a centred dialog on laptops; Back, Escape or a tap outside closes it. "See more in My Library" opens the Library filtered to the cluster.'], ['Recently saved', 'one row per save, showing every cluster it was filed under.'], ['Look and feel', 'a coral and plum palette in light and dark, a tab bar at the bottom on phones and a bar under the top on laptops, and pull down to refresh on every signed-in page.']],
@@ -498,7 +505,7 @@
       f.slides.forEach(function (s) {
         var fig = el('figure', 'slide'), img = new Image();
         img.src = IMG + mode + '/' + s[0] + '.webp'; img.alt = f.tag + ': ' + s[1] + ' (' + mode + ')'; img.loading = 'lazy'; img.decoding = 'async';
-        fig.append(img, el('figcaption', '', s[1]));
+        if (s[2]) { var shot = el('div', 'shot'); shot.append(img, el('div', 'shot-note', '<span class="emo" aria-hidden="true">✅</span><span>' + s[2] + '</span>')); fig.append(shot, el('figcaption', '', s[1])); } else { fig.append(img, el('figcaption', '', s[1])); }
         fig.onclick = function () { openLb(img.src, f.tag + ' — ' + s[1] + ' (' + mode + ')'); };
         t.append(fig);
       });
