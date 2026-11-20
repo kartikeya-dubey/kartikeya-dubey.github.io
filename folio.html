@@ -68,6 +68,10 @@
   .nav ul a { text-decoration: none; opacity: .85; } .nav ul a:hover { opacity: 1; color: var(--c5); }
   .nav .btn { min-height: 42px; padding: 0 20px; background: var(--c2); color: var(--c1); font-size: 15px; }
   .nav .btn::before { background: var(--c5); }
+  .nav-cta { display: flex; align-items: center; gap: 18px; }
+  .nav-signin { font-size: 14px; font-weight: 500; color: var(--c2); text-decoration: none; opacity: .85; white-space: nowrap; }
+  .nav-signin:hover { opacity: 1; color: var(--c5); }
+  @media (max-width: 520px) { .nav-signin { display: none; } }
   @media (max-width: 860px) { .nav ul { display: none; } }
 
   /* hero */
@@ -133,14 +137,16 @@
   /* architecture arches */
   .built { background: var(--c2); }
   .built .h2 { margin-bottom: clamp(28px, 5svh, 48px); }
-  .arches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-  .arch { border-radius: 999px 999px 0 0; padding: clamp(60px, 9vw, 120px) 28px 34px; min-height: 420px; display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center; }
+  .arches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .built-lead { margin-bottom: clamp(28px, 5svh, 48px); }
+  .dev-note { margin-top: clamp(28px, 5svh, 48px); display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; font-weight: 500; }
+  .status-lead { margin-bottom: clamp(24px, 4svh, 40px); }
+  .arch { border-radius: 999px 999px 0 0; padding: clamp(56px, 7vw, 96px) 28px 34px; min-height: 300px; display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center; }
   .arch:nth-child(1) { background: var(--c5); } .arch:nth-child(2) { background: var(--c4); }
-  .arch:nth-child(3) { background: var(--c1); color: var(--c2); } .arch:nth-child(4) { background: var(--c3); color: var(--c2); }
+  .arch:nth-child(3) { background: var(--c1); color: var(--c2); }
   .arch h3 { font-size: 26px; }
   .arch p { font-size: 15.5px; }
-  .arch .tag { margin-top: auto; font-size: 13px; font-weight: 600; padding: 4px 14px; border: 1.5px solid currentColor; border-radius: var(--pill); }
-  @media (max-width: 980px) { .arches { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 980px) { .arches { grid-template-columns: 1fr; } .arch { min-height: 0; padding-top: 56px; } }
   @media (max-width: 560px) { .arches { grid-template-columns: 1fr; } .arch { min-height: 0; } }
 
   /* manifesto */
@@ -152,16 +158,6 @@
   @media (max-width: 760px) { .two { grid-template-columns: 1fr; } }
 
   /* stack tiles */
-  .stack { background: var(--c6); color: var(--c2); }
-  .stack .h2 { margin-bottom: clamp(28px, 5svh, 48px); }
-  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .tile { border-radius: var(--r); padding: clamp(24px, 3vw, 40px); display: grid; gap: 14px; align-content: start; }
-  .tile:nth-child(1) { background: var(--c5); color: var(--c1); } .tile:nth-child(2) { background: var(--c2); color: var(--c3); }
-  .tile:nth-child(3) { background: var(--c4); color: var(--c1); } .tile:nth-child(4) { background: var(--c1); color: var(--c2); border: 1.5px solid #34376a; }
-  .tile h3 { font-size: 28px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags span { font-size: 14px; font-weight: 500; padding: 4px 14px; border: 1.5px solid currentColor; border-radius: var(--pill); }
-  @media (max-width: 760px) { .tiles { grid-template-columns: 1fr; } }
 
   /* status (replaces pricing: no prices exist, so this shows real progress) */
   .status { background: var(--c1); color: var(--c2); }
@@ -277,26 +273,26 @@
     <li><a href="#how">How it works</a></li>
     <li><a href="#library">Library</a></li>
     <li><a href="#tour">Tour</a></li>
-    <li><a href="#built">Architecture</a></li>
+    <li><a href="#built">Built on</a></li>
     <li><a href="#status">Status</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a>
+  <div class="nav-cta"><a class="nav-signin" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Tester sign in</a><a class="btn" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a></div>
 </header>
 
 <main id="top">
   <section class="hero">
     <div class="hero-head">
-      <div class="eyebrow">Case study · Live, in early access</div>
+      <div class="eyebrow">Live, in early access</div>
       <h1>Send a reel. <em>Fol.io keeps it</em> and files it.</h1>
-      <p class="lead">An Instagram-first content library. DM reels and posts to <strong>@getfol.io</strong> (or paste a link) and Fol.io saves each one, understands what it is about and organises it for you. No folders to make, no screenshots to lose.</p>
+      <p class="lead">You save reels and never find them again. Send them to Fol.io instead. We keep them, work out what they're about and sort them for you. It's that easy!</p>
       <div class="cta">
-        <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open the app</a>
+        <a class="btn" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a>
         <a class="link" href="#how">See how it works</a>
       </div>
     </div>
     <div class="easy">
-      <p class="easy-label"><em>It's that easy!</em></p>
+      <p class="easy-label"><em>Four taps, that's all.</em></p>
       <ol class="steps">
         <li><figure><img src="images/folio/steps/step-1-share.webp" alt="An Instagram reel with the share button circled" width="420" height="909" loading="eager"><figcaption><b>1</b>Tap share</figcaption></figure></li>
         <li><figure><img src="images/folio/steps/step-2-select.webp" alt="The Instagram share sheet with getfol.io selected" width="420" height="909"><figcaption><b>2</b>Choose Fol.io</figcaption></figure></li>
@@ -312,11 +308,11 @@
       <h2 class="h2">Five steps from reel to library.</h2>
     </div>
     <div class="col-grid">
-      <article class="col"><div><div class="num">01</div><h3>Send</h3><p>DM a reel or post to @getfol.io, or paste a link. Shares from any chat work.</p></div><div class="note">Sender is recognised from the handle you set.</div></article>
-      <article class="col"><div><div class="num">02</div><h3>Store</h3><p>The message is stored first and acknowledged at once, so nothing is lost if a step fails.</p></div><div class="note">Duplicates are dropped at the door.</div></article>
-      <article class="col"><div><div class="num">03</div><h3>Understand</h3><p>The caption and your note become a title, summary, tags, places and products.</p></div><div class="note">Behind a swappable AI provider.</div></article>
-      <article class="col"><div><div class="num">04</div><h3>Organise</h3><p>Each item is filed into a cluster, like Travel or Food. A new one-word cluster appears only when nothing fits.</p></div><div class="note">Per-user, never shared.</div></article>
-      <article class="col"><div><div class="num">05</div><h3>Reply</h3><p>You get a short text back: saved, filed, or what extra info is needed.</p></div><div class="note">Each reply is sent once.</div></article>
+      <article class="col"><div><div class="num">01</div><h3>Send</h3><p>Share a reel or post with @getfol.io on Instagram, or paste a link. Shares from any chat work.</p></div></article>
+      <article class="col"><div><div class="num">02</div><h3>Keep</h3><p>We save it straight away, so nothing gets lost along the way.</p></div></article>
+      <article class="col"><div><div class="num">03</div><h3>Understand</h3><p>We read the caption and your note to work out what it is about: a title, a short summary, tags and places.</p></div></article>
+      <article class="col"><div><div class="num">04</div><h3>Sort</h3><p>Each save goes into a group like Travel or Food. If nothing fits, we make a new one.</p></div></article>
+      <article class="col"><div><div class="num">05</div><h3>Reply</h3><p>You get a short message back on Instagram: saved, sorted, or what we need from you.</p></div></article>
     </div>
   </section>
 
@@ -325,9 +321,9 @@
       <div class="phone"><div class="screen" style="padding:0;background:#000"><img src="images/folio/mobile/overview-1-dashboard.webp" alt="The Fol.io Overview on a phone: search, colourful cluster tiles and recently saved posts" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div></div>
     </div>
     <div class="parts">
-      <div class="part"><div class="num">What you keep</div><h3>Links and meaning, not media.</h3><p>Fol.io stores the link to the original, the caption and what its AI understood from it. It does not download or keep video, audio or images, which keeps it light and respects the original creator. Cards show a Reel or Post label instead of a picture.</p></div>
+      <div class="part"><div class="num">What you keep</div><h3>Links and meaning, not media.</h3><p>We keep the link, the caption and a short summary of what the post is about. We never copy the video, audio or images, so the original stays with its creator.</p></div>
       <div class="part"><div class="num">What it adds</div><h3>Structure from a caption.</h3><p>A travel reel yields places and duration; a recipe yields dishes and ingredients; a product yields names and attributes. Items filed together make a library you can actually search.</p></div>
-      <div class="part"><div class="num">What stays yours</div><h3>Private by default.</h3><p>A post is read once and its reading shared across users, but each person's saves, clusters and notes are theirs alone, enforced in the database with row-level security. A save with a personal note is read privately and never shared.</p></div>
+      <div class="part"><div class="num">What stays yours</div><h3>Private by default.</h3><p>Your library is yours alone. No one else sees what you save, and you can download or delete everything whenever you like.</p></div>
     </div>
   </section>
 
@@ -339,14 +335,15 @@
   <div id="tourBlocks"></div>
 
   <section class="built" id="built">
-    <div class="eyebrow">Architecture</div>
-    <h2 class="h2">Small, bursty, event-shaped work.</h2>
+    <div class="eyebrow">Built on</div>
+    <h2 class="h2">Built on trusted platforms.</h2>
+    <p class="lead built-lead">Fol.io runs on popular, proven third-party platforms for hosting, storage, messaging and AI, so it stays quick and dependable without us running servers of our own.</p>
     <div class="arches">
-      <article class="arch"><h3>Edge receiver</h3><p>A Cloudflare Worker at a fixed address verifies the Instagram signature, stores the event and replies in milliseconds.</p><span class="tag">Cloudflare Worker</span></article>
-      <article class="arch"><h3>Stored inbox</h3><p>Events wait in Postgres and are claimed in batches with row locks. A restart loses nothing.</p><span class="tag">Supabase Postgres</span></article>
-      <article class="arch"><h3>Stateless API</h3><p>FastAPI runs as Vercel functions in Singapore, close to the database. No idle server to keep alive.</p><span class="tag">FastAPI · Vercel</span></article>
-      <article class="arch"><h3>Caption AI</h3><p>One shared reading per post: later people who save the same post only get a filing call. Batched, cost-capped, with a circuit breaker, behind a provider interface.</p><span class="tag">Gemini · swappable</span></article>
+      <article class="arch"><h3>Dependable</h3><p>Your saves are stored first, so nothing is lost if something goes wrong along the way.</p></article>
+      <article class="arch"><h3>Private</h3><p>Each person's library is kept separate. What you save is seen by you alone.</p></article>
+      <article class="arch"><h3>Ready to grow</h3><p>Built on services that scale, so more people can join without slowing things down.</p></article>
     </div>
+    <p class="dev-note">Developer, or looking to collaborate? <a class="btn" href="mailto:kartikeyadubey1997@gmail.com?subject=Fol.io%20collaboration&amp;body=Hi%20Kartikeya%2C%0A%0A">Contact the developer</a></p>
   </section>
 
   <section class="manifesto">
@@ -363,30 +360,21 @@
     </div>
   </section>
 
-  <section class="stack">
-    <div class="eyebrow">Under the hood</div>
-    <h2 class="h2">Boring where it should be.</h2>
-    <div class="tiles">
-      <article class="tile"><h3>Backend</h3><p>Typed settings, one error shape, JSON logs with request ids, a shared Postgres rate limiter, per-user AI cost tracking with a monthly cap, and startup that refuses weak secrets.</p><div class="tags"><span>FastAPI</span><span>Pydantic</span><span>SQLAlchemy async</span><span>Alembic</span></div></article>
-      <article class="tile"><h3>Frontend</h3><p>Sign-up, setup frame, Overview with cluster tiles and a pop-up, a Library with a search panel and grouped results, Clusters, an Actions tab, Settings, an admin console, pull to refresh on every signed-in page, a coral and plum theme in light and dark, and an installable PWA.</p><div class="tags"><span>React</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Vitest</span></div></article>
-      <article class="tile"><h3>Security</h3><p>15-minute access tokens with rotating httpOnly refresh cookies, reuse detection, CSRF header and a least-privilege database role. A post is read once; notes stay private.</p><div class="tags"><span>Row-level security</span><span>Signed webhooks</span><span>Encrypted tokens</span></div></article>
-      <article class="tile"><h3>Delivery</h3><p>Changes land by pull request. CI runs tests, then migrations, then the deploy, as a gated workflow. A Cloudflare watchdog messages Telegram if the API stops answering.</p><div class="tags"><span>GitHub Actions</span><span>Cloudflare Worker</span><span>pytest</span><span>ruff</span></div></article>
-    </div>
-  </section>
-
+  
   <section class="status" id="status">
     <div class="eyebrow">Status</div>
-    <h2 class="h2">Early access. Built milestone by milestone.</h2>
+    <h2 class="h2">Early access.</h2>
+    <p class="lead status-lead">We're in early testing and looking for people who actively use Instagram content to revisit. It's free for you.</p>
     <div class="plans">
       <article class="plan live">
         <div class="num">Live</div>
         <ul>
-          <li>Accounts with email verification, setup frame and short text replies</li>
-          <li>Instagram DMs and pasted links saved once per post, read once by the AI</li>
-          <li>One-word clusters, filing, notes, search and filters, export and account deletion</li>
-          <li>Overview, an Actions tab, themes, an admin console with AI cost, alerts and health checks</li>
+          <li>Save reels and posts by message or link</li>
+          <li>Automatic sorting into groups you can edit</li>
+          <li>Search, notes and your own filters</li>
+          <li>Download or delete your data any time</li>
         </ul>
-        <a class="btn" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a>
+        <div class="cta"><a class="btn" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a><a class="link" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Already a tester? Sign in</a></div>
       </article>
     </div>
   </section>
@@ -395,10 +383,10 @@
     <div>
       <h2 class="h2">Questions.</h2>
       <details><summary>Who is Fol.io for?</summary><p>Anyone who saves a lot of Instagram content and wants it findable later: travel ideas, recipes, products, workouts, study material.</p></details>
-      <details><summary>Does it store my videos?</summary><p>No. It keeps the link, the caption and what the AI understood from the caption. The original stays on Instagram, and no video, audio or image is copied.</p></details>
-      <details><summary>Can other users see my saves?</summary><p>No. A post is understood once and shared internally, but your saves, notes and clusters are private to you and protected in the database itself.</p></details>
-      <details><summary>How do I get access?</summary><p>Fol.io is in early access. Create an account, set your Instagram handle and an admin confirms you for testing.</p></details>
-      <details><summary>Is this connected to DexAI?</summary><p>Fol.io started from DexAI's patterns (FastAPI, Postgres, React) and then moved to a lighter, event-driven design that suits bursty message work. <a class="link" href="dexai.html">See DexAI</a>.</p></details>
+      <details><summary>Does it store my videos?</summary><p>No. We keep the link, the caption and a short summary of what the post is about. The original stays on Instagram, and no video, audio or image is copied.</p></details>
+      <details><summary>Can other users see my saves?</summary><p>No. Your saves, notes and clusters are private to you.</p></details>
+      <details><summary>How do I get access?</summary><p>Fol.io is in early testing and free for volunteers. <a class="link" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Fill in the short volunteer form</a> and we will contact you to help set up your access. After that you can create your account.</p></details>
+      <details><summary>Is this connected to DexAI?</summary><p>Fol.io grew out of what I learned building DexAI, my earlier project. Different product, same care. <a class="link" href="dexai.html">See DexAI</a>.</p></details>
     </div>
     <div class="faq-arch" aria-hidden="true"><img src="folio-mark.png" alt=""></div>
   </section>
@@ -417,8 +405,8 @@
   <div class="f-top">
     <p class="f-lead">Send it once. Find it forever.</p>
     <div class="f-cols">
-      <ul><li><a href="#how">How it works</a></li><li><a href="#tour">Product tour</a></li><li><a href="#built">Architecture</a></li><li><a href="#status">Status</a></li></ul>
-      <ul><li><a href="index.html">Portfolio</a></li><li><a href="dexai.html">DexAI</a></li><li><a href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open Fol.io</a></li></ul>
+      <ul><li><a href="#how">How it works</a></li><li><a href="#tour">Product tour</a></li><li><a href="#built">Built on</a></li><li><a href="#status">Status</a></li></ul>
+      <ul><li><a href="index.html">Portfolio</a></li><li><a href="dexai.html">DexAI</a></li><li><a href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a></li><li><a href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Tester sign in</a></li></ul>
     </div>
   </div>
   <div class="f-base">
@@ -452,29 +440,30 @@
 
   var FEATURES = [
     { bg: 'on-dark', w: ['Set', 'up'], tag: 'Account', title: 'An account and a three-step setup',
-      text: 'Email sign-up with a verification link, then a setup frame over the page, blurred behind, walks through the three things Fol.io needs: a confirmed email, your Instagram username and a follow of @getfol.io. Fol.io only asks you for your Instagram username, nothing more. It does not access your Instagram data or account. While Fol.io is only waiting for your first message you can skip ahead.',
-      points: [['Email verification', 'a link in your inbox, with resend and live password rules at sign-up.'], ['Instagram username', 'the only thing asked about you on Instagram, so messages sent to the account can be matched to you. Nothing more, and no access to your data or account.'], ['Follow check', 'if you do not follow @getfol.io, Instagram may not deliver your messages, so this becomes a task on the Actions tab instead of blocking setup.']],
+      text: 'Sign up with your email and confirm it with a link. Then two quick steps: tell us your Instagram username and follow @getfol.io. Fol.io only asks you for your Instagram username, nothing more. It does not access your Instagram data or account.',
+      points: [['Email confirmation', 'a link in your inbox, with a resend button if it goes missing.'], ['Instagram username', 'the only thing asked about you on Instagram, so messages sent to the account can be matched to you. Nothing more, and no access to your data or account.'], ['Follow check', 'if you do not follow @getfol.io, Instagram may not deliver your messages, so this shows up as a task on the Actions tab instead of blocking you.']],
       slides: [['auth-1-login', 'Sign in'], ['auth-2-signup', 'Create account'], ['setup-1-handle', 'Setup: Instagram username', 'Only your Instagram username. Nothing more. We never access your data or account.'], ['setup-2-follow', 'Setup: follow @getfol.io']] },
     { bg: 'on-cream', w: ['Over', 'view'], tag: 'Overview', title: 'Your library at a glance',
-      text: 'The first screen after sign-in. A search box with a Search button, one colourful tile per cluster that has saves, and the posts saved most recently. Tap a tile and a pop-up lists that cluster\'s latest saves, with the page blurred behind it. When something needs you, an amber tile comes first.',
-      points: [['Cluster tiles', 'a colour and emoji per cluster, the count and a small raised "+N" for saves new this week. They scroll inside their own panel so the page stays still on a phone.'], ['User Action tile', 'an amber tile with the number of open tasks, matching the dot on the Actions tab. It opens the Actions page.'], ['Pop-up', 'a bottom sheet on phones and a centred dialog on laptops; Back, Escape or a tap outside closes it. "See more in My Library" opens the Library filtered to the cluster.'], ['Recently saved', 'one row per save, showing every cluster it was filed under.'], ['Look and feel', 'a coral and plum palette in light and dark, a tab bar at the bottom on phones and a bar under the top on laptops, and pull down to refresh on every signed-in page.']],
+      text: 'The first screen after sign-in: a search box, one colourful tile per cluster, and your latest saves. Tap a tile to see that cluster\'s newest saves. When something needs you, an amber tile comes first.',
+      points: [['Cluster tiles', 'a colour and emoji per cluster, the count, and a small "+N" for saves new this week.'], ['User Action tile', 'an amber tile with the number of open tasks. It opens the Actions page.'], ['Recently saved', 'one row per save, showing every cluster it was filed under.']],
       slides: [['overview-1-dashboard', 'Overview'], ['overview-2-popup', 'A cluster\'s latest saves'], ['overview-3-dark', 'Dark theme'], ['actions-1-tasks', 'Actions: what only you can do'], ['overview-4-empty', 'First-use empty state']] },
     { bg: 'on-ink', w: ['Lib', 'rary'], tag: 'Library', title: 'Search it, filter it, fix it',
-      text: 'Every save with its AI title, summary, tags and places. Search across all of it, pick one or several cluster tiles, filter by tag, place or date, add a note, or file a save by hand. Saves the AI could not sort are not mixed in here: they wait on the Actions tab until you help.',
-      points: [['Search panel', 'words, tag, place and dates in one panel. The list changes when you press Search, not while you type. Tags on a card are clickable.'], ['Cluster tiles', 'select one or several. With several, saves sit under folding headings that name the selected clusters they are in, each save listed once.'], ['Notes', 'add context to a save; it is read again within about a minute and kept private.'], ['Filing by hand', 'up to five clusters per save; the AI never changes a filing you made.'], ['The queue', 'posts still being read show as "In the queue" until they are filed.']],
+      text: 'Every save with its title, summary, tags and places. Search across all of it, pick one or several clusters, filter by tag, place or date, add a note, or file a save yourself. Saves we could not sort are not mixed in here: they wait on the Actions tab until you help.',
+      points: [['Search panel', 'words, tag, place and dates in one panel. Tags on a card are clickable.'], ['Cluster tiles', 'select one or several. With several, saves are grouped by the clusters they belong to.'], ['Notes', 'add context to a save and we take another look. Your notes stay private.'], ['Filing by hand', 'put a save in up to five clusters. Fol.io never changes what you chose.'], ['The queue', 'posts we are still working on show as "In the queue".']],
       slides: [['library-1-list', 'My Library'], ['library-2-filters', 'Filtered to one cluster'], ['library-7-grouped', 'Several clusters, grouped'], ['library-3-note', 'Add a note'], ['library-4-clusters', 'Change clusters'], ['library-6-queue', 'Queued posts']] },
     { bg: 'on-lav', w: ['Clus', 'ters'], tag: 'Clusters', title: 'One-word clusters you control',
-      text: 'Posts are filed into one-word clusters like Food, Travel or Tech. The AI creates a new cluster only when nothing fits, and reuses an existing word instead of making near-duplicates. You can rename, change the emoji, merge or delete.',
-      points: [['Starter set', 'fourteen one-word clusters (Food, Locations, Travel, Fitness, Business, Fashion, Beauty, Tech, Money, Learning, Home, Entertainment, Music, Shopping), plus Other and Needs info which stay fixed.'], ['Edit anything', 'rename, pick an emoji, merge two clusters or delete one; its saves are moved, never lost.'], ['Limits', 'up to 40 clusters per person, shown as "N of 40". At the limit new topics go to Other and an Actions task asks you to merge or delete a few.']],
+      text: 'Posts are sorted into one-word clusters like Food, Travel or Tech. A new cluster is created only when nothing fits. Rename them, change the emoji, merge or delete: it is your library.',
+      points: [['Starter set', 'fourteen starter clusters, such as Food, Travel, Fitness and Tech, plus Other and Needs info.'], ['Edit anything', 'rename, pick an emoji, merge two clusters or delete one; its saves are moved, never lost.'], ['Limits', 'up to 40 clusters per person. At the limit new topics go to Other and a task asks you to merge or delete a few.']],
       slides: [['clusters-1-list', 'Clusters'], ['clusters-2-edit', 'Rename and emoji']] },
     { bg: 'on-dark', w: ['Set', 'tings'], tag: 'Settings', title: 'Your account and your data',
       text: 'Theme, password and Instagram username in one place, an install guide for the home screen, and the controls that matter for privacy: download a copy of everything Fol.io holds about you, or delete the account and all of it.',
-      points: [['Theme', 'system, light or dark.'], ['Export', 'a JSON file of your saves, clusters and notes.'], ['Delete account', 'removes the account and everything in it after a confirmation.']],
+      points: [['Theme', 'system, light or dark.'], ['Export', 'a copy of your saves, clusters and notes.'], ['Delete account', 'removes the account and everything in it after a confirmation.']],
       slides: [['settings-1-account', 'Account and Instagram'], ['settings-2-data', 'Your data']] },
-    { bg: 'on-cream', w: ['Ad', 'min'], tag: 'Admin', title: 'Control, cost and health in one console',
-      text: 'For the operator: who is using it, what the AI costs, and whether anything is stuck. Cost is tracked in rupees per call, per user and per post against a monthly cap, with an invoice check. A Telegram bot reports cost thresholds and outages.',
-      points: [['Access requests', 'who asked to join, their setup progress, and a mark for tester added or connected.'], ['Accounts', 'ban an account and switch AI reading or replies on and off per user.'], ['AI status and cost', 'queue, spend against the cap, cost per user and per post, prices and an invoice check.'], ['Clusters and events', 'aggregate counts only (a name used by one person is hidden), plus failed events with a retry.'], ['Alerts', 'Telegram messages for cost, provider trouble and a Cloudflare watchdog for outages.']],
-      slides: [['admin-1-accounts', 'Accounts'], ['admin-2-ai-status', 'AI understanding'], ['admin-3-ai-cost', 'AI cost'], ['admin-4-clusters', 'Clusters and events']] },
+    { bg: 'on-cream', w: ['Ad', 'min'], tag: 'Admin', title: 'The owner\'s view',
+      text: 'For the team running Fol.io: who is using it, how the service is doing, and whether anything needs attention. Sensitive values are hidden in these screenshots.',
+      points: [['Access requests', 'who asked to join and how far their setup has got.'], ['Accounts', 'pause or ban an account and switch features on or off per person.'], ['Service status', 'how the service is running and whether anything is stuck.'], ['Privacy built in', 'clusters are shown as counts only, so what you save stays private.']],
+      slides: [['admin-1-accounts']],
+      slides: [['admin-1-accounts', 'Access requests'], ['admin-2-ai-status', 'Accounts and service status'], ['admin-3-ai-cost', 'Usage'], ['admin-4-clusters', 'Cluster overview']] },
     { bg: 'on-ink', w: ['Tre', 'nds'], tag: 'Trends', title: 'What you save most, over time', badge: 'To be released', soon: true,
       text: 'A private view of your own saving habits: topics over time and what you keep coming back to. A page is in place that says it is coming; nothing is built yet.',
       points: [['Your own data only', 'trends are about your saves and visible only to you.'], ['Not market data', 'aggregated trends for others are a different product and are not planned here.']] }
