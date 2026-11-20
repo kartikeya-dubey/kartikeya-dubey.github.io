@@ -8,11 +8,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DexAI — Kartikeya Dubey</title>
-<meta name="description" content="DexAI turns unstructured information into actions through agentic workflows, tool calling, persistent memory and scheduled automation.">
+<meta name="description" content="DexAI turns messy information into tasks, calendar events and reminders, and remembers what matters. Works on the web and in Telegram.">
 <meta name="theme-color" content="#141414">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DexAI — Kartikeya Dubey">
-<meta property="og:description" content="DexAI turns unstructured information into actions through agentic workflows, tool calling, persistent memory and scheduled automation.">
+<meta property="og:description" content="DexAI turns messy information into tasks, calendar events and reminders, and remembers what matters. Works on the web and in Telegram.">
 <meta property="og:url" content="https://kartikeya-dubey.github.io/dexai.html">
 <meta property="og:image" content="https://kartikeya-dubey.github.io/dexai-og.png">
 <meta property="og:image:width" content="1200">
@@ -272,6 +272,8 @@ summary::after{content:"+";flex:none;display:grid;place-items:center;width:40px;
 details[open] summary::after{transform:rotate(45deg);background:var(--orange);color:var(--ink)}
 details p{margin:0 0 26px;max-width:62ch;color:var(--mute)}
 
+.dev-note{margin:clamp(28px,4vw,48px) 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;font-weight:500}
+
 /* ---------- timeline */
 .rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--pad) 18px;margin:0 calc(var(--pad) * -1);scrollbar-width:thin}
 .ph{flex:none;width:clamp(260px,26vw,340px);scroll-snap-align:start;position:relative;border-radius:18px;padding:26px 24px 28px;min-height:300px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
@@ -324,7 +326,7 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
 
 <nav id="nav">
   <a class="brand" href="#top"><img src="dexai-icon-96.png" alt="">DexAI</a>
-  <div class="nav-links"><a href="#features">Features</a><a href="#tour">Tour</a><a href="#how">How it works</a><a href="#challenges">Under the hood</a><a href="#timeline">Timeline</a><a href="index.html">← Projects</a></div>
+  <div class="nav-links"><a href="#features">Features</a><a href="#tour">Tour</a><a href="#how">How it works</a><a href="#challenges">Reliability</a><a href="#timeline">Timeline</a><a href="index.html">← Projects</a></div>
   <a class="btn dark" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try it live <i>↗</i></a>
 </nav>
 
@@ -332,11 +334,11 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
 <!-- ================= OPENING -->
 <section id="opening" class="on-ink">
   <div class="op-grid">
-    <div class="op-meta"><b>Live · Actively developed</b>Full-stack · Agentic · Multi-channel<br>Built by Kartikeya Dubey</div>
+    <div class="op-meta"><b>Live · Always improving</b>Web app · Phone · Telegram<br>Built by Kartikeya Dubey</div>
     <div>
-      <h1 class="op-h1">DexAI turns <em>unstructured information</em> into actions. Documents, conversations and messages become tasks, calendar events, reminders and memory that sticks.</h1>
-      <p class="op-p">LLM-based extraction, RAG, agentic workflows, tool calling, persistent memory and scheduled automation, across the web app and Telegram.</p>
-      <p class="op-p">The principle: AI should not stop at generating an answer. It should understand context, invoke tools, persist state and execute the workflow.</p>
+      <h1 class="op-h1">DexAI turns <em>messy information</em> into things done. Documents, conversations and messages become tasks, calendar events, reminders and a memory that sticks.</h1>
+      <p class="op-p">It works on the web, as an app on your phone, and in Telegram, so your assistant is wherever you are.</p>
+      <p class="op-p">Our principle: an assistant should not stop at answering. It should understand your context, use the right tools and get the work done.</p>
       <div class="op-cta">
         <a class="btn" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try DexAI now <i>↗</i></a>
         <a class="link" href="#tour">Take product tour</a>
@@ -357,7 +359,7 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
 <!-- ================= TOUR -->
 <section id="tour" class="tour-head on-ink">
   <h2 class="h2 disp tour-h"><span>Product</span><span>tour</span></h2>
-  <p class="lead">Seven areas of the product, each with desktop and mobile (PWA) screenshots from the live app. Use the toggle on any carousel to switch between them; click an image to enlarge it.</p>
+  <p class="lead">Seven areas of the product, with phone and desktop screenshots from the live app. Personal details are blurred. Use the toggle on any carousel to switch views; click an image to enlarge it.</p>
 </section>
 <div id="tourBlocks"></div>
 
@@ -367,30 +369,31 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
   <h2 class="h2 disp"><span>Four</span><span>principles</span></h2>
   <div>
     <div class="pl"><span>Understand context.</span><small>Documents, chats and your own memory, in one view.</small></div>
-    <div class="pl"><span>Invoke tools.</span><small>Calendar, extraction, MCP endpoint, plugins.</small></div>
-    <div class="pl"><span>Persist state.</span><small>Facts, rules and sessions that last.</small></div>
-    <div class="pl"><span>Run the workflow.</span><small>Reminders, alerts and summaries on a schedule.</small></div>
+    <div class="pl"><span>Use the right tools.</span><small>Calendar, document reading, Telegram and more.</small></div>
+    <div class="pl"><span>Remember.</span><small>Your facts, preferences and past chats stay with you.</small></div>
+    <div class="pl"><span>Get it done.</span><small>Reminders, alerts and summaries, on time.</small></div>
   </div>
 </section>
 
 <!-- ================= HOW IT WORKS -->
 <section id="how" class="on-ink">
-  <p class="eyebrow">System design</p>
+  <p class="eyebrow">Behind the scenes</p>
   <h2 class="h2 disp"><span>How it</span><span>works</span></h2>
   <div class="steps">
-    <div class="step"><div class="num">1</div><h3>Client tier</h3><p>An installable web app and a Telegram bot. One agent serves both.</p></div>
-    <div class="step"><div class="num">2</div><h3>API tier</h3><p>A backend service with a scheduler and an async task queue.</p></div>
-    <div class="step"><div class="num">3</div><h3>AI layer</h3><p>Agents for extraction, memory and integrations, running on the user's own LLM key.</p></div>
-    <div class="step"><div class="num">4</div><h3>Persistence</h3><p>A managed database for state and object storage for uploaded files.</p></div>
+    <div class="step"><div class="num">1</div><h3>Use it anywhere</h3><p>On the web, as an app on your phone, or in Telegram. It is the same assistant everywhere.</p></div>
+    <div class="step"><div class="num">2</div><h3>Works in the background</h3><p>Reminders, alerts and summaries run on their own, so things arrive on time.</p></div>
+    <div class="step"><div class="num">3</div><h3>Your own AI</h3><p>DexAI works with the AI account you connect, so you stay in control of cost and choice.</p></div>
+    <div class="step"><div class="num">4</div><h3>Safely stored</h3><p>Your information and uploaded files are kept in secure, managed storage.</p></div>
   </div>
 </section>
 
 
 <!-- ================= CHALLENGES -->
 <section id="challenges" class="on-paper">
-  <p class="eyebrow">Under the hood</p>
-  <h2 class="h2 disp"><span>Engineering</span><span>challenges</span></h2>
+  <p class="eyebrow">Quality</p>
+  <h2 class="h2 disp"><span>Built to be</span><span>dependable</span></h2>
   <div class="faq" id="faq"></div>
+  <p class="dev-note">Developer, or looking to collaborate? <a class="btn" href="mailto:kartikeyadubey1997@gmail.com?subject=DexAI%20collaboration&amp;body=Hi%20Kartikeya%2C%0A%0A">Contact the developer</a></p>
 </section>
 
 <!-- ================= TIMELINE -->
@@ -402,7 +405,7 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
 
 <!-- ================= CONTACT -->
 <section id="contact" class="on-orange" style="background:var(--ink);color:var(--cream)">
-  <div class="rows" aria-hidden="true"><div>Try it live.</div><div>Bring your own key.</div><div>Built in public.</div></div>
+  <div class="rows" aria-hidden="true"><div>Try it live.</div><div>Bring your own key.</div><div>Always improving.</div></div>
   <div class="op-cta" style="margin:0">
     <a class="btn" href="https://dex-ai-roan.vercel.app/register" target="_blank" rel="noopener">Try DexAI now <i>↗</i></a>
     <a class="btn ghost" href="index.html" style="color:var(--cream);--bg:var(--ink)">Back to portfolio <i>←</i></a>
@@ -428,32 +431,32 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
   addEventListener('scroll', () => { const y = scrollY; nav.classList.toggle('hide', y > ly && y > 160); ly = y; }, { passive: true });
 
   /* marquee */
-  const caps = ['Document extraction','Telegram assistant','Google Calendar sync','MCP endpoint & plugins','Fitness coach','Finance module','Weather & rain alerts','Async task queue','Context & memory','AI observability','OWASP-guided security','Keep-awake monitoring'];
+  const caps = ['Documents to events','Telegram assistant','Calendar sync','Fitness coach','Finance, coming soon','Weather and rain alerts','Memory that sticks','Daily summaries','Private by design','Works on your phone'];
   const mq = document.getElementById('marquee');
   [...caps, ...caps].forEach(c => mq.append(el('span', '', c)));
 
   /* feature cards */
   const cards = [
-    ['Documents to events','Upload a PDF, image or text. An AI agent reads it and drafts calendar events for you to review.'],
-    ['Telegram assistant','Ask about your day or add events by chat. The same agent powers the web app and Telegram.'],
-    ['Conversation memory','Remembers context across chats and summarises long conversations to stay fast.'],
-    ['Bring your own LLM','Each user connects their own AI provider, so cost and model choice stay with them.'],
-    ['Rules & personal memory','Learns your preferences and custom rules to improve extraction over time.'],
-    ['Calendar & integrations','Two-way Google Calendar sync, an MCP endpoint for external AI tools and a plugin framework.'],
-    ['Finance module','Import broker statements, track holdings with live prices and get an optional AI committee review.'],
-    ['Fitness coach','Personal plans, live workout chat, progress tracking and reminders, with consent and data controls.'],
-    ['Weather & rain alerts','Weather, air quality and one-time rain alerts for saved places, with quiet hours and shared forecasts.']
+    ['Documents to events','Upload a PDF, photo or text file. DexAI reads it and drafts calendar events for you to check.'],
+    ['Telegram assistant','Ask about your day or add events by chatting. The same assistant works on the web and in Telegram.'],
+    ['Memory that sticks','Remembers what you have told it before, so you never have to repeat yourself.'],
+    ['Bring your own AI','Connect your own AI account, so the cost and the choice of model stay with you.'],
+    ['Your rules, your way','Learns how you like things done and gets more accurate over time.'],
+    ['Calendar sync','Two-way Google Calendar sync, so DexAI and your calendar always agree.'],
+    ['Finance, coming soon','Bring in your broker statements and see your holdings in one place.'],
+    ['Fitness coach','Personal plans, workout chat, progress tracking and reminders, with you in control of your data.'],
+    ['Weather and rain alerts','Weather, air quality and a heads-up before it rains for the places you care about, with quiet hours.']
   ];
   const fg = document.getElementById('fgrid');
   cards.forEach(([t, p], i) => fg.append(el('article', 'fcard', '<div class="n">0' + (i + 1) + '</div><div><h3>' + t + '</h3><p>' + p + '</p></div>')));
 
   /* challenges */
-  const ch = [['Long conversations','Older messages are summarised so chats stay coherent without growing forever.'],['Seeing what agents do','Every agent run is traced, so behaviour and quality can be inspected and debugged.'],['One brain, many channels','The same agent logic serves the web app and Telegram.'],['Any LLM provider','Five providers work with users’ own keys. Next: one clean interface with retries and fallback.'],['Running on free tiers','Servers sleep and databases pause. A keep-alive monitor with alerts keeps reminders reliable.'],['Friendly failures','Users see a simple message. Admins get one alert that clears itself on recovery, and actions retry automatically.'],['Weather without per-user polling','Nearby users share one forecast fetch, cache entry and rain event, so weather costs do not grow with user count.'],['Alerts without repeats','Per-user idempotency and one open rain event per area prevent repeats; quiet hours are respected.']];
+  const ch = [['Conversations that stay on track','Long chats are summarised so DexAI stays quick and keeps the thread.'],['Answers you can check','DexAI shows the steps it took, so you can see where an answer came from.'],['One assistant, every channel','The same assistant works on the web and in Telegram.'],['Reminders that arrive','Monitoring keeps reminders and alerts on time, and the team is told straight away if something stops.'],['Friendly when things go wrong','You see a simple message, never a technical error, and the system retries on its own.'],['Weather without waste','People in the same area share one forecast, so alerts stay fast and free as more people join.'],['No repeat alerts','You get each alert once, even if the system checks twice.']];
   const faq = document.getElementById('faq');
   ch.forEach(([q, a], i) => { const d = el('details', '', '<summary>' + q + '</summary><p>' + a + '</p>'); if (i === 0) d.open = true; faq.append(d); });
 
   /* timeline */
-  const ph = [['Foundation','Admin tools and the calendar.'],['Extraction agent','Documents to draft events, with live progress.'],['Intelligence','Rules, memory, model routing and metrics.'],['Plugins & PWA','Plugin framework and an installable app.'],['Telegram & memory','Chat agent, conversation memory and tracing.'],['Life modules','Finance and Fitness, behind feature flags.'],['Reliability','Monitoring, safe error messages and automatic retries.'],['Weather & alerts','Hourly forecasts, air quality and rain alerts.'],['Next','One LLM provider interface, plus a demo video.']];
+  const ph = [['Foundation','The calendar and the tools to run it.'],['Document reading','Upload a document and get draft events, with live progress.'],['Smarter assistant','Preferences, memory and better answers.'],['On your phone','An installable app that feels native.'],['Telegram and memory','A chat assistant that remembers.'],['Life modules','Finance and Fitness, switched on as they are ready.'],['Reliability','Monitoring, friendly messages and automatic retries.'],['Weather and alerts','Forecasts, air quality and rain alerts.'],['Next','Wider AI support and a demo video.']];
   const rail = document.getElementById('rail');
   ph.forEach(([t, d], i) => { const last = i === ph.length - 1; rail.append(el('article', 'ph' + (last ? ' now' : ''), '<div class="big">' + (last ? '→' : i + 1) + '</div><h3>' + t + '</h3><p>' + d + '</p>')); });
 
@@ -465,32 +468,32 @@ dialog.lb img{max-width:94vw;max-height:84vh;border-radius:14px}
   /* tour */
   const FEATURES = [
     { bg: 'on-ink', w: ['Over', 'view'], tag: 'Overview', title: 'Your day at a glance',
-      text: 'The landing page pulls everything that matters today into one screen: events on today, what is coming this week, drafts waiting for review, the weather for your location and a word of the day. Sign-in and onboarding are covered here too.',
-      points: [['Upcoming events','with type badges, so deadlines, meetings and birthdays are easy to tell apart.'],['Quick actions','jump straight to the calendar or to uploading a file.'],['Sign in and sign up','email or mobile login, with live password-strength rules on registration.']],
+      text: 'Everything that matters today on one screen: what is on today, what is coming this week, drafts waiting for your review, the weather where you are and a word of the day. Signing in and getting started are here too.',
+      points: [['Upcoming events','with badges, so deadlines, meetings and birthdays are easy to tell apart.'],['Quick actions','jump straight to the calendar or to uploading a file.'],['Sign in and sign up','by email or mobile number, with clear password rules.']],
       slides: [['overview-1-dashboard','Overview dashboard'],['auth-1-login','Sign in'],['auth-2-signup','Create account']] },
     { bg: 'on-cream', w: ['Calen', 'dar'], tag: 'Calendar', title: 'A schedule that fills itself in',
-      text: 'Events extracted from uploaded documents and added through chat land here, colour-coded by type. Switch between a dense month grid and a focused week view, tick events off as they are done, and keep recurring routines tucked away until you need them.',
-      points: [['Month and week views','with a Day list / Overview toggle on the week view.'],['Search and filters','by event type and by Space (Personal, Job, Business and more).'],['Routines','collapse into a single “+N routines” chip per day to keep the grid readable.']],
+      text: 'Events from uploaded documents and chats land here, colour-coded by type. Switch between a month overview and a focused week view, tick events off as they are done, and keep routines tucked away until you need them.',
+      points: [['Month and week views','with a day list and overview toggle on the week view.'],['Search and filters','by event type and by Space (Personal, Job, Business and more).'],['Routines','tucked into one small chip per day to keep things readable.']],
       slides: [['calendar-1-month','Month view'],['calendar-2-week','Week view']] },
     { bg: 'on-orange', w: ['Fit', 'ness'], tag: 'Fitness', title: 'A coach that remembers your training',
-      text: 'A full fitness module: today’s workout, a 908-exercise library, a weekly plan, history, progress tracking and a personal profile. The AI Coach sits on top of it all and can read your plan, answer form and recovery questions, and log sets you type in plain language.',
+      text: 'A full fitness companion: today’s workout, a library of more than 900 exercises, a weekly plan, history, progress tracking and your personal profile. The AI Coach sits on top and can read your plan, answer questions on form and recovery, and log sets you type in plain language.',
       points: [['AI Coach','chat about form, recovery or food, or log a set by typing “23kg x 10”.'],['Adaptive plan','the app explains each change it makes (for example swapping a skipped machine) and lets you undo it.'],['Exercise library','searchable A to Z, with filters by equipment and body area.'],['Profile','goal, coach tone, injuries and limitations that the coach respects.']],
       slides: [['fitness-1-today','Today’s workout'],['fitness-6-ai-coach','AI Coach'],['fitness-2-library','Exercise library'],['fitness-3-plan','Weekly plan'],['fitness-4-progress','Progress tracking'],['fitness-5-profile','Fitness profile']] },
     { bg: 'on-ink', w: ['Ch', 'at'], tag: 'Chat', title: 'Ask questions, get answers from your own data',
-      text: 'General chat is scoped to a feature (Fitness, Calendar or Finance), so each conversation stays grounded in the right data. The assistant shows its steps, retrieves records from your account and cites where the answer came from.',
-      points: [['Feature-scoped chats','pick the topic once; a chat stays on that feature.'],['Visible reasoning steps','understanding the request, retrieving your DexAI data, preparing the answer.'],['Saved sessions','search, archive and revisit past conversations.']],
+      text: 'Chats are tied to a topic (Fitness, Calendar or Finance), so answers stay grounded in the right information. The assistant shows its steps and points to where an answer came from.',
+      points: [['Topic chats','pick the topic once and the chat stays on it.'],['Visible steps','you can see it understand the request, look up your information and prepare the answer.'],['Saved sessions','search, archive and revisit past conversations.']],
       slides: [['chat-1-conversation','Calendar chat with sourced answer'],['chat-2-new-chat','Start a new chat']] },
-    { bg: 'on-cream', w: ['Co', 're'], tag: 'Core', title: 'Upload, memory and administration',
-      text: 'The foundations behind every feature. Upload turns files into reviewable drafts, Memory shows exactly what DexAI has learned about you, and the Admin panel gives operators control over users, access and feature switches.',
-      points: [['Upload','drag in PNG, JPG, WebP, PDF, TXT or DOCX; review extracted events before they reach your calendar.'],['Memory','editable facts grouped by Fitness, Finance and General; add, edit or delete anything that is wrong.'],['Admin','stats, users, access, announcements, global switches, upload quality, requests and alerts.']],
-      slides: [['core-1-upload','Upload and review'],['core-2-memory','My Memory'],['core-3-admin-stats','Admin: stats'],['core-4-admin-users','Admin: users and access'],['core-5-admin-switches','Admin: global switches']] },
+    { bg: 'on-cream', w: ['Up', 'load'], tag: 'Core', title: 'Upload and memory',
+      text: 'The foundations behind every feature. Upload turns files into drafts you can review, and Memory shows exactly what DexAI has learned about you.',
+      points: [['Upload','add PNG, JPG, WebP, PDF, TXT or DOCX files and review the events it finds before they reach your calendar.'],['Memory','editable facts grouped by Fitness, Finance and General; add, edit or delete anything that is wrong.']],
+      slides: [['core-1-upload','Upload and review'],['core-2-memory','My Memory']] },
     { bg: 'on-ink', w: ['Set', 'tings'], tag: 'Settings', title: 'Your keys, your model, your rules',
-      text: 'Everything is configurable from one page. Bring your own LLM provider and key, choose when the morning summary goes out, and decide which channels (app, Telegram, email) are allowed to notify you.',
-      points: [['AI setup','five providers, model selection and a one-click connection test, using your own key.'],['Morning summary','a daily digest of events and deadlines at a time you choose.'],['Notifications and appearance','per-channel controls, weather location and light, dark or system theme.']],
+      text: 'Everything is configurable from one page. Connect your own AI account, choose when your morning summary arrives, and decide which channels (app, Telegram, email) may notify you.',
+      points: [['AI setup','connect your own AI account, pick a model and test the connection in one click.'],['Morning summary','a daily digest of events and deadlines at a time you choose.'],['Notifications and appearance','per-channel controls, weather location and light, dark or system theme.']],
       slides: [['settings-1-overview','Settings overview'],['settings-2-account','Account profile'],['settings-3-ai-setup','AI setup'],['settings-4-morning-summary','Morning summary']] },
     { bg: 'on-orange', w: ['Fin', 'ance'], tag: 'Finance', title: 'Portfolio tracking', badge: 'To be released', soon: true,
-      text: 'Finance is the next module. Upload a broker statement or a mutual fund CAS and DexAI will turn it into a portfolio view: total value, holdings and asset split, with finance chat to ask questions about it. Memory for this area keeps habits and categories only, never amounts or balances.',
-      points: [['Statement upload','broker statements and mutual fund CAS files.'],['Portfolio view','total value, holdings and asset allocation.'],['Finance chat','for example, “How is my portfolio split by asset type?”']] }
+      text: 'Finance is the next module. Add a broker statement or a mutual fund statement and DexAI will turn it into a portfolio view: total value, holdings and how it is split, with a finance chat for your questions. Memory for this area keeps habits and categories only, never amounts or balances.',
+      points: [['Statement upload','broker statements and mutual fund statements.'],['Portfolio view','total value, holdings and asset allocation.'],['Finance chat','for example, “How is my portfolio split by asset type?”']] }
   ];
 
   function carousel(f) {
