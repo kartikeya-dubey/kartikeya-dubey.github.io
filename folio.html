@@ -53,6 +53,8 @@
     background: var(--c4); transform: translateY(102%); transition: transform .5s cubic-bezier(.2,.7,.2,1), border-radius .5s ease; }
   .btn:hover::before, .btn:focus-visible::before { transform: translateY(0); border-radius: 0; }
   .btn.alt { background: var(--c2); color: var(--c1); }
+  .btn.ghost { background: transparent; color: var(--c1); box-shadow: inset 0 0 0 2px var(--c1); }
+  .btn.ghost:hover { color: var(--c2); }
   .btn.alt::before { background: var(--c5); }
   .link { font-weight: 600; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; padding-bottom: 2px; transition: background-size .4s; }
   .link:hover { background-size: 0 1.5px; background-position: 100% 100%; }
@@ -277,7 +279,7 @@
     <li><a href="#status">Status</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <div class="nav-cta"><a class="nav-signin" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Tester sign in</a><a class="btn" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a></div>
+  <div class="nav-cta"><a class="nav-signin" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open the app</a><a class="btn" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a></div>
 </header>
 
 <main id="top">
@@ -288,6 +290,7 @@
       <p class="lead">You save reels and never find them again. Send them to Fol.io instead. We keep them, work out what they're about and sort them for you. It's that easy!</p>
       <div class="cta">
         <a class="btn" href="https://forms.cloud.microsoft/r/mYv7NbYgfV" target="_blank" rel="noopener">Volunteer to test</a>
+        <a class="btn ghost" href="https://folio-phi-hazel.vercel.app" target="_blank" rel="noopener">Open the app</a>
         <a class="link" href="#how">See how it works</a>
       </div>
     </div>
@@ -330,7 +333,7 @@
   <section class="tour-head" id="tour">
     <div class="eyebrow">Product tour</div>
     <h2 class="h2">Every screen, on desktop and phone.</h2>
-    <p class="lead">Seven areas of the product with desktop and mobile screenshots of the live app, shown with sample data. Use the toggle on any carousel to switch between desktop and mobile; click an image to enlarge it.</p>
+    <p class="lead">Six areas of the product with desktop and mobile screenshots of the live app, shown with sample data. Use the toggle on any carousel to switch between desktop and mobile; click an image to enlarge it.</p>
   </section>
   <div id="tourBlocks"></div>
 
@@ -459,14 +462,9 @@
       text: 'Theme, password and Instagram username in one place, an install guide for the home screen, and the controls that matter for privacy: download a copy of everything Fol.io holds about you, or delete the account and all of it.',
       points: [['Theme', 'system, light or dark.'], ['Export', 'a copy of your saves, clusters and notes.'], ['Delete account', 'removes the account and everything in it after a confirmation.']],
       slides: [['settings-1-account', 'Account and Instagram'], ['settings-2-data', 'Your data']] },
-    { bg: 'on-cream', w: ['Ad', 'min'], tag: 'Admin', title: 'The owner\'s view',
-      text: 'For the team running Fol.io: who is using it, how the service is doing, and whether anything needs attention. Sensitive values are hidden in these screenshots.',
-      points: [['Access requests', 'who asked to join and how far their setup has got.'], ['Accounts', 'pause or ban an account and switch features on or off per person.'], ['Service status', 'how the service is running and whether anything is stuck.'], ['Privacy built in', 'clusters are shown as counts only, so what you save stays private.']],
-      slides: [['admin-1-accounts']],
-      slides: [['admin-1-accounts', 'Access requests'], ['admin-2-ai-status', 'Accounts and service status'], ['admin-3-ai-cost', 'Usage'], ['admin-4-clusters', 'Cluster overview']] },
     { bg: 'on-ink', w: ['Tre', 'nds'], tag: 'Trends', title: 'What you save most, over time', badge: 'To be released', soon: true,
       text: 'A private view of your own saving habits: topics over time and what you keep coming back to. A page is in place that says it is coming; nothing is built yet.',
-      points: [['Your own data only', 'trends are about your saves and visible only to you.'], ['Not market data', 'aggregated trends for others are a different product and are not planned here.']] }
+      points: [['Your own data only', 'trends are about your saves and visible only to you.']] }
   ];
 
   function carousel(f) {
