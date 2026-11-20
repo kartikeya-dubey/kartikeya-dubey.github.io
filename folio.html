@@ -528,7 +528,7 @@
     var s = el('section', 'fx ' + f.bg + (i % 2 ? ' flip' : '')); s.id = 'fx-' + f.tag.toLowerCase();
     s.append(el('div', 'fx-word', '<span>' + f.w[0] + '</span><span class="out">' + f.w[1] + '</span>'));
     var g = el('div', 'fx-grid'), media = el('div', 'fx-media'), text = el('div', 'fx-text');
-    media.append(f.soon ? el('div', 'soon', '<strong>Coming soon</strong>Trends is planned but not built. The tab was removed from the navigation until it is ready.') : carousel(f));
+    media.append(f.soon ? el('div', 'soon', '<strong>Coming soon</strong>') : carousel(f));
     text.append(el('p', 'eyebrow', '0' + (i + 1) + ' · ' + f.tag + (f.badge ? '<span class="badge">' + f.badge + '</span>' : '')), el('h3', '', f.title), el('p', '', f.text));
     var ul = el('ul'); f.points.forEach(function (p) { ul.append(el('li', '', '<b>' + p[0] + '</b>, ' + p[1])); }); text.append(ul);
     g.append(media, text); s.append(g); host.append(s);
